@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">JapelApp</string>
+    <string name="formulario_tab_text_1">Beneficiário</string>
+    <string name="formulario_tab_text_2">Conjuje</string>
+    <string name="formulario_tab_text_3">Comp. Familiar</string>
+    <string name="formulario_tab_text_4">Moradia</string>
+    <string name="formulario_tab_text_5">Fotos</string>
+</resources>
