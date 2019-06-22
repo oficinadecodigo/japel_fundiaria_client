@@ -16,7 +16,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         verificarPermissoes();
-        Intent intent = new Intent(this, FormularioPesquisaActivity.class);
+        //Intent intent = new Intent(this, FormularioPesquisaActivity.class);
+        Intent intent = new Intent(this, FormularioActivity.class);
         startActivity(intent);
     }
 
@@ -39,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
                     ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE) &&
                     ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_PHONE_STATE) &&
                     ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.RECORD_AUDIO) &&
-                    ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.SYSTEM_ALERT_WINDOW)&&
+                    ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.SYSTEM_ALERT_WINDOW) &&
                     ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
                 android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
                 builder.setMessage("Liberar permissões?");
