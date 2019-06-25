@@ -1,6 +1,7 @@
 package com.japelapp;
 
 import android.Manifest;
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
@@ -14,14 +15,24 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
+import android.view.ViewTreeObserver;
+import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 
+import com.japelapp.entidade.Pessoa;
 import com.japelapp.ui.formulario.FormularioBeneficiarioFragment;
 import com.japelapp.ui.formulario.FormularioCompFamFragment;
 import com.japelapp.ui.formulario.FormularioConjujeFragment;
 import com.japelapp.ui.formulario.FormularioFotosFragment;
 import com.japelapp.ui.formulario.FormularioMoradiaFragment;
 import com.japelapp.ui.formulario.SectionsPagerAdapter;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class FormularioActivity extends AppCompatActivity {
 
@@ -44,24 +55,24 @@ public class FormularioActivity extends AppCompatActivity {
     EditText beneficiario_rg;
     EditText beneficiario_nome_mae;
     EditText beneficiario_nome_pai;
-    EditText beneficiario_sexo;
-    EditText beneficiario_raca;
+    Spinner beneficiario_sexo;
+    Spinner beneficiario_raca;
     EditText beneficiario_data_nascimento;
     EditText beneficiario_email;
-    EditText beneficiario_nacionalidade;
+    Spinner beneficiario_nacionalidade;
     EditText beneficiario_numero_cpts;
     EditText beneficiario_pis_pasep;
     EditText beneficiario_numero_cadunico;
     EditText beneficiario_nis;
-    EditText beneficiario_escolaridade;
-    EditText beneficiario_estado_civil;
-    EditText beneficiario_situacao_conjugal;
+    Spinner beneficiario_escolaridade;
+    Spinner beneficiario_estado_civil;
+    Spinner beneficiario_situacao_conjugal;
     EditText beneficiario_profissao;
     EditText beneficiario_renda_formal;
-    EditText beneficiario_situacao_renda_formal;
+    Spinner beneficiario_situacao_renda_formal;
     EditText beneficiario_renda_informal;
-    EditText beneficiario_situacao_renda_informal;
-    EditText beneficiario_ramo_atividade;
+    Spinner beneficiario_situacao_renda_informal;
+    Spinner beneficiario_ramo_atividade;
     EditText beneficiario_empregador;
     EditText beneficiario_tempo_servico_emprego_atual;
     EditText beneficiario_valor_fgts;
@@ -71,23 +82,22 @@ public class FormularioActivity extends AppCompatActivity {
     EditText beneficiario_falar_com;
     EditText beneficiario_tempo_residencia_imovel;
     EditText beneficiario_tempo_residencia_municipio;
-    EditText beneficiario_interesse_moradia_urbana;
-    EditText beneficiario_interesse_moradia_rural;
-    EditText beneficiario_interesse_lote;
-    EditText beneficiario_interesse_regularizacao_fundiaria;
-    EditText beneficiario_deficiencia_auditiva_mudez;
-    EditText beneficiario_deficiencia_auditiva_surdez;
-    EditText beneficiario_deficiencia_cadeirante;
-    EditText beneficiario_deficiencia_fisica;
-    EditText beneficiario_deficiencia_intelectual;
-    EditText beneficiario_deficiencia_nanismo;
-    EditText beneficiario_deficiencia_visual;
-    EditText beneficiario_titular_conjuge_mulher_maria_penha;
-    EditText beneficiario_proprietario_imovel;
-    EditText beneficiario_proprietario_lote;
-    EditText beneficiario_proprietario_imovel_precario;
-    EditText beneficiario_convenio;
-    EditText beneficiario_id_usuario;
+    CheckBox beneficiario_interesse_moradia_urbana;
+    CheckBox beneficiario_interesse_moradia_rural;
+    CheckBox beneficiario_interesse_lote;
+    CheckBox beneficiario_interesse_regularizacao_fundiaria;
+    CheckBox beneficiario_deficiencia_auditiva_mudez;
+    CheckBox beneficiario_deficiencia_auditiva_surdez;
+    CheckBox beneficiario_deficiencia_cadeirante;
+    CheckBox beneficiario_deficiencia_fisica;
+    CheckBox beneficiario_deficiencia_intelectual;
+    CheckBox beneficiario_deficiencia_nanismo;
+    CheckBox beneficiario_deficiencia_visual;
+    CheckBox beneficiario_titular_conjuge_mulher_maria_penha;
+    CheckBox beneficiario_proprietario_imovel;
+    CheckBox beneficiario_proprietario_lote;
+    CheckBox beneficiario_proprietario_imovel_precario;
+    CheckBox beneficiario_convenio;
     EditText beneficiario_foto_pessoa;
     EditText beneficiario_foto_cpf;
     EditText beneficiario_foto_rg;
@@ -104,31 +114,31 @@ public class FormularioActivity extends AppCompatActivity {
     EditText conjuje_rg;
     EditText conjuje_nome_mae;
     EditText conjuje_nome_pai;
-    EditText conjuje_sexo;
-    EditText conjuje_raca;
+    Spinner conjuje_sexo;
+    Spinner conjuje_raca;
     EditText conjuje_data_nascimento;
-    EditText conjuje_nacionalidade;
+    Spinner conjuje_nacionalidade;
     EditText conjuje_numero_cadunico;
     EditText conjuje_nis;
-    EditText conjuje_escolaridade;
-    EditText conjuje_estado_civil;
-    EditText conjuje_situacao_conjugal;
+    Spinner conjuje_escolaridade;
+    Spinner conjuje_estado_civil;
+    Spinner conjuje_situacao_conjugal;
     EditText conjuje_profissao;
     EditText conjuje_renda_formal;
-    EditText conjuje_situacao_renda_formal;
+    Spinner conjuje_situacao_renda_formal;
     EditText conjuje_renda_informal;
-    EditText conjuje_situacao_renda_informal;
-    EditText conjuje_ramo_atividade;
+    Spinner conjuje_situacao_renda_informal;
+    Spinner conjuje_ramo_atividade;
     EditText conjuje_empregador;
     EditText conjuje_tempo_servico_emprego_atual;
     EditText conjuje_valor_fgts;
-    EditText conjuje_deficiencia_auditiva_mudez;
-    EditText conjuje_deficiencia_auditiva_surdez;
-    EditText conjuje_deficiencia_cadeirante;
-    EditText conjuje_deficiencia_fisica;
-    EditText conjuje_deficiencia_intelectual;
-    EditText conjuje_deficiencia_nanismo;
-    EditText conjuje_deficiencia_visual;
+    CheckBox conjuje_deficiencia_auditiva_mudez;
+    CheckBox conjuje_deficiencia_auditiva_surdez;
+    CheckBox conjuje_deficiencia_cadeirante;
+    CheckBox conjuje_deficiencia_fisica;
+    CheckBox conjuje_deficiencia_intelectual;
+    CheckBox conjuje_deficiencia_nanismo;
+    CheckBox conjuje_deficiencia_visual;
     EditText conjuje_foto_pessoa;
     EditText conjuje_foto_cpf;
     EditText conjuje_foto_rg;
@@ -219,12 +229,6 @@ public class FormularioActivity extends AppCompatActivity {
     //Campos fragment fotos
 
     private void inicializarComponentes() {
-        fragmentBeneficiario = (FormularioBeneficiarioFragment) sectionsPagerAdapter.getItem(0);
-        fragmentConjuje = (FormularioConjujeFragment) sectionsPagerAdapter.getItem(1);
-        fragmentCompFam = (FormularioCompFamFragment) sectionsPagerAdapter.getItem(2);
-        fragmentMoradia = (FormularioMoradiaFragment) sectionsPagerAdapter.getItem(3);
-        fragmentFotos = (FormularioFotosFragment) sectionsPagerAdapter.getItem(4);
-
         //Inicializando componentes do fragment beneficiário
         beneficiario_nome = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_nome);
         beneficiario_cpf = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_cpf);
@@ -234,6 +238,32 @@ public class FormularioActivity extends AppCompatActivity {
         beneficiario_sexo = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_sexo);
         beneficiario_raca = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_raca);
         beneficiario_data_nascimento = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_data_nascimento);
+        final Calendar myCalendar = Calendar.getInstance();
+        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                String data = dayOfMonth + "/" + monthOfYear + "/" + year;
+                beneficiario_data_nascimento.setText(data);
+            }
+
+        };
+        beneficiario_data_nascimento.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                try {
+                    new DatePickerDialog(getWindow().getContext(), date, myCalendar
+                            .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                            myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                } catch (Throwable ex) {
+                }
+            }
+        });
         beneficiario_email = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_email);
         beneficiario_nacionalidade = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_nacionalidade);
         beneficiario_numero_cpts = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_numero_cpts);
@@ -274,7 +304,6 @@ public class FormularioActivity extends AppCompatActivity {
         beneficiario_proprietario_lote = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_proprietario_lote);
         beneficiario_proprietario_imovel_precario = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_proprietario_imovel_precario);
         beneficiario_convenio = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_convenio);
-        beneficiario_id_usuario = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_id_usuario);
         beneficiario_foto_pessoa = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_foto_pessoa);
         beneficiario_foto_cpf = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_foto_cpf);
         beneficiario_foto_rg = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_foto_rg);
@@ -403,6 +432,294 @@ public class FormularioActivity extends AppCompatActivity {
 
     }
 
+    private void preencherTelaBeneficiario(Pessoa registro) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        beneficiario_nome.setText(registro.getNome());
+        beneficiario_cpf.setText(registro.getCpf());
+        beneficiario_rg.setText(registro.getRg());
+        beneficiario_nome_mae.setText(registro.getNome_mae());
+        beneficiario_nome_pai.setText(registro.getNome_pai());
+        try {
+            beneficiario_sexo.setSelection(registro.getSexo() - 1);
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_raca.setSelection(registro.getRaca() - 1);
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_data_nascimento.setText(sdf.format(registro.getData_nascimento()));
+        } catch (Throwable ex) {
+        }
+        beneficiario_email.setText(registro.getEmail());
+        try {
+            beneficiario_nacionalidade.setSelection(registro.getNacionalidade() - 1);
+        } catch (Throwable ex) {
+        }
+        beneficiario_numero_cpts.setText(registro.getNumero_cpts());
+        beneficiario_pis_pasep.setText(registro.getPis_pasep());
+        beneficiario_numero_cadunico.setText(registro.getNumero_cadunico());
+        beneficiario_nis.setText(registro.getNis());
+        try {
+            beneficiario_escolaridade.setSelection(registro.getEscolaridade() - 1);
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_estado_civil.setSelection(registro.getEstado_civil() - 1);
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_situacao_conjugal.setSelection(registro.getSituacao_conjugal() - 1);
+        } catch (Throwable ex) {
+        }
+        beneficiario_profissao.setText(registro.getProfissao());
+        beneficiario_renda_formal.setText(registro.getRenda_formal() + "");
+        try {
+            beneficiario_situacao_renda_formal.setSelection(registro.getSituacao_renda_formal() - 1);
+        } catch (Throwable ex) {
+        }
+        beneficiario_renda_informal.setText(registro.getRenda_informal() + "");
+        try {
+            beneficiario_situacao_renda_informal.setSelection(registro.getSituacao_renda_informal() - 1);
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_ramo_atividade.setSelection(registro.getRamo_atividade() - 1);
+        } catch (Throwable ex) {
+        }
+        beneficiario_empregador.setText(registro.getEmpregador());
+        beneficiario_tempo_servico_emprego_atual.setText(registro.getTempo_servico_emprego_atual() + "");
+        beneficiario_valor_fgts.setText(registro.getValor_fgts() + "");
+        beneficiario_telefone_fixo.setText(registro.getTelefone_fixo());
+        beneficiario_telefone_movel.setText(registro.getTelefone_movel());
+        beneficiario_telefone_recado.setText(registro.getTelefone_recado());
+        beneficiario_falar_com.setText(registro.getFalar_com());
+        beneficiario_tempo_residencia_imovel.setText(registro.getTempo_residencia_imovel() + "");
+        beneficiario_tempo_residencia_municipio.setText(registro.getTempo_residencia_municipio() + "");
+        beneficiario_interesse_moradia_urbana.setChecked(registro.isInteresse_moradia_urbana());
+        beneficiario_interesse_moradia_rural.setChecked(registro.isInteresse_moradia_rural());
+        beneficiario_interesse_lote.setChecked(registro.isInteresse_lote());
+        beneficiario_interesse_regularizacao_fundiaria.setChecked(registro.isInteresse_regulacao_fundiaria());
+        beneficiario_deficiencia_auditiva_mudez.setChecked(registro.isDeficiencia_auditiva_mudez());
+        beneficiario_deficiencia_auditiva_surdez.setChecked(registro.isDeficiencia_auditiva_surdez());
+        beneficiario_deficiencia_cadeirante.setChecked(registro.isDeficiencia_cadeirante());
+        beneficiario_deficiencia_fisica.setChecked(registro.isDeficiencia_fisica());
+        beneficiario_deficiencia_intelectual.setChecked(registro.isDeficiencia_intelectual());
+        beneficiario_deficiencia_nanismo.setChecked(registro.isDeficiencia_nanismo());
+        beneficiario_deficiencia_visual.setChecked(registro.isDeficiencia_visual());
+        beneficiario_titular_conjuge_mulher_maria_penha.setChecked(registro.isTitular_conjuge_mulher_maria_penha());
+        beneficiario_proprietario_imovel.setChecked(registro.isProprietario_imovel());
+        beneficiario_proprietario_lote.setChecked(registro.isProprietario_lote());
+        beneficiario_proprietario_imovel_precario.setChecked(registro.isProprietario_imovel_precario());
+        beneficiario_convenio.setChecked(registro.isConvenio());
+        /*
+        beneficiario_foto_pessoa.setText(registro.getfoto_pessoa());
+        beneficiario_foto_cpf.setText(registro.getfoto_cpf());
+        beneficiario_foto_rg.setText(registro.getfoto_rg());
+        beneficiario_foto_cnh.setText(registro.getfoto_cnh());
+        beneficiario_foto_carteira_trabalho.setText(registro.getfoto_carteira_trabalho());
+        beneficiario_foto_documento_casa.setText(registro.getfoto_documento_casa());
+        beneficiario_foto_comprovante_renda.setText(registro.getfoto_comprovante_renda());
+        beneficiario_foto_comprovante_estado_civil.setText(registro.getfoto_comprovante_estado_civil());
+        */
+    }
+
+    private void preencherEntidadeBeneficiario(Pessoa registro) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        registro.setNome(beneficiario_nome.getText().toString());
+        registro.setCpf(beneficiario_cpf.getText().toString());
+        registro.setRg(beneficiario_rg.getText().toString());
+        registro.setNome_mae(beneficiario_nome_mae.getText().toString());
+        registro.setNome_pai(beneficiario_nome_pai.getText().toString());
+        registro.setSexo(beneficiario_sexo.getSelectedItemPosition() + 1);
+        registro.setRaca(beneficiario_raca.getSelectedItemPosition() + 1);
+        try {
+            registro.setData_nascimento(sdf.parse(beneficiario_data_nascimento.getText().toString()));
+        } catch (Throwable ex) {
+            registro.setData_nascimento(null);
+        }
+        registro.setEmail(beneficiario_email.getText().toString());
+        registro.setNacionalidade(beneficiario_nacionalidade.getSelectedItemPosition() + 1);
+        registro.setNumero_cpts(beneficiario_numero_cpts.getText().toString());
+        registro.setPis_pasep(beneficiario_pis_pasep.getText().toString());
+        registro.setNumero_cadunico(beneficiario_numero_cadunico.getText().toString());
+        registro.setNis(beneficiario_nis.getText().toString());
+        registro.setEscolaridade(beneficiario_escolaridade.getSelectedItemPosition() + 1);
+        registro.setEstado_civil(beneficiario_estado_civil.getSelectedItemPosition() + 1);
+        registro.setSituacao_conjugal(beneficiario_situacao_conjugal.getSelectedItemPosition() + 1);
+        registro.setProfissao(beneficiario_profissao.getText().toString());
+        try {
+            registro.setRenda_formal(Double.parseDouble(beneficiario_renda_formal.getText().toString()));
+        } catch (Throwable ex) {
+            registro.setRenda_formal(0);
+        }
+        registro.setSituacao_renda_formal(beneficiario_situacao_renda_formal.getSelectedItemPosition() + 1);
+        try {
+            registro.setRenda_informal(Double.parseDouble(beneficiario_renda_informal.getText().toString()));
+        } catch (Throwable ex) {
+            registro.setRenda_informal(0);
+        }
+        registro.setSituacao_renda_informal(beneficiario_situacao_renda_informal.getSelectedItemPosition() + 1);
+        registro.setRamo_atividade(beneficiario_ramo_atividade.getSelectedItemPosition() + 1);
+        registro.setEmpregador(beneficiario_empregador.getText().toString());
+        try {
+            registro.setTempo_servico_emprego_atual(Integer.parseInt(beneficiario_tempo_servico_emprego_atual.getText().toString()));
+        } catch (Throwable ex) {
+            registro.setTempo_servico_emprego_atual(0);
+        }
+        try {
+            registro.setValor_fgts(Double.parseDouble(beneficiario_valor_fgts.getText().toString()));
+        } catch (Throwable ex) {
+        }
+        registro.setTelefone_fixo(beneficiario_telefone_fixo.getText().toString());
+        registro.setTelefone_movel(beneficiario_telefone_movel.getText().toString());
+        registro.setTelefone_recado(beneficiario_telefone_recado.getText().toString());
+        registro.setFalar_com(beneficiario_falar_com.getText().toString());
+        try {
+            registro.setTempo_residencia_imovel(Integer.parseInt(beneficiario_tempo_residencia_imovel.getText().toString()));
+        } catch (Throwable ex) {
+            registro.setTempo_residencia_imovel(0);
+        }
+        try {
+            registro.setTempo_residencia_municipio(Integer.parseInt(beneficiario_tempo_residencia_municipio.getText().toString()));
+        } catch (Throwable ex) {
+            registro.setTempo_residencia_municipio(0);
+        }
+        registro.setInteresse_moradia_urbana(beneficiario_interesse_moradia_urbana.isChecked());
+        registro.setInteresse_moradia_rural(beneficiario_interesse_moradia_rural.isChecked());
+        registro.setInteresse_lote(beneficiario_interesse_lote.isChecked());
+        registro.setInteresse_regulacao_fundiaria(beneficiario_interesse_regularizacao_fundiaria.isChecked());
+        registro.setDeficiencia_auditiva_mudez(beneficiario_deficiencia_auditiva_mudez.isChecked());
+        registro.setDeficiencia_auditiva_surdez(beneficiario_deficiencia_auditiva_surdez.isChecked());
+        registro.setDeficiencia_cadeirante(beneficiario_deficiencia_cadeirante.isChecked());
+        registro.setDeficiencia_fisica(beneficiario_deficiencia_fisica.isChecked());
+        registro.setDeficiencia_intelectual(beneficiario_deficiencia_intelectual.isChecked());
+        registro.setDeficiencia_nanismo(beneficiario_deficiencia_nanismo.isChecked());
+        registro.setDeficiencia_visual(beneficiario_deficiencia_visual.isChecked());
+        registro.setTitular_conjuge_mulher_maria_penha(beneficiario_titular_conjuge_mulher_maria_penha.isChecked());
+        registro.setProprietario_imovel(beneficiario_proprietario_imovel.isChecked());
+        registro.setProprietario_lote(beneficiario_proprietario_lote.isChecked());
+        registro.setProprietario_imovel_precario(beneficiario_proprietario_imovel_precario.isChecked());
+        registro.setConvenio(beneficiario_convenio.isChecked());
+
+        //registro.setId_usuario(beneficiario_id_usuario.getText().toString());
+        //registro.setFoto_pessoa(beneficiario_foto_pessoa.getText().toString());
+        //registro.setFoto_cpf(beneficiario_foto_cpf.getText().toString());
+        //registro.setFoto_rg(beneficiario_foto_rg.getText().toString());
+        //registro.setFoto_cnh(beneficiario_foto_cnh.getText().toString());
+        //registro.setFoto_carteira_trabalho(beneficiario_foto_carteira_trabalho.getText().toString());
+        //registro.setFoto_documento_casa(beneficiario_foto_documento_casa.getText().toString());
+        //registro.setFoto_comprovante_renda(beneficiario_foto_comprovante_renda.getText().toString());
+        //registro.setFoto_comprovante_estado_civil(beneficiario_foto_comprovante_estado_civil.getText().toString());
+
+    }
+
+    private void preencherTelaConjuje(Pessoa registro) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        conjuje_nome.setText(registro.getNome());
+        conjuje_cpf.setText(registro.getCpf());
+        conjuje_rg.setText(registro.getRg());
+        conjuje_nome_mae.setText(registro.getNome_mae());
+        conjuje_nome_pai.setText(registro.getNome_pai());
+        conjuje_sexo.setSelection(registro.getSexo() - 1);
+        conjuje_raca.setSelection(registro.getRaca() - 1);
+        try {
+            conjuje_data_nascimento.setText(sdf.format(registro.getData_nascimento()));
+        } catch (Throwable ex) {
+        }
+        conjuje_nacionalidade.setSelection(registro.getNacionalidade() - 1);
+        conjuje_numero_cadunico.setText(registro.getNumero_cadunico());
+        conjuje_nis.setText(registro.getNis());
+        conjuje_escolaridade.setSelection(registro.getEscolaridade() - 1);
+        conjuje_estado_civil.setSelection(registro.getEstado_civil() - 1);
+        conjuje_situacao_conjugal.setSelection(registro.getSituacao_conjugal() - 1);
+        conjuje_profissao.setText(registro.getProfissao());
+        conjuje_renda_formal.setText(registro.getRenda_formal() + "");
+        conjuje_situacao_renda_formal.setSelection(registro.getSituacao_renda_formal() - 1);
+        conjuje_renda_informal.setText(registro.getRenda_informal() + "");
+        conjuje_situacao_renda_informal.setSelection(registro.getSituacao_renda_informal() - 1);
+        conjuje_ramo_atividade.setSelection(registro.getRamo_atividade() - 1);
+        conjuje_empregador.setText(registro.getEmpregador());
+        conjuje_tempo_servico_emprego_atual.setText(registro.getTempo_servico_emprego_atual());
+        conjuje_valor_fgts.setText(registro.getValor_fgts() + "");
+        conjuje_deficiencia_auditiva_mudez.setChecked(registro.isDeficiencia_auditiva_mudez());
+        conjuje_deficiencia_auditiva_surdez.setChecked(registro.isDeficiencia_auditiva_surdez());
+        conjuje_deficiencia_cadeirante.setChecked(registro.isDeficiencia_cadeirante());
+        conjuje_deficiencia_fisica.setChecked(registro.isDeficiencia_fisica());
+        conjuje_deficiencia_intelectual.setChecked(registro.isDeficiencia_intelectual());
+        conjuje_deficiencia_nanismo.setChecked(registro.isDeficiencia_nanismo());
+        conjuje_deficiencia_visual.setChecked(registro.isDeficiencia_visual());
+        /*
+        conjuje_foto_pessoa.setText(registro.getfoto_pessoa());
+        conjuje_foto_cpf.setText(registro.getfoto_cpf());
+        conjuje_foto_rg.setText(registro.getfoto_rg());
+        conjuje_foto_cnh.setText(registro.getfoto_cnh());
+        conjuje_foto_carteira_trabalho.setText(registro.getfoto_carteira_trabalho());
+        conjuje_foto_documento_casa.setText(registro.getfoto_documento_casa());
+        conjuje_foto_comprovante_renda.setText(registro.getfoto_comprovante_renda());
+        conjuje_foto_comprovante_estado_civil.setText(registro.getfoto_comprovante_estado_civil());
+*/
+    }
+
+    private void preencherEntidadeConjuje(Pessoa registro) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        registro.setNome(conjuje_nome.getText().toString());
+        registro.setCpf(conjuje_cpf.getText().toString());
+        registro.setRg(conjuje_rg.getText().toString());
+        registro.setNome_mae(conjuje_nome_mae.getText().toString());
+        registro.setNome_pai(conjuje_nome_pai.getText().toString());
+        registro.setSexo(conjuje_sexo.getSelectedItemPosition() + 1);
+        registro.setRaca(conjuje_raca.getSelectedItemPosition() + 1);
+        try {
+            registro.setData_nascimento(sdf.parse(conjuje_data_nascimento.getText().toString()));
+        } catch (Throwable ex) {
+        }
+        registro.setNacionalidade(conjuje_nacionalidade.getSelectedItemPosition() + 1);
+        registro.setNumero_cadunico(conjuje_numero_cadunico.getText().toString());
+        registro.setNis(conjuje_nis.getText().toString());
+        registro.setEscolaridade(conjuje_escolaridade.getSelectedItemPosition() + 1);
+        registro.setEstado_civil(conjuje_estado_civil.getSelectedItemPosition() + 1);
+        registro.setSituacao_conjugal(conjuje_situacao_conjugal.getSelectedItemPosition() + 1);
+        registro.setProfissao(conjuje_profissao.getText().toString());
+        try {
+            registro.setRenda_formal(Double.parseDouble(conjuje_renda_formal.getText().toString()));
+        } catch (Throwable ex) {
+        }
+        registro.setSituacao_renda_formal(conjuje_situacao_renda_formal.getSelectedItemPosition() + 1);
+        try {
+            registro.setRenda_informal(Double.parseDouble(conjuje_renda_informal.getText().toString()));
+        } catch (Throwable ex) {
+        }
+        registro.setSituacao_renda_informal(conjuje_situacao_renda_informal.getSelectedItemPosition() + 1);
+        registro.setRamo_atividade(conjuje_ramo_atividade.getSelectedItemPosition() + 1);
+        registro.setEmpregador(conjuje_empregador.getText().toString());
+        try {
+            registro.setTempo_servico_emprego_atual(Integer.parseInt(conjuje_tempo_servico_emprego_atual.getText().toString()));
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setValor_fgts(Double.parseDouble(conjuje_valor_fgts.getText().toString()));
+        } catch (Throwable ex) {
+        }
+        registro.setDeficiencia_auditiva_mudez(conjuje_deficiencia_auditiva_mudez.isSelected());
+        registro.setDeficiencia_auditiva_surdez(conjuje_deficiencia_auditiva_surdez.isSelected());
+        registro.setDeficiencia_cadeirante(conjuje_deficiencia_cadeirante.isSelected());
+        registro.setDeficiencia_fisica(conjuje_deficiencia_fisica.isSelected());
+        registro.setDeficiencia_intelectual(conjuje_deficiencia_intelectual.isSelected());
+        registro.setDeficiencia_nanismo(conjuje_deficiencia_nanismo.isSelected());
+        registro.setDeficiencia_visual(conjuje_deficiencia_visual.isSelected());
+        /*
+        registro.setfoto_pessoa(conjuje_foto_pessoa.getText().toString());
+        registro.setfoto_cpf(conjuje_foto_cpf.getText().toString());
+        registro.setfoto_rg(conjuje_foto_rg.getText().toString());
+        registro.setfoto_cnh(conjuje_foto_cnh.getText().toString());
+        registro.setfoto_carteira_trabalho(conjuje_foto_carteira_trabalho.getText().toString());
+        registro.setfoto_documento_casa(conjuje_foto_documento_casa.getText().toString());
+        registro.setfoto_comprovante_renda(conjuje_foto_comprovante_renda.getText().toString());
+        registro.setfoto_comprovante_estado_civil(conjuje_foto_comprovante_estado_civil.getText().toString());
+        */
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -410,6 +727,7 @@ public class FormularioActivity extends AppCompatActivity {
         sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
         viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
+        viewPager.setOffscreenPageLimit(sectionsPagerAdapter.getCount());
         tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
         tabs.setTabMode(TabLayout.MODE_SCROLLABLE);
@@ -423,7 +741,19 @@ public class FormularioActivity extends AppCompatActivity {
             }
         });
         verificarPermissoes();
+        fragmentBeneficiario = (FormularioBeneficiarioFragment) sectionsPagerAdapter.getItem(0);
+        fragmentConjuje = (FormularioConjujeFragment) sectionsPagerAdapter.getItem(1);
+        fragmentCompFam = (FormularioCompFamFragment) sectionsPagerAdapter.getItem(2);
+        fragmentMoradia = (FormularioMoradiaFragment) sectionsPagerAdapter.getItem(3);
+        fragmentFotos = (FormularioFotosFragment) sectionsPagerAdapter.getItem(4);
+        getWindow().getDecorView().getRootView().getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                inicializarComponentes();
+            }
+        });
     }
+
 
     private static final int MY_PERMISSIONS_REQUEST_STORAGE = 1;
     private String[] storage_permissions =

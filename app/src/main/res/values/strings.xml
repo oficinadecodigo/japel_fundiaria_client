@@ -5,4 +5,63 @@
     <string name="formulario_tab_text_3">Comp. Familiar</string>
     <string name="formulario_tab_text_4">Moradia</string>
     <string name="formulario_tab_text_5">Fotos</string>
+    <string-array name="sexo_array">
+        <item>1-Masculino</item>
+        <item>2-Feminino</item>
+    </string-array>
+    <string-array name="racas_array">
+        <item>1-Branca</item>
+        <item>2-Preta</item>
+        <item>3-Amarela</item>
+        <item>4-Parda</item>
+        <item>5-Indígena</item>
+    </string-array>
+    <string-array name="nacionalidade_array">
+        <item>1-Branca</item>
+        <item>2-Preta</item>
+        <item>3-Amarela</item>
+        <item>4-Parda</item>
+        <item>5-Indígena</item>
+    </string-array>
+    <string-array name="escolaridade_array">
+        <item>1-SEM ESCOLARIDADE</item>
+        <item>2-ENSINO FUNDAMENTAL (1º GRAU) INTERROMPIDO</item>
+        <item>3-ENSINO FUNDAMENTAL (1º GRAU) CURSANDO</item>
+        <item>4-ENSINO FUNDAMENTAL (1º GRAU) COMPLETO</item>
+        <item>5-ENSINO MÉDIO (2º GRAU) INTERROMPIDO</item>
+        <item>6-ENSINO MÉDIO (2º GRAU) CURSANDO</item>
+        <item>7-ENSINO MÉDIO (2º GRAU) COMPLETO</item>
+        <item>8-ENSINO MÉDIO (2º GRAU) PROFISSIONALIZANTE CURSANDO</item>
+        <item>9-ENSINO MÉDIO (2º GRAU) PROFISSIONALIZANTE COMPLETO</item>
+        <item>10-FORMAÇÃO SUPERIOR (INTERROMPIDA)</item>
+        <item>11-FORMAÇÃO SUPERIOR (CURSANDO)</item>
+        <item>12-FORMAÇÃO SUPERIOR (COMPLETA)</item>
+        <item>13-PÓS-GRADUAÇÃO NO NÍVEL DE ESPECIALIZAÇÃO</item>
+        <item>14-PÓS-GRADUAÇÃO NO NÍVEL DE MESTRADO</item>
+        <item>15-PÓS-GRADUAÇÃO NO NÍVEL DE DOUTORADO</item>
+        <item>16-EDUCAÇÃO INFANTIL</item>
+    </string-array>
+    <string-array name="estado_civil_array">
+        <item>1-CASADO</item>
+        <item>2-DIVORCIADO</item>
+        <item>3-SOLTEIRO</item>
+        <item>4-VIÚVO</item>
+    </string-array>
+    <string-array name="situacao_conjugal_array">
+        <item>1-SEPARADO</item>
+        <item>2-UNIÃO ESTÁVEL OU AMASIADO</item>
+    </string-array>
+    <string-array name="situacao_renda_array">
+        <item>1-FIXA</item>
+        <item>2-VARIÁVEL</item>
+    </string-array>
+    <string-array name="ramo_atividade_array">
+        <item>1-INDÚSTRIA</item>
+        <item>2-COMÉRCIO</item>
+        <item>3-SERVIÇOS</item>
+        <item>4-AGROPECUÁRIA</item>
+        <item>5-SERVIDOR PÚBLICO</item>
+        <item>6-APOSENTADO</item>
+        <item>7-PENSIONISTA</item>
+    </string-array>
 </resources>
