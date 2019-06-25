@@ -31,7 +31,12 @@ public class MoradiaAdapter extends RecyclerView.Adapter<MoradiaViewHolder> {
 
     @Override
     public void onBindViewHolder(final MoradiaViewHolder holder, final int position) {
+        holder.txtEndereco.setText(registros.get(position).getEndereco());
+        holder.txtNumero.setText(registros.get(position).getNumero());
+        holder.txtComplemento.setText(registros.get(position).getComplemento());
+        holder.txtCep.setText(registros.get(position).getCep());
         holder.txtBairro.setText(registros.get(position).getBairro());
+        holder.txtCidade.setText(registros.get(position).getCidade());
         holder.btnSelecao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

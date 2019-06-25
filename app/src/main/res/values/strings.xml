@@ -17,11 +17,8 @@
         <item>5-Indígena</item>
     </string-array>
     <string-array name="nacionalidade_array">
-        <item>1-Branca</item>
-        <item>2-Preta</item>
-        <item>3-Amarela</item>
-        <item>4-Parda</item>
-        <item>5-Indígena</item>
+        <item>1-Brasileira</item>
+        <item>2-Outra</item>
     </string-array>
     <string-array name="escolaridade_array">
         <item>1-SEM ESCOLARIDADE</item>

@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.japelapp.entidade.Pessoa;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 public class PessoaDao {
 
@@ -27,11 +28,65 @@ public class PessoaDao {
         writableDatabase.insert("pessoa", "", contentValues);
     }
 
+    public void update(Pessoa registry) {
+        SQLiteDatabase writableDatabase = this.databaseHelper.getWritableDatabase();
+        ContentValues contentValues = marshal(registry);
+        writableDatabase.update("pessoa", contentValues, "id=" + registry.getId(), new String[]{});
+    }
+
+    public ArrayList<Pessoa> getCompFam(int id) {
+        ArrayList<Pessoa> registros = new ArrayList<>();
+        Pessoa registry = null;
+        SQLiteDatabase writableDatabase = this.databaseHelper.getWritableDatabase();
+        Cursor cursor = writableDatabase.rawQuery("select * from pessoa where parentesco > 0 and id_pessoa = " + id, new String[]{});
+        while (cursor.moveToNext()) {
+            registros.add(fill(cursor));
+        }
+        cursor.close();
+        return registros;
+    }
+
+    public int getMaxId() {
+        int id = 0;
+        SQLiteDatabase writableDatabase = this.databaseHelper.getWritableDatabase();
+        Cursor cursor = writableDatabase.rawQuery("select max(id) as id from pessoa ", new String[]{});
+        if (cursor.moveToNext()) {
+            id = cursor.getInt(cursor.getColumnIndex("id"));
+        }
+        cursor.close();
+        if (id == 0) {
+            id++;
+        }
+        return id;
+    }
+
+    public Pessoa getConjuje(int id) {
+        Pessoa registry = null;
+        SQLiteDatabase writableDatabase = this.databaseHelper.getWritableDatabase();
+        Cursor cursor = writableDatabase.rawQuery("select * from pessoa where parentesco = -1 and id_pessoa = " + id, new String[]{});
+        if (cursor.moveToNext()) {
+            registry = fill(cursor);
+        }
+        cursor.close();
+        return registry;
+    }
+
+    public Pessoa get(int id) {
+        Pessoa registry = null;
+        SQLiteDatabase writableDatabase = this.databaseHelper.getWritableDatabase();
+        Cursor cursor = writableDatabase.rawQuery("select * from pessoa where id = " + id, new String[]{});
+        if (cursor.moveToNext()) {
+            registry = fill(cursor);
+        }
+        cursor.close();
+        return registry;
+    }
+
     public Pessoa get() {
         Pessoa registry = null;
         SQLiteDatabase writableDatabase = this.databaseHelper.getWritableDatabase();
         Cursor cursor = writableDatabase.rawQuery("select * from pessoa;", new String[]{});
-        if (cursor.moveToFirst()) {
+        while (cursor.moveToNext()) {
             registry = fill(cursor);
         }
         cursor.close();

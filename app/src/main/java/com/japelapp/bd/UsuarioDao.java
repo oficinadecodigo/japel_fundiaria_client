@@ -27,11 +27,22 @@ public class UsuarioDao {
         writableDatabase.insert("usuario", "", contentValues);
     }
 
+    public Usuario get(int id) {
+        Usuario registry = null;
+        SQLiteDatabase writableDatabase = this.databaseHelper.getWritableDatabase();
+        Cursor cursor = writableDatabase.rawQuery("select * from usuario;", new String[]{});
+        if (cursor.moveToNext()) {
+            registry = fill(cursor);
+        }
+        cursor.close();
+        return registry;
+    }
+
     public Usuario get() {
         Usuario registry = null;
         SQLiteDatabase writableDatabase = this.databaseHelper.getWritableDatabase();
         Cursor cursor = writableDatabase.rawQuery("select * from usuario;", new String[]{});
-        if (cursor.moveToFirst()) {
+        while (cursor.moveToNext()) {
             registry = fill(cursor);
         }
         cursor.close();

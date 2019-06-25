@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.japelapp.entidade.Moradia;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 public class MoradiaDao {
     DatabaseHelper databaseHelper;
@@ -26,15 +27,57 @@ public class MoradiaDao {
         writableDatabase.insert("moradia", "", contentValues);
     }
 
-    public Moradia get() {
+    public void update(Moradia registry) {
+        SQLiteDatabase writableDatabase = this.databaseHelper.getWritableDatabase();
+        ContentValues contentValues = marshal(registry);
+        writableDatabase.update("moradia", contentValues, "id=" + registry.getId(), new String[]{});
+    }
+
+    public int getMaxId() {
+        int id = 0;
+        SQLiteDatabase writableDatabase = this.databaseHelper.getWritableDatabase();
+        Cursor cursor = writableDatabase.rawQuery("select max(id) as id from moradia ", new String[]{});
+        if (cursor.moveToNext()) {
+            id = cursor.getInt(cursor.getColumnIndex("id"));
+        }
+        cursor.close();
+        if (id == 0) {
+            id++;
+        }
+        return id;
+    }
+
+    public Moradia get(int id) {
         Moradia registry = null;
         SQLiteDatabase writableDatabase = this.databaseHelper.getWritableDatabase();
-        Cursor cursor = writableDatabase.rawQuery("select * from moradia;", new String[]{});
-        if (cursor.moveToFirst()) {
+        Cursor cursor = writableDatabase.rawQuery("select * from moradia where id = " + id, new String[]{});
+        if (cursor.moveToNext()) {
             registry = fill(cursor);
         }
         cursor.close();
         return registry;
+    }
+
+    public Moradia getPorBeneficiario(int id) {
+        Moradia registry = null;
+        SQLiteDatabase writableDatabase = this.databaseHelper.getWritableDatabase();
+        Cursor cursor = writableDatabase.rawQuery("select * from moradia where id_pessoa = " + id, new String[]{});
+        if (cursor.moveToNext()) {
+            registry = fill(cursor);
+        }
+        cursor.close();
+        return registry;
+    }
+
+    public ArrayList<Moradia> get() {
+        ArrayList<Moradia> registros = new ArrayList<>();
+        SQLiteDatabase writableDatabase = this.databaseHelper.getWritableDatabase();
+        Cursor cursor = writableDatabase.rawQuery("select * from moradia;", new String[]{});
+        while (cursor.moveToNext()) {
+            registros.add(fill(cursor));
+        }
+        cursor.close();
+        return registros;
     }
 
     private ContentValues marshal(Moradia registry) {

@@ -1,12 +1,17 @@
 package com.japelapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.japelapp.adapter.moradia.MoradiaAdapter;
+import com.japelapp.bd.DatabaseHelper;
+import com.japelapp.bd.MoradiaDao;
 
 public class FormularioPesquisaActivity extends AppCompatActivity {
 
@@ -28,10 +33,27 @@ public class FormularioPesquisaActivity extends AppCompatActivity {
             }
         });
 
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+        recyclerView.setLayoutManager(linearLayoutManager);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        pesquisar();
+    }
+
+    private void pesquisar() {
+        MoradiaDao moradiaDao = new MoradiaDao(new DatabaseHelper(this.getApplicationContext()));
+        MoradiaAdapter adapter = new MoradiaAdapter(moradiaDao.get());
+        recyclerView.setAdapter(adapter);
     }
 
     private void btnCadastrarClick() {
         Intent intent = new Intent(this, FormularioActivity.class);
+        //intent.putExtra("registry", 1925);
         startActivity(intent);
     }
 

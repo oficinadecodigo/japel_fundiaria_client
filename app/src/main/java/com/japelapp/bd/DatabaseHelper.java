@@ -145,6 +145,7 @@ public class DatabaseHelper<E> extends SQLiteOpenHelper {
                         "  area_risco BOOLEAN, \n" +
                         "  insalubre BOOLEAN, \n" +
                         "  desabrigado BOOLEAN, \n" +
+                        "  enviado BOOLEAN, \n" +
                         "  observacao VARCHAR(500), \n" +
                         "  id_pessoa INTEGER REFERENCES pessoa(id), \n" +
                         "  id_usuario INTEGER REFERENCES usuario(id));"

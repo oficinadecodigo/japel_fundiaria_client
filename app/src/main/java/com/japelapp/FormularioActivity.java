@@ -23,6 +23,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 
+import com.japelapp.bd.DatabaseHelper;
+import com.japelapp.bd.MoradiaDao;
+import com.japelapp.bd.PessoaDao;
 import com.japelapp.entidade.Moradia;
 import com.japelapp.entidade.Pessoa;
 import com.japelapp.ui.formulario.FormularioBeneficiarioFragment;
@@ -33,6 +36,7 @@ import com.japelapp.ui.formulario.FormularioMoradiaFragment;
 import com.japelapp.ui.formulario.SectionsPagerAdapter;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class FormularioActivity extends AppCompatActivity {
@@ -922,6 +926,11 @@ public class FormularioActivity extends AppCompatActivity {
         */
     }
 
+    Moradia moradia;
+    Pessoa beneficiario;
+    Pessoa conjuje;
+    ArrayList<Pessoa> familiares = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -938,8 +947,7 @@ public class FormularioActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                salvarDados();
             }
         });
         verificarPermissoes();
@@ -954,8 +962,50 @@ public class FormularioActivity extends AppCompatActivity {
                 inicializarComponentes();
             }
         });
+        //Carrega o ID da moradia
+        int idMoradia = 0;
+        try {
+            idMoradia = (int) getIntent().getExtras().get("registry");
+        } catch (Throwable ex) {
+        }
+        inicializarRegistros(idMoradia);
     }
 
+    private void inicializarRegistros(int idMoradia) {
+        DatabaseHelper databaseHelper = new DatabaseHelper(this.getApplicationContext());
+        MoradiaDao moradiaDao = new MoradiaDao(databaseHelper);
+        PessoaDao pessoaDao = new PessoaDao(databaseHelper);
+        if (idMoradia > 0) {
+            moradia = moradiaDao.get(idMoradia);
+            beneficiario = pessoaDao.get(moradia.getId_pessoa());
+            conjuje = pessoaDao.getConjuje(moradia.getId_pessoa());
+            familiares = pessoaDao.getCompFam(moradia.getId_pessoa());
+        } else {
+            moradia = new Moradia();
+            moradia.setId(moradiaDao.getMaxId()+1);
+            moradiaDao.insert(moradia);
+            beneficiario = new Pessoa();
+            beneficiario.setId(pessoaDao.getMaxId()+1);
+            pessoaDao.insert(beneficiario);
+            conjuje = new Pessoa();
+            conjuje.setId(pessoaDao.getMaxId()+1);
+            conjuje.setTipo(-1);
+            pessoaDao.insert(conjuje);
+            familiares = new ArrayList<>();
+        }
+    }
+
+    private void salvarDados() {
+        DatabaseHelper databaseHelper = new DatabaseHelper(this.getApplicationContext());
+        MoradiaDao moradiaDao = new MoradiaDao(databaseHelper);
+        PessoaDao pessoaDao = new PessoaDao(databaseHelper);
+        moradiaDao.update(moradia);
+        pessoaDao.update(beneficiario);
+        pessoaDao.update(conjuje);
+        for (Pessoa familiar : familiares) {
+            pessoaDao.update(familiar);
+        }
+    }
 
     private static final int MY_PERMISSIONS_REQUEST_STORAGE = 1;
     private String[] storage_permissions =

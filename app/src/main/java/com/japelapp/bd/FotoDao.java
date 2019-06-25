@@ -28,10 +28,41 @@ public class FotoDao {
         writableDatabase.insert("foto", "", contentValues);
     }
 
+    public void update(Foto registry) {
+        SQLiteDatabase writableDatabase = this.databaseHelper.getWritableDatabase();
+        ContentValues contentValues = marshal(registry);
+        writableDatabase.update("foto", contentValues, "id=" + registry.getId(), new String[]{});
+    }
+
+    public int getMaxId() {
+        int id = 0;
+        SQLiteDatabase writableDatabase = this.databaseHelper.getWritableDatabase();
+        Cursor cursor = writableDatabase.rawQuery("select max(id) as id from foto ", new String[]{});
+        if (cursor.moveToNext()) {
+            id = cursor.getInt(cursor.getColumnIndex("id"));
+        }
+        cursor.close();
+        if (id == 0) {
+            id++;
+        }
+        return id;
+    }
+
     public Foto get() {
         Foto registry = null;
         SQLiteDatabase writableDatabase = this.databaseHelper.getWritableDatabase();
         Cursor cursor = writableDatabase.rawQuery("select * from foto;", new String[]{});
+        while (cursor.moveToNext()) {
+            registry = fill(cursor);
+        }
+        cursor.close();
+        return registry;
+    }
+
+    public Foto get(int id) {
+        Foto registry = null;
+        SQLiteDatabase writableDatabase = this.databaseHelper.getWritableDatabase();
+        Cursor cursor = writableDatabase.rawQuery("select * from foto where id =" + id, new String[]{});
         if (cursor.moveToFirst()) {
             registry = fill(cursor);
         }
