@@ -69,13 +69,20 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <EditText
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Poligonal" />
+
+                <Spinner
                     android:id="@+id/form_moradia_poligonal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Poligonal"
-                    android:inputType="textPersonName" />
+                    android:entries="@array/poligonal_array"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -419,13 +426,20 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <EditText
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Zona" />
+
+                <Spinner
                     android:id="@+id/form_moradia_zona"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Zona"
-                    android:inputType="textPersonName" />
+                    android:entries="@array/procedencia_array"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -433,13 +447,21 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <EditText
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Situação da Propriedade" />
+
+                <Spinner
                     android:id="@+id/form_moradia_situacao_propriedade"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Situação da Propriedade"
-                    android:inputType="textPersonName" />
+                    android:entries="@array/situacao_propriedade_array"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -489,13 +511,20 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <EditText
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tipo de Construção" />
+
+                <Spinner
                     android:id="@+id/form_moradia_tipo_construcao"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Tipo de Construção"
-                    android:inputType="textPersonName" />
+                    android:entries="@array/tipo_construcao_array"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -517,7 +546,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <EditText
+                <CheckBox
                     android:id="@+id/form_moradia_fonte_energia"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -531,7 +560,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <EditText
+                <CheckBox
                     android:id="@+id/form_moradia_abastecimento_agua"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -545,7 +574,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <EditText
+                <CheckBox
                     android:id="@+id/form_moradia_rede_esgoto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -559,7 +588,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <EditText
+                <CheckBox
                     android:id="@+id/form_moradia_coleta_lixo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -573,7 +602,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <EditText
+                <CheckBox
                     android:id="@+id/form_moradia_separacao_reciclaveis"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -629,7 +658,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <EditText
+                <CheckBox
                     android:id="@+id/form_moradia_reside_area_risco"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -643,7 +672,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <EditText
+                <CheckBox
                     android:id="@+id/form_moradia_reside_area_insalubre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -657,7 +686,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <EditText
+                <CheckBox
                     android:id="@+id/form_moradia_desabrigado"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

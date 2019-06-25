@@ -23,6 +23,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 
+import com.japelapp.entidade.Moradia;
 import com.japelapp.entidade.Pessoa;
 import com.japelapp.ui.formulario.FormularioBeneficiarioFragment;
 import com.japelapp.ui.formulario.FormularioCompFamFragment;
@@ -152,29 +153,29 @@ public class FormularioActivity extends AppCompatActivity {
     //Campos fragment comp fam
 
     EditText comp_fam_nome;
-    EditText comp_fam_parentesco;
-    EditText comp_fam_sexo;
+    Spinner comp_fam_parentesco;
+    Spinner comp_fam_sexo;
     EditText comp_fam_data_nascimento;
-    EditText comp_fam_escolaridade;
+    Spinner comp_fam_escolaridade;
     EditText comp_fam_profissao;
     EditText comp_fam_renda_formal;
-    EditText comp_fam_situacao_renda_formal;
+    Spinner comp_fam_situacao_renda_formal;
     EditText comp_fam_renda_informal;
-    EditText comp_fam_situacao_renda_informal;
-    EditText comp_fam_deficiencia_auditiva_mudez;
-    EditText comp_fam_deficiencia_auditiva_surdez;
-    EditText comp_fam_deficiencia_cadeirante;
-    EditText comp_fam_deficiencia_fisica;
-    EditText comp_fam_deficiencia_intelectual;
-    EditText comp_fam_deficiencia_nanismo;
-    EditText comp_fam_deficiencia_visual;
+    Spinner comp_fam_situacao_renda_informal;
+    CheckBox comp_fam_deficiencia_auditiva_mudez;
+    CheckBox comp_fam_deficiencia_auditiva_surdez;
+    CheckBox comp_fam_deficiencia_cadeirante;
+    CheckBox comp_fam_deficiencia_fisica;
+    CheckBox comp_fam_deficiencia_intelectual;
+    CheckBox comp_fam_deficiencia_nanismo;
+    CheckBox comp_fam_deficiencia_visual;
 
 
     //Campos fragment moradia
 
     EditText moradia_quadra;
     EditText moradia_lote;
-    EditText moradia_poligonal;
+    Spinner moradia_poligonal;
     EditText moradia_endereco;
     EditText moradia_numero;
     EditText moradia_complemento;
@@ -199,24 +200,24 @@ public class FormularioActivity extends AppCompatActivity {
     EditText moradia_latitude;
     EditText moradia_longitude;
     EditText moradia_altitude;
-    EditText moradia_zona;
-    EditText moradia_situacao_propriedade;
+    Spinner moradia_zona;
+    Spinner moradia_situacao_propriedade;
     EditText moradia_valor_aluguel;
     EditText moradia_numero_quartos;
     EditText moradia_numero_comodos;
-    EditText moradia_tipo_construcao;
+    Spinner moradia_tipo_construcao;
     EditText moradia_outro_tipo_construcao;
-    EditText moradia_fonte_energia;
-    EditText moradia_abastecimento_agua;
-    EditText moradia_rede_esgoto;
-    EditText moradia_coleta_lixo;
-    EditText moradia_separacao_reciclaveis;
+    CheckBox moradia_fonte_energia;
+    CheckBox moradia_abastecimento_agua;
+    CheckBox moradia_rede_esgoto;
+    CheckBox moradia_coleta_lixo;
+    CheckBox moradia_separacao_reciclaveis;
     EditText moradia_valor_beneficio_prestacao_continuada;
     EditText moradia_valor_bolsa_familia;
     EditText moradia_outro_beneficio;
-    EditText moradia_reside_area_risco;
-    EditText moradia_reside_area_insalubre;
-    EditText moradia_desabrigado;
+    CheckBox moradia_reside_area_risco;
+    CheckBox moradia_reside_area_insalubre;
+    CheckBox moradia_desabrigado;
     EditText moradia_observacao;
     EditText moradia_foto_comprovante_visita;
     EditText moradia_foto_fachada;
@@ -717,6 +718,207 @@ public class FormularioActivity extends AppCompatActivity {
         registro.setfoto_documento_casa(conjuje_foto_documento_casa.getText().toString());
         registro.setfoto_comprovante_renda(conjuje_foto_comprovante_renda.getText().toString());
         registro.setfoto_comprovante_estado_civil(conjuje_foto_comprovante_estado_civil.getText().toString());
+        */
+    }
+
+    private void preencherTelaCompFam(Pessoa registro) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        comp_fam_nome.setText(registro.getNome());
+        comp_fam_parentesco.setSelection(registro.getParentesco() - 1);
+        comp_fam_sexo.setSelection(registro.getSexo() - 1);
+        try {
+            comp_fam_data_nascimento.setText(sdf.format(registro.getData_nascimento()));
+        } catch (Throwable ex) {
+        }
+        comp_fam_escolaridade.setSelection(registro.getEscolaridade() - 1);
+        comp_fam_profissao.setText(registro.getProfissao());
+        comp_fam_renda_formal.setText(registro.getRenda_formal() + "");
+        comp_fam_situacao_renda_formal.setSelection(registro.getSituacao_renda_formal() - 1);
+        comp_fam_renda_informal.setText(registro.getRenda_informal() + "");
+        comp_fam_situacao_renda_informal.setSelection(registro.getSituacao_renda_informal() - 1);
+        comp_fam_deficiencia_auditiva_mudez.setChecked(registro.isDeficiencia_auditiva_mudez());
+        comp_fam_deficiencia_auditiva_surdez.setChecked(registro.isDeficiencia_auditiva_surdez());
+        comp_fam_deficiencia_cadeirante.setChecked(registro.isDeficiencia_cadeirante());
+        comp_fam_deficiencia_fisica.setChecked(registro.isDeficiencia_fisica());
+        comp_fam_deficiencia_intelectual.setChecked(registro.isDeficiencia_intelectual());
+        comp_fam_deficiencia_nanismo.setChecked(registro.isDeficiencia_nanismo());
+        comp_fam_deficiencia_visual.setChecked(registro.isDeficiencia_visual());
+    }
+
+    private void preencherEntidadeCompFam(Pessoa registro) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        registro.setNome(comp_fam_nome.getText().toString());
+        registro.setParentesco(comp_fam_parentesco.getSelectedItemPosition() + 1);
+        registro.setSexo(comp_fam_sexo.getSelectedItemPosition() + 1);
+        try {
+            registro.setData_nascimento(sdf.parse(comp_fam_data_nascimento.getText().toString()));
+        } catch (Throwable ex) {
+        }
+        registro.setEscolaridade(comp_fam_escolaridade.getSelectedItemPosition() + 1);
+        registro.setProfissao(comp_fam_profissao.getText().toString());
+        try {
+            registro.setRenda_formal(Double.parseDouble(comp_fam_renda_formal.getText().toString()));
+        } catch (Throwable ex) {
+        }
+        registro.setSituacao_renda_formal(comp_fam_situacao_renda_formal.getSelectedItemPosition() + 1);
+        try {
+            registro.setRenda_informal(Double.parseDouble(comp_fam_renda_informal.getText().toString()));
+        } catch (Throwable ex) {
+        }
+        registro.setSituacao_renda_informal(comp_fam_situacao_renda_informal.getSelectedItemPosition() + 1);
+        registro.setDeficiencia_auditiva_mudez(comp_fam_deficiencia_auditiva_mudez.isChecked());
+        registro.setDeficiencia_auditiva_surdez(comp_fam_deficiencia_auditiva_surdez.isChecked());
+        registro.setDeficiencia_cadeirante(comp_fam_deficiencia_cadeirante.isChecked());
+        registro.setDeficiencia_fisica(comp_fam_deficiencia_fisica.isChecked());
+        registro.setDeficiencia_intelectual(comp_fam_deficiencia_intelectual.isChecked());
+        registro.setDeficiencia_nanismo(comp_fam_deficiencia_nanismo.isChecked());
+        registro.setDeficiencia_visual(comp_fam_deficiencia_visual.isChecked());
+    }
+
+    private void preencherTelaMoradia(Moradia registro) {
+        registro.setQuadra(moradia_quadra.getText().toString());
+        registro.setLote(moradia_lote.getText().toString());
+        registro.setPoligonal(moradia_poligonal.getSelectedItemPosition() + 1);
+        registro.setEndereco(moradia_endereco.getText().toString());
+        registro.setNumero(moradia_numero.getText().toString());
+        registro.setComplemento(moradia_complemento.getText().toString());
+        registro.setCep(moradia_cep.getText().toString());
+        registro.setBairro(moradia_bairro.getText().toString());
+        registro.setCidade(moradia_cidade.getText().toString());
+        registro.setUf(moradia_uf.getText().toString());
+        registro.setArea_construida(moradia_area_construida.getText().toString());
+        registro.setMatricula_imovel(moradia_matricula_imovel.getText().toString());
+        try {
+            registro.setMedida_frente(Double.parseDouble(moradia_medida_frente.getText().toString()));
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setMedida_direita(Double.parseDouble(moradia_medida_direita.getText().toString()));
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setMedida_esquerda(Double.parseDouble(moradia_medida_esquerda.getText().toString()));
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setMedida_fundo(Double.parseDouble(moradia_medida_fundo.getText().toString()));
+        } catch (Throwable ex) {
+        }
+        registro.setNumero_lote_direita(moradia_numero_lote_direita.getText().toString());
+        registro.setNumero_lote_esquerda(moradia_numero_lote_esquerda.getText().toString());
+        try {
+            registro.setNumero_lote_fundo(Double.parseDouble(moradia_numero_lote_fundo.getText().toString()));
+        } catch (Throwable ex) {
+        }
+        registro.setRua_frente(moradia_rua_frente.getText().toString());
+        registro.setRua_direita(moradia_rua_direita.getText().toString());
+        registro.setRua_esquerda(moradia_rua_esquerda.getText().toString());
+        registro.setRua_fundo(moradia_rua_fundo.getText().toString());
+        registro.setSelagem(moradia_selagem.getText().toString());
+        registro.setLatitude(moradia_latitude.getText().toString());
+        registro.setLongitude(moradia_longitude.getText().toString());
+        registro.setAltitude(moradia_altitude.getText().toString());
+        registro.setZona(moradia_zona.getSelectedItemPosition() + 1);
+        registro.setSituacao_propriedade(moradia_situacao_propriedade.getSelectedItemPosition() + 1);
+        try {
+            registro.setValor_aluguel(Double.parseDouble(moradia_valor_aluguel.getText().toString()));
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setNumero_quarto(Integer.parseInt(moradia_numero_quartos.getText().toString()));
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setNumero_comodos(Integer.parseInt(moradia_numero_comodos.getText().toString()));
+        } catch (Throwable ex) {
+        }
+        registro.setTipo_construcao(moradia_tipo_construcao.getSelectedItemPosition() + 1);
+        registro.setOutro_tipo_construcao(moradia_outro_tipo_construcao.getText().toString());
+        registro.setFonte_energia(moradia_fonte_energia.isChecked());
+        registro.setAbastecimento_agua(moradia_abastecimento_agua.isChecked());
+        registro.setRede_esgoto(moradia_rede_esgoto.isChecked());
+        registro.setColeta_lixo(moradia_coleta_lixo.isChecked());
+        registro.setSeparacao_reciclaveis(moradia_separacao_reciclaveis.isChecked());
+        try {
+            registro.setValor_beneficio_prestacao_continuada(Double.parseDouble(moradia_valor_beneficio_prestacao_continuada.getText().toString()));
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setValor_bolsa_familia(Double.parseDouble(moradia_valor_bolsa_familia.getText().toString()));
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setOutro_beneficio(Double.parseDouble(moradia_outro_beneficio.getText().toString()));
+        } catch (Throwable ex) {
+        }
+        registro.setArea_risco(moradia_reside_area_risco.isChecked());
+        registro.setInsalubre(moradia_reside_area_insalubre.isChecked());
+        registro.setDesabrigado(moradia_desabrigado.isChecked());
+        registro.setObservacao(moradia_observacao.getText().toString());
+        /*
+        registro.setFoto_comprovante_visita(moradia_foto_comprovante_visita.getText().toString());
+        registro.setFoto_fachada(moradia_foto_fachada.getText().toString());
+        registro.setFoto_comprovante_agua(moradia_foto_comprovante_agua.getText().toString());
+        registro.setFoto_comprovante_luz(moradia_foto_comprovante_luz.getText().toString());
+        registro.setFoto_comprovante_iptu(moradia_foto_comprovante_iptu.getText().toString());
+        registro.setFoto_documento_cartografico(moradia_foto_documento_cartografico.getText().toString());
+        */
+    }
+
+    private void preencherEntidadeMoradia(Moradia registro) {
+        moradia_quadra.setText(registro.getQuadra());
+        moradia_lote.setText(registro.getLote());
+        moradia_poligonal.setSelection(registro.getPoligonal() - 1);
+        moradia_endereco.setText(registro.getEndereco());
+        moradia_numero.setText(registro.getNumero());
+        moradia_complemento.setText(registro.getComplemento());
+        moradia_cep.setText(registro.getCep());
+        moradia_bairro.setText(registro.getBairro());
+        moradia_cidade.setText(registro.getCidade());
+        moradia_uf.setText(registro.getUf());
+        moradia_area_construida.setText(registro.getArea_construida());
+        moradia_matricula_imovel.setText(registro.getMatricula_imovel());
+        moradia_medida_frente.setText(registro.getMedida_frente() + "");
+        moradia_medida_direita.setText(registro.getMedida_direita() + "");
+        moradia_medida_esquerda.setText(registro.getMedida_esquerda() + "");
+        moradia_medida_fundo.setText(registro.getMedida_fundo() + "");
+        moradia_numero_lote_direita.setText(registro.getNumero_lote_direita());
+        moradia_numero_lote_esquerda.setText(registro.getNumero_lote_esquerda());
+        moradia_numero_lote_fundo.setText(registro.getNumero_lote_fundo() + "");
+        moradia_rua_frente.setText(registro.getRua_frente());
+        moradia_rua_direita.setText(registro.getRua_direita());
+        moradia_rua_esquerda.setText(registro.getRua_esquerda());
+        moradia_rua_fundo.setText(registro.getRua_fundo());
+        moradia_selagem.setText(registro.getSelagem());
+        moradia_latitude.setText(registro.getLatitude());
+        moradia_longitude.setText(registro.getLongitude());
+        moradia_altitude.setText(registro.getAltitude());
+        moradia_zona.setSelection(registro.getZona() - 1);
+        moradia_situacao_propriedade.setSelection(registro.getSituacao_propriedade() - 1);
+        moradia_valor_aluguel.setText(registro.getValor_aluguel() + "");
+        moradia_numero_quartos.setText(registro.getNumero_quarto() + "");
+        moradia_numero_comodos.setText(registro.getNumero_comodos() + "");
+        moradia_tipo_construcao.setSelection(registro.getTipo_construcao() - 1);
+        moradia_outro_tipo_construcao.setText(registro.getOutro_tipo_construcao());
+        moradia_fonte_energia.setChecked(registro.isFonte_energia());
+        moradia_abastecimento_agua.setChecked(registro.isAbastecimento_agua());
+        moradia_rede_esgoto.setChecked(registro.isRede_esgoto());
+        moradia_coleta_lixo.setChecked(registro.isColeta_lixo());
+        moradia_separacao_reciclaveis.setChecked(registro.isSeparacao_reciclaveis());
+        moradia_valor_beneficio_prestacao_continuada.setText(registro.getValor_beneficio_prestacao_continuada() + "");
+        moradia_valor_bolsa_familia.setText(registro.getValor_bolsa_familia() + "");
+        moradia_outro_beneficio.setText(registro.getOutro_beneficio() + "");
+        moradia_reside_area_risco.setChecked(registro.isArea_risco());
+        moradia_reside_area_insalubre.setChecked(registro.isInsalubre());
+        moradia_desabrigado.setChecked(registro.isDesabrigado());
+        moradia_observacao.setText(registro.getObservacao());
+        /*
+        moradia_foto_comprovante_visita.setText(registro.getfoto_comprovante_visita());
+        moradia_foto_fachada.setText(registro.getfoto_fachada());
+        moradia_foto_comprovante_agua.setText(registro.getfoto_comprovante_agua());
+        moradia_foto_comprovante_luz.setText(registro.getfoto_comprovante_luz());
+        moradia_foto_comprovante_iptu.setText(registro.getfoto_comprovante_iptu());
+        moradia_foto_documento_cartografico.setText(registro.getfoto_documento_cartografico());
         */
     }
 

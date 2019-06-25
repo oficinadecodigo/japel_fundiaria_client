@@ -64,4 +64,43 @@
         <item>6-APOSENTADO</item>
         <item>7-PENSIONISTA</item>
     </string-array>
+    <string-array name="parentesco_array">
+        <item>1-BISAVÓ(Ô)</item>
+        <item>3-AVÓ(Ô)</item>
+        <item>5-MÃE/PAI</item>
+        <item>7-IRMÃ(O)</item>
+        <item>9-TIA(O)</item>
+        <item>11-PRIMA(O)</item>
+        <item>13-FILHA(O)</item>
+        <item>15-ENTEADA(O)</item>
+        <item>17-SOBRINHA(O)</item>
+        <item>19-NETA(O)</item>
+        <item>21-BISNETA(O)</item>
+        <item>23-SOGRA(O)</item>
+        <item>25-OUTROS</item>
+    </string-array>
+    <string-array name="poligonal_array">
+        <item>1-UNICO</item>
+    </string-array>
+    <string-array name="procedencia_array">
+        <item>1-RURAL</item>
+        <item>2-URBANA</item>
+    </string-array>
+    <string-array name="situacao_propriedade_array">
+        <item>1-PRÓPRIA COM TITULARIDADE</item>
+        <item>2-PRÓPRIA SEM TITULARIDADE</item>
+        <item>3-ALUGADA</item>
+        <item>4-CEDIDA</item>
+        <item>5-AGREGADA</item>
+        <item>6-OCUPAÇÃO IRREGULAR</item>
+        <item>10-PESSOA EM SITUAÇÃO DE RUA</item>
+        <item>11-ALUGUEL SOCIAL</item>
+        <item>12-ABRIGADA</item>
+    </string-array>
+    <string-array name="tipo_construcao_array">
+        <item>1-ALVENARIA</item>
+        <item>2-MADEIRA</item>
+        <item>3-MISTA</item>
+        <item>4-OUTRO</item>
+    </string-array>
 </resources>

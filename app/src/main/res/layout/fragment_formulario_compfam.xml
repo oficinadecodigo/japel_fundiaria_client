@@ -55,13 +55,20 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <EditText
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Parentesco" />
+
+                <Spinner
                     android:id="@+id/form_comp_fam_parentesco"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Parentesco"
-                    android:inputType="textPersonName" />
+                    android:entries="@array/parentesco_array"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -69,13 +76,20 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <EditText
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sexo" />
+
+                <Spinner
                     android:id="@+id/form_comp_fam_sexo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Sexo"
-                    android:inputType="textPersonName" />
+                    android:entries="@array/sexo_array"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -97,13 +111,20 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <EditText
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Escolaridade" />
+
+                <Spinner
                     android:id="@+id/form_comp_fam_escolaridade"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Escolaridade"
-                    android:inputType="textPersonName" />
+                    android:entries="@array/escolaridade_array"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -139,13 +160,20 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <EditText
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Situação Renda Formal" />
+
+                <Spinner
                     android:id="@+id/form_comp_fam_situacao_renda_formal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Situação Renda Formal"
-                    android:inputType="textPersonName" />
+                    android:entries="@array/situacao_renda_array"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -167,13 +195,20 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <EditText
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Situação Renda Informal" />
+
+                <Spinner
                     android:id="@+id/form_comp_fam_situacao_renda_informal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Situação Renda Informal"
-                    android:inputType="textPersonName" />
+                    android:entries="@array/situacao_renda_array"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -181,7 +216,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <EditText
+                <CheckBox
                     android:id="@+id/form_comp_fam_deficiencia_auditiva_mudez"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -195,7 +230,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <EditText
+                <CheckBox
                     android:id="@+id/form_comp_fam_deficiencia_auditiva_surdez"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -209,7 +244,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <EditText
+                <CheckBox
                     android:id="@+id/form_comp_fam_deficiencia_cadeirante"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -223,7 +258,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <EditText
+                <CheckBox
                     android:id="@+id/form_comp_fam_deficiencia_fisica"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -237,7 +272,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <EditText
+                <CheckBox
                     android:id="@+id/form_comp_fam_deficiencia_intelectual"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -251,7 +286,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <EditText
+                <CheckBox
                     android:id="@+id/form_comp_fam_deficiencia_nanismo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -265,7 +300,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <EditText
+                <CheckBox
                     android:id="@+id/form_comp_fam_deficiencia_visual"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
