@@ -8,16 +8,52 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.japelapp.entidade.Usuario;
+import com.japelapp.util.Sessao;
 
 public class LoginActivity extends AppCompatActivity {
+
+    EditText txt_login;
+    EditText txt_senha;
+    Button btn_login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         verificarPermissoes();
-        //Intent intent = new Intent(this, FormularioPesquisaActivity.class);
-        Intent intent = new Intent(this, FormularioActivity.class);
+        txt_login = findViewById(R.id.login_login);
+        txt_senha = findViewById(R.id.login_senha);
+        btn_login = findViewById(R.id.login_btn_entrar);
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String login = txt_login.getText().toString();
+                String senha = txt_senha.getText().toString();
+                if ("1".equals(login) && "1".equals(senha)) {
+                    Sessao.USUARIO = new Usuario();
+                    Sessao.USUARIO.setLogin(login);
+                    Sessao.USUARIO.setSenha(senha);
+                    Sessao.USUARIO.setId(1);
+                    abrirListagemFormularios();
+                } else {
+                    mostrarMensagemErroLogin();
+                }
+            }
+        });
+    }
+
+    private void mostrarMensagemErroLogin() {
+        Toast.makeText(this, "Usuário ou senha incorretos", Toast.LENGTH_SHORT).show();
+    }
+
+    private void abrirListagemFormularios() {
+        Intent intent = new Intent(this, FormularioPesquisaActivity.class);
         startActivity(intent);
     }
 

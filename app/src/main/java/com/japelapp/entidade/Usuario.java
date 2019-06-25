@@ -2,6 +2,15 @@ package com.japelapp.entidade;
 
 public class Usuario {
 
+    public Usuario() {
+        id = 0;
+        nome = "";
+        email = "";
+        login = "";
+        senha = "";
+        administrador = false;
+    }
+
     private int id;
     private String nome;
     private String email;
