@@ -34,6 +34,7 @@ import com.japelapp.ui.formulario.FormularioConjujeFragment;
 import com.japelapp.ui.formulario.FormularioFotosFragment;
 import com.japelapp.ui.formulario.FormularioMoradiaFragment;
 import com.japelapp.ui.formulario.SectionsPagerAdapter;
+import com.japelapp.util.Sessao;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -230,6 +231,12 @@ public class FormularioActivity extends AppCompatActivity {
     EditText moradia_foto_comprovante_iptu;
     EditText moradia_foto_documento_cartografico;
 
+
+    private void preencherTela() {
+        preencherTelaBeneficiario(beneficiario);
+        preencherTelaConjuje(conjuje);
+        preencherTelaMoradia(moradia);
+    }
 
     //Campos fragment fotos
 
@@ -439,11 +446,26 @@ public class FormularioActivity extends AppCompatActivity {
 
     private void preencherTelaBeneficiario(Pessoa registro) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        beneficiario_nome.setText(registro.getNome());
-        beneficiario_cpf.setText(registro.getCpf());
-        beneficiario_rg.setText(registro.getRg());
-        beneficiario_nome_mae.setText(registro.getNome_mae());
-        beneficiario_nome_pai.setText(registro.getNome_pai());
+        try {
+            beneficiario_nome.setText(registro.getNome());
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_cpf.setText(registro.getCpf());
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_rg.setText(registro.getRg());
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_nome_mae.setText(registro.getNome_mae());
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_nome_pai.setText(registro.getNome_pai());
+        } catch (Throwable ex) {
+        }
         try {
             beneficiario_sexo.setSelection(registro.getSexo() - 1);
         } catch (Throwable ex) {
@@ -456,15 +478,30 @@ public class FormularioActivity extends AppCompatActivity {
             beneficiario_data_nascimento.setText(sdf.format(registro.getData_nascimento()));
         } catch (Throwable ex) {
         }
-        beneficiario_email.setText(registro.getEmail());
+        try {
+            beneficiario_email.setText(registro.getEmail());
+        } catch (Throwable ex) {
+        }
         try {
             beneficiario_nacionalidade.setSelection(registro.getNacionalidade() - 1);
         } catch (Throwable ex) {
         }
-        beneficiario_numero_cpts.setText(registro.getNumero_cpts());
-        beneficiario_pis_pasep.setText(registro.getPis_pasep());
-        beneficiario_numero_cadunico.setText(registro.getNumero_cadunico());
-        beneficiario_nis.setText(registro.getNis());
+        try {
+            beneficiario_numero_cpts.setText(registro.getNumero_cpts());
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_pis_pasep.setText(registro.getPis_pasep());
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_numero_cadunico.setText(registro.getNumero_cadunico());
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_nis.setText(registro.getNis());
+        } catch (Throwable ex) {
+        }
         try {
             beneficiario_escolaridade.setSelection(registro.getEscolaridade() - 1);
         } catch (Throwable ex) {
@@ -477,13 +514,22 @@ public class FormularioActivity extends AppCompatActivity {
             beneficiario_situacao_conjugal.setSelection(registro.getSituacao_conjugal() - 1);
         } catch (Throwable ex) {
         }
-        beneficiario_profissao.setText(registro.getProfissao());
-        beneficiario_renda_formal.setText(registro.getRenda_formal() + "");
+        try {
+            beneficiario_profissao.setText(registro.getProfissao());
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_renda_formal.setText(registro.getRenda_formal() + "");
+        } catch (Throwable ex) {
+        }
         try {
             beneficiario_situacao_renda_formal.setSelection(registro.getSituacao_renda_formal() - 1);
         } catch (Throwable ex) {
         }
-        beneficiario_renda_informal.setText(registro.getRenda_informal() + "");
+        try {
+            beneficiario_renda_informal.setText(registro.getRenda_informal() + "");
+        } catch (Throwable ex) {
+        }
         try {
             beneficiario_situacao_renda_informal.setSelection(registro.getSituacao_renda_informal() - 1);
         } catch (Throwable ex) {
@@ -492,31 +538,106 @@ public class FormularioActivity extends AppCompatActivity {
             beneficiario_ramo_atividade.setSelection(registro.getRamo_atividade() - 1);
         } catch (Throwable ex) {
         }
-        beneficiario_empregador.setText(registro.getEmpregador());
-        beneficiario_tempo_servico_emprego_atual.setText(registro.getTempo_servico_emprego_atual() + "");
-        beneficiario_valor_fgts.setText(registro.getValor_fgts() + "");
-        beneficiario_telefone_fixo.setText(registro.getTelefone_fixo());
-        beneficiario_telefone_movel.setText(registro.getTelefone_movel());
-        beneficiario_telefone_recado.setText(registro.getTelefone_recado());
-        beneficiario_falar_com.setText(registro.getFalar_com());
-        beneficiario_tempo_residencia_imovel.setText(registro.getTempo_residencia_imovel() + "");
-        beneficiario_tempo_residencia_municipio.setText(registro.getTempo_residencia_municipio() + "");
-        beneficiario_interesse_moradia_urbana.setChecked(registro.isInteresse_moradia_urbana());
-        beneficiario_interesse_moradia_rural.setChecked(registro.isInteresse_moradia_rural());
-        beneficiario_interesse_lote.setChecked(registro.isInteresse_lote());
-        beneficiario_interesse_regularizacao_fundiaria.setChecked(registro.isInteresse_regulacao_fundiaria());
-        beneficiario_deficiencia_auditiva_mudez.setChecked(registro.isDeficiencia_auditiva_mudez());
-        beneficiario_deficiencia_auditiva_surdez.setChecked(registro.isDeficiencia_auditiva_surdez());
-        beneficiario_deficiencia_cadeirante.setChecked(registro.isDeficiencia_cadeirante());
-        beneficiario_deficiencia_fisica.setChecked(registro.isDeficiencia_fisica());
-        beneficiario_deficiencia_intelectual.setChecked(registro.isDeficiencia_intelectual());
-        beneficiario_deficiencia_nanismo.setChecked(registro.isDeficiencia_nanismo());
-        beneficiario_deficiencia_visual.setChecked(registro.isDeficiencia_visual());
-        beneficiario_titular_conjuge_mulher_maria_penha.setChecked(registro.isTitular_conjuge_mulher_maria_penha());
-        beneficiario_proprietario_imovel.setChecked(registro.isProprietario_imovel());
-        beneficiario_proprietario_lote.setChecked(registro.isProprietario_lote());
-        beneficiario_proprietario_imovel_precario.setChecked(registro.isProprietario_imovel_precario());
-        beneficiario_convenio.setChecked(registro.isConvenio());
+        try {
+            beneficiario_empregador.setText(registro.getEmpregador());
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_tempo_servico_emprego_atual.setText(registro.getTempo_servico_emprego_atual() + "");
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_valor_fgts.setText(registro.getValor_fgts() + "");
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_telefone_fixo.setText(registro.getTelefone_fixo());
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_telefone_movel.setText(registro.getTelefone_movel());
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_telefone_recado.setText(registro.getTelefone_recado());
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_falar_com.setText(registro.getFalar_com());
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_tempo_residencia_imovel.setText(registro.getTempo_residencia_imovel() + "");
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_tempo_residencia_municipio.setText(registro.getTempo_residencia_municipio() + "");
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_interesse_moradia_urbana.setChecked(registro.isInteresse_moradia_urbana());
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_interesse_moradia_rural.setChecked(registro.isInteresse_moradia_rural());
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_interesse_lote.setChecked(registro.isInteresse_lote());
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_interesse_regularizacao_fundiaria.setChecked(registro.isInteresse_regulacao_fundiaria());
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_deficiencia_auditiva_mudez.setChecked(registro.isDeficiencia_auditiva_mudez());
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_deficiencia_auditiva_surdez.setChecked(registro.isDeficiencia_auditiva_surdez());
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_deficiencia_cadeirante.setChecked(registro.isDeficiencia_cadeirante());
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_deficiencia_fisica.setChecked(registro.isDeficiencia_fisica());
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_deficiencia_intelectual.setChecked(registro.isDeficiencia_intelectual());
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_deficiencia_nanismo.setChecked(registro.isDeficiencia_nanismo());
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_deficiencia_visual.setChecked(registro.isDeficiencia_visual());
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_titular_conjuge_mulher_maria_penha.setChecked(registro.isTitular_conjuge_mulher_maria_penha());
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_proprietario_imovel.setChecked(registro.isProprietario_imovel());
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_proprietario_lote.setChecked(registro.isProprietario_lote());
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_proprietario_imovel_precario.setChecked(registro.isProprietario_imovel_precario());
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_convenio.setChecked(registro.isConvenio());
+        } catch (Throwable ex) {
+        }
         /*
         beneficiario_foto_pessoa.setText(registro.getfoto_pessoa());
         beneficiario_foto_cpf.setText(registro.getfoto_cpf());
@@ -621,39 +742,126 @@ public class FormularioActivity extends AppCompatActivity {
 
     private void preencherTelaConjuje(Pessoa registro) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        conjuje_nome.setText(registro.getNome());
-        conjuje_cpf.setText(registro.getCpf());
-        conjuje_rg.setText(registro.getRg());
-        conjuje_nome_mae.setText(registro.getNome_mae());
-        conjuje_nome_pai.setText(registro.getNome_pai());
-        conjuje_sexo.setSelection(registro.getSexo() - 1);
-        conjuje_raca.setSelection(registro.getRaca() - 1);
+        try {
+            conjuje_nome.setText(registro.getNome());
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_cpf.setText(registro.getCpf());
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_rg.setText(registro.getRg());
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_nome_mae.setText(registro.getNome_mae());
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_nome_pai.setText(registro.getNome_pai());
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_sexo.setSelection(registro.getSexo() - 1);
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_raca.setSelection(registro.getRaca() - 1);
+        } catch (Throwable ex) {
+        }
         try {
             conjuje_data_nascimento.setText(sdf.format(registro.getData_nascimento()));
         } catch (Throwable ex) {
         }
-        conjuje_nacionalidade.setSelection(registro.getNacionalidade() - 1);
-        conjuje_numero_cadunico.setText(registro.getNumero_cadunico());
-        conjuje_nis.setText(registro.getNis());
-        conjuje_escolaridade.setSelection(registro.getEscolaridade() - 1);
-        conjuje_estado_civil.setSelection(registro.getEstado_civil() - 1);
-        conjuje_situacao_conjugal.setSelection(registro.getSituacao_conjugal() - 1);
-        conjuje_profissao.setText(registro.getProfissao());
-        conjuje_renda_formal.setText(registro.getRenda_formal() + "");
-        conjuje_situacao_renda_formal.setSelection(registro.getSituacao_renda_formal() - 1);
-        conjuje_renda_informal.setText(registro.getRenda_informal() + "");
-        conjuje_situacao_renda_informal.setSelection(registro.getSituacao_renda_informal() - 1);
-        conjuje_ramo_atividade.setSelection(registro.getRamo_atividade() - 1);
-        conjuje_empregador.setText(registro.getEmpregador());
-        conjuje_tempo_servico_emprego_atual.setText(registro.getTempo_servico_emprego_atual());
-        conjuje_valor_fgts.setText(registro.getValor_fgts() + "");
-        conjuje_deficiencia_auditiva_mudez.setChecked(registro.isDeficiencia_auditiva_mudez());
-        conjuje_deficiencia_auditiva_surdez.setChecked(registro.isDeficiencia_auditiva_surdez());
-        conjuje_deficiencia_cadeirante.setChecked(registro.isDeficiencia_cadeirante());
-        conjuje_deficiencia_fisica.setChecked(registro.isDeficiencia_fisica());
-        conjuje_deficiencia_intelectual.setChecked(registro.isDeficiencia_intelectual());
-        conjuje_deficiencia_nanismo.setChecked(registro.isDeficiencia_nanismo());
-        conjuje_deficiencia_visual.setChecked(registro.isDeficiencia_visual());
+        try {
+            conjuje_nacionalidade.setSelection(registro.getNacionalidade() - 1);
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_numero_cadunico.setText(registro.getNumero_cadunico());
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_nis.setText(registro.getNis());
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_escolaridade.setSelection(registro.getEscolaridade() - 1);
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_estado_civil.setSelection(registro.getEstado_civil() - 1);
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_situacao_conjugal.setSelection(registro.getSituacao_conjugal() - 1);
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_profissao.setText(registro.getProfissao());
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_renda_formal.setText(registro.getRenda_formal() + "");
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_situacao_renda_formal.setSelection(registro.getSituacao_renda_formal() - 1);
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_renda_informal.setText(registro.getRenda_informal() + "");
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_situacao_renda_informal.setSelection(registro.getSituacao_renda_informal() - 1);
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_ramo_atividade.setSelection(registro.getRamo_atividade() - 1);
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_empregador.setText(registro.getEmpregador());
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_tempo_servico_emprego_atual.setText(registro.getTempo_servico_emprego_atual());
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_valor_fgts.setText(registro.getValor_fgts() + "");
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_deficiencia_auditiva_mudez.setChecked(registro.isDeficiencia_auditiva_mudez());
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_deficiencia_auditiva_surdez.setChecked(registro.isDeficiencia_auditiva_surdez());
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_deficiencia_cadeirante.setChecked(registro.isDeficiencia_cadeirante());
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_deficiencia_fisica.setChecked(registro.isDeficiencia_fisica());
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_deficiencia_intelectual.setChecked(registro.isDeficiencia_intelectual());
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_deficiencia_nanismo.setChecked(registro.isDeficiencia_nanismo());
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_deficiencia_visual.setChecked(registro.isDeficiencia_visual());
+        } catch (Throwable ex) {
+        }
         /*
         conjuje_foto_pessoa.setText(registro.getfoto_pessoa());
         conjuje_foto_cpf.setText(registro.getfoto_cpf());
@@ -727,26 +935,74 @@ public class FormularioActivity extends AppCompatActivity {
 
     private void preencherTelaCompFam(Pessoa registro) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        comp_fam_nome.setText(registro.getNome());
-        comp_fam_parentesco.setSelection(registro.getParentesco() - 1);
-        comp_fam_sexo.setSelection(registro.getSexo() - 1);
+        try {
+            comp_fam_nome.setText(registro.getNome());
+        } catch (Throwable ex) {
+        }
+        try {
+            comp_fam_parentesco.setSelection(registro.getParentesco() - 1);
+        } catch (Throwable ex) {
+        }
+        try {
+            comp_fam_sexo.setSelection(registro.getSexo() - 1);
+        } catch (Throwable ex) {
+        }
         try {
             comp_fam_data_nascimento.setText(sdf.format(registro.getData_nascimento()));
         } catch (Throwable ex) {
         }
-        comp_fam_escolaridade.setSelection(registro.getEscolaridade() - 1);
-        comp_fam_profissao.setText(registro.getProfissao());
-        comp_fam_renda_formal.setText(registro.getRenda_formal() + "");
-        comp_fam_situacao_renda_formal.setSelection(registro.getSituacao_renda_formal() - 1);
-        comp_fam_renda_informal.setText(registro.getRenda_informal() + "");
-        comp_fam_situacao_renda_informal.setSelection(registro.getSituacao_renda_informal() - 1);
-        comp_fam_deficiencia_auditiva_mudez.setChecked(registro.isDeficiencia_auditiva_mudez());
-        comp_fam_deficiencia_auditiva_surdez.setChecked(registro.isDeficiencia_auditiva_surdez());
-        comp_fam_deficiencia_cadeirante.setChecked(registro.isDeficiencia_cadeirante());
-        comp_fam_deficiencia_fisica.setChecked(registro.isDeficiencia_fisica());
-        comp_fam_deficiencia_intelectual.setChecked(registro.isDeficiencia_intelectual());
-        comp_fam_deficiencia_nanismo.setChecked(registro.isDeficiencia_nanismo());
-        comp_fam_deficiencia_visual.setChecked(registro.isDeficiencia_visual());
+        try {
+            comp_fam_escolaridade.setSelection(registro.getEscolaridade() - 1);
+        } catch (Throwable ex) {
+        }
+        try {
+            comp_fam_profissao.setText(registro.getProfissao());
+        } catch (Throwable ex) {
+        }
+        try {
+            comp_fam_renda_formal.setText(registro.getRenda_formal() + "");
+        } catch (Throwable ex) {
+        }
+        try {
+            comp_fam_situacao_renda_formal.setSelection(registro.getSituacao_renda_formal() - 1);
+        } catch (Throwable ex) {
+        }
+        try {
+            comp_fam_renda_informal.setText(registro.getRenda_informal() + "");
+        } catch (Throwable ex) {
+        }
+        try {
+            comp_fam_situacao_renda_informal.setSelection(registro.getSituacao_renda_informal() - 1);
+        } catch (Throwable ex) {
+        }
+        try {
+            comp_fam_deficiencia_auditiva_mudez.setChecked(registro.isDeficiencia_auditiva_mudez());
+        } catch (Throwable ex) {
+        }
+        try {
+            comp_fam_deficiencia_auditiva_surdez.setChecked(registro.isDeficiencia_auditiva_surdez());
+        } catch (Throwable ex) {
+        }
+        try {
+            comp_fam_deficiencia_cadeirante.setChecked(registro.isDeficiencia_cadeirante());
+        } catch (Throwable ex) {
+        }
+        try {
+            comp_fam_deficiencia_fisica.setChecked(registro.isDeficiencia_fisica());
+        } catch (Throwable ex) {
+        }
+        try {
+            comp_fam_deficiencia_intelectual.setChecked(registro.isDeficiencia_intelectual());
+        } catch (Throwable ex) {
+        }
+        try {
+            comp_fam_deficiencia_nanismo.setChecked(registro.isDeficiencia_nanismo());
+        } catch (Throwable ex) {
+        }
+        try {
+            comp_fam_deficiencia_visual.setChecked(registro.isDeficiencia_visual());
+        } catch (Throwable ex) {
+        }
     }
 
     private void preencherEntidadeCompFam(Pessoa registro) {
@@ -779,19 +1035,55 @@ public class FormularioActivity extends AppCompatActivity {
         registro.setDeficiencia_visual(comp_fam_deficiencia_visual.isChecked());
     }
 
-    private void preencherTelaMoradia(Moradia registro) {
-        registro.setQuadra(moradia_quadra.getText().toString());
-        registro.setLote(moradia_lote.getText().toString());
-        registro.setPoligonal(moradia_poligonal.getSelectedItemPosition() + 1);
-        registro.setEndereco(moradia_endereco.getText().toString());
-        registro.setNumero(moradia_numero.getText().toString());
-        registro.setComplemento(moradia_complemento.getText().toString());
-        registro.setCep(moradia_cep.getText().toString());
-        registro.setBairro(moradia_bairro.getText().toString());
-        registro.setCidade(moradia_cidade.getText().toString());
-        registro.setUf(moradia_uf.getText().toString());
-        registro.setArea_construida(moradia_area_construida.getText().toString());
-        registro.setMatricula_imovel(moradia_matricula_imovel.getText().toString());
+    private void preencherEntidadeMoradia(Moradia registro) {
+        try {
+            registro.setQuadra(moradia_quadra.getText().toString());
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setLote(moradia_lote.getText().toString());
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setPoligonal(moradia_poligonal.getSelectedItemPosition() + 1);
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setEndereco(moradia_endereco.getText().toString());
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setNumero(moradia_numero.getText().toString());
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setComplemento(moradia_complemento.getText().toString());
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setCep(moradia_cep.getText().toString());
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setBairro(moradia_bairro.getText().toString());
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setCidade(moradia_cidade.getText().toString());
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setUf(moradia_uf.getText().toString());
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setArea_construida(moradia_area_construida.getText().toString());
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setMatricula_imovel(moradia_matricula_imovel.getText().toString());
+        } catch (Throwable ex) {
+        }
         try {
             registro.setMedida_frente(Double.parseDouble(moradia_medida_frente.getText().toString()));
         } catch (Throwable ex) {
@@ -808,22 +1100,58 @@ public class FormularioActivity extends AppCompatActivity {
             registro.setMedida_fundo(Double.parseDouble(moradia_medida_fundo.getText().toString()));
         } catch (Throwable ex) {
         }
-        registro.setNumero_lote_direita(moradia_numero_lote_direita.getText().toString());
-        registro.setNumero_lote_esquerda(moradia_numero_lote_esquerda.getText().toString());
+        try {
+            registro.setNumero_lote_direita(moradia_numero_lote_direita.getText().toString());
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setNumero_lote_esquerda(moradia_numero_lote_esquerda.getText().toString());
+        } catch (Throwable ex) {
+        }
         try {
             registro.setNumero_lote_fundo(Double.parseDouble(moradia_numero_lote_fundo.getText().toString()));
         } catch (Throwable ex) {
         }
-        registro.setRua_frente(moradia_rua_frente.getText().toString());
-        registro.setRua_direita(moradia_rua_direita.getText().toString());
-        registro.setRua_esquerda(moradia_rua_esquerda.getText().toString());
-        registro.setRua_fundo(moradia_rua_fundo.getText().toString());
-        registro.setSelagem(moradia_selagem.getText().toString());
-        registro.setLatitude(moradia_latitude.getText().toString());
-        registro.setLongitude(moradia_longitude.getText().toString());
-        registro.setAltitude(moradia_altitude.getText().toString());
-        registro.setZona(moradia_zona.getSelectedItemPosition() + 1);
-        registro.setSituacao_propriedade(moradia_situacao_propriedade.getSelectedItemPosition() + 1);
+        try {
+            registro.setRua_frente(moradia_rua_frente.getText().toString());
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setRua_direita(moradia_rua_direita.getText().toString());
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setRua_esquerda(moradia_rua_esquerda.getText().toString());
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setRua_fundo(moradia_rua_fundo.getText().toString());
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setSelagem(moradia_selagem.getText().toString());
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setLatitude(moradia_latitude.getText().toString());
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setLongitude(moradia_longitude.getText().toString());
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setAltitude(moradia_altitude.getText().toString());
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setZona(moradia_zona.getSelectedItemPosition() + 1);
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setSituacao_propriedade(moradia_situacao_propriedade.getSelectedItemPosition() + 1);
+        } catch (Throwable ex) {
+        }
         try {
             registro.setValor_aluguel(Double.parseDouble(moradia_valor_aluguel.getText().toString()));
         } catch (Throwable ex) {
@@ -836,13 +1164,34 @@ public class FormularioActivity extends AppCompatActivity {
             registro.setNumero_comodos(Integer.parseInt(moradia_numero_comodos.getText().toString()));
         } catch (Throwable ex) {
         }
-        registro.setTipo_construcao(moradia_tipo_construcao.getSelectedItemPosition() + 1);
-        registro.setOutro_tipo_construcao(moradia_outro_tipo_construcao.getText().toString());
-        registro.setFonte_energia(moradia_fonte_energia.isChecked());
-        registro.setAbastecimento_agua(moradia_abastecimento_agua.isChecked());
-        registro.setRede_esgoto(moradia_rede_esgoto.isChecked());
-        registro.setColeta_lixo(moradia_coleta_lixo.isChecked());
-        registro.setSeparacao_reciclaveis(moradia_separacao_reciclaveis.isChecked());
+        try {
+            registro.setTipo_construcao(moradia_tipo_construcao.getSelectedItemPosition() + 1);
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setOutro_tipo_construcao(moradia_outro_tipo_construcao.getText().toString());
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setFonte_energia(moradia_fonte_energia.isChecked());
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setAbastecimento_agua(moradia_abastecimento_agua.isChecked());
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setRede_esgoto(moradia_rede_esgoto.isChecked());
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setColeta_lixo(moradia_coleta_lixo.isChecked());
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setSeparacao_reciclaveis(moradia_separacao_reciclaveis.isChecked());
+        } catch (Throwable ex) {
+        }
         try {
             registro.setValor_beneficio_prestacao_continuada(Double.parseDouble(moradia_valor_beneficio_prestacao_continuada.getText().toString()));
         } catch (Throwable ex) {
@@ -855,10 +1204,22 @@ public class FormularioActivity extends AppCompatActivity {
             registro.setOutro_beneficio(Double.parseDouble(moradia_outro_beneficio.getText().toString()));
         } catch (Throwable ex) {
         }
-        registro.setArea_risco(moradia_reside_area_risco.isChecked());
-        registro.setInsalubre(moradia_reside_area_insalubre.isChecked());
-        registro.setDesabrigado(moradia_desabrigado.isChecked());
-        registro.setObservacao(moradia_observacao.getText().toString());
+        try {
+            registro.setArea_risco(moradia_reside_area_risco.isChecked());
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setInsalubre(moradia_reside_area_insalubre.isChecked());
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setDesabrigado(moradia_desabrigado.isChecked());
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setObservacao(moradia_observacao.getText().toString());
+        } catch (Throwable ex) {
+        }
         /*
         registro.setFoto_comprovante_visita(moradia_foto_comprovante_visita.getText().toString());
         registro.setFoto_fachada(moradia_foto_fachada.getText().toString());
@@ -869,53 +1230,192 @@ public class FormularioActivity extends AppCompatActivity {
         */
     }
 
-    private void preencherEntidadeMoradia(Moradia registro) {
-        moradia_quadra.setText(registro.getQuadra());
-        moradia_lote.setText(registro.getLote());
-        moradia_poligonal.setSelection(registro.getPoligonal() - 1);
-        moradia_endereco.setText(registro.getEndereco());
-        moradia_numero.setText(registro.getNumero());
-        moradia_complemento.setText(registro.getComplemento());
-        moradia_cep.setText(registro.getCep());
-        moradia_bairro.setText(registro.getBairro());
-        moradia_cidade.setText(registro.getCidade());
-        moradia_uf.setText(registro.getUf());
-        moradia_area_construida.setText(registro.getArea_construida());
-        moradia_matricula_imovel.setText(registro.getMatricula_imovel());
-        moradia_medida_frente.setText(registro.getMedida_frente() + "");
-        moradia_medida_direita.setText(registro.getMedida_direita() + "");
-        moradia_medida_esquerda.setText(registro.getMedida_esquerda() + "");
-        moradia_medida_fundo.setText(registro.getMedida_fundo() + "");
-        moradia_numero_lote_direita.setText(registro.getNumero_lote_direita());
-        moradia_numero_lote_esquerda.setText(registro.getNumero_lote_esquerda());
-        moradia_numero_lote_fundo.setText(registro.getNumero_lote_fundo() + "");
-        moradia_rua_frente.setText(registro.getRua_frente());
-        moradia_rua_direita.setText(registro.getRua_direita());
-        moradia_rua_esquerda.setText(registro.getRua_esquerda());
-        moradia_rua_fundo.setText(registro.getRua_fundo());
-        moradia_selagem.setText(registro.getSelagem());
-        moradia_latitude.setText(registro.getLatitude());
-        moradia_longitude.setText(registro.getLongitude());
-        moradia_altitude.setText(registro.getAltitude());
-        moradia_zona.setSelection(registro.getZona() - 1);
-        moradia_situacao_propriedade.setSelection(registro.getSituacao_propriedade() - 1);
-        moradia_valor_aluguel.setText(registro.getValor_aluguel() + "");
-        moradia_numero_quartos.setText(registro.getNumero_quarto() + "");
-        moradia_numero_comodos.setText(registro.getNumero_comodos() + "");
-        moradia_tipo_construcao.setSelection(registro.getTipo_construcao() - 1);
-        moradia_outro_tipo_construcao.setText(registro.getOutro_tipo_construcao());
-        moradia_fonte_energia.setChecked(registro.isFonte_energia());
-        moradia_abastecimento_agua.setChecked(registro.isAbastecimento_agua());
-        moradia_rede_esgoto.setChecked(registro.isRede_esgoto());
-        moradia_coleta_lixo.setChecked(registro.isColeta_lixo());
-        moradia_separacao_reciclaveis.setChecked(registro.isSeparacao_reciclaveis());
-        moradia_valor_beneficio_prestacao_continuada.setText(registro.getValor_beneficio_prestacao_continuada() + "");
-        moradia_valor_bolsa_familia.setText(registro.getValor_bolsa_familia() + "");
-        moradia_outro_beneficio.setText(registro.getOutro_beneficio() + "");
-        moradia_reside_area_risco.setChecked(registro.isArea_risco());
-        moradia_reside_area_insalubre.setChecked(registro.isInsalubre());
-        moradia_desabrigado.setChecked(registro.isDesabrigado());
-        moradia_observacao.setText(registro.getObservacao());
+    private void preencherTelaMoradia(Moradia registro) {
+
+        try {
+            moradia_quadra.setText(registro.getQuadra());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_lote.setText(registro.getLote());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_poligonal.setSelection(registro.getPoligonal() - 1);
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_endereco.setText(registro.getEndereco());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_numero.setText(registro.getNumero());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_complemento.setText(registro.getComplemento());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_cep.setText(registro.getCep());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_bairro.setText(registro.getBairro());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_cidade.setText(registro.getCidade());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_uf.setText(registro.getUf());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_area_construida.setText(registro.getArea_construida());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_matricula_imovel.setText(registro.getMatricula_imovel());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_medida_frente.setText(registro.getMedida_frente() + "");
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_medida_direita.setText(registro.getMedida_direita() + "");
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_medida_esquerda.setText(registro.getMedida_esquerda() + "");
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_medida_fundo.setText(registro.getMedida_fundo() + "");
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_numero_lote_direita.setText(registro.getNumero_lote_direita());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_numero_lote_esquerda.setText(registro.getNumero_lote_esquerda());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_numero_lote_fundo.setText(registro.getNumero_lote_fundo() + "");
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_rua_frente.setText(registro.getRua_frente());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_rua_direita.setText(registro.getRua_direita());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_rua_esquerda.setText(registro.getRua_esquerda());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_rua_fundo.setText(registro.getRua_fundo());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_selagem.setText(registro.getSelagem());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_latitude.setText(registro.getLatitude());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_longitude.setText(registro.getLongitude());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_altitude.setText(registro.getAltitude());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_zona.setSelection(registro.getZona() - 1);
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_situacao_propriedade.setSelection(registro.getSituacao_propriedade() - 1);
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_valor_aluguel.setText(registro.getValor_aluguel() + "");
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_numero_quartos.setText(registro.getNumero_quarto() + "");
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_numero_comodos.setText(registro.getNumero_comodos() + "");
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_tipo_construcao.setSelection(registro.getTipo_construcao() - 1);
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_outro_tipo_construcao.setText(registro.getOutro_tipo_construcao());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_fonte_energia.setChecked(registro.isFonte_energia());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_abastecimento_agua.setChecked(registro.isAbastecimento_agua());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_rede_esgoto.setChecked(registro.isRede_esgoto());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_coleta_lixo.setChecked(registro.isColeta_lixo());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_separacao_reciclaveis.setChecked(registro.isSeparacao_reciclaveis());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_valor_beneficio_prestacao_continuada.setText(registro.getValor_beneficio_prestacao_continuada() + "");
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_valor_bolsa_familia.setText(registro.getValor_bolsa_familia() + "");
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_outro_beneficio.setText(registro.getOutro_beneficio() + "");
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_reside_area_risco.setChecked(registro.isArea_risco());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_reside_area_insalubre.setChecked(registro.isInsalubre());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_desabrigado.setChecked(registro.isDesabrigado());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_observacao.setText(registro.getObservacao());
+        } catch (Throwable ex) {
+        }
         /*
         moradia_foto_comprovante_visita.setText(registro.getfoto_comprovante_visita());
         moradia_foto_fachada.setText(registro.getfoto_fachada());
@@ -959,7 +1459,11 @@ public class FormularioActivity extends AppCompatActivity {
         getWindow().getDecorView().getRootView().getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-                inicializarComponentes();
+                if (preecherTela) {
+                    inicializarComponentes();
+                    preencherTela();
+                    preecherTela = false;
+                }
             }
         });
         //Carrega o ID da moradia
@@ -970,6 +1474,8 @@ public class FormularioActivity extends AppCompatActivity {
         }
         inicializarRegistros(idMoradia);
     }
+
+    boolean preecherTela = true;
 
     private void inicializarRegistros(int idMoradia) {
         DatabaseHelper databaseHelper = new DatabaseHelper(this.getApplicationContext());
@@ -982,16 +1488,29 @@ public class FormularioActivity extends AppCompatActivity {
             familiares = pessoaDao.getCompFam(moradia.getId_pessoa());
         } else {
             moradia = new Moradia();
-            moradia.setId(moradiaDao.getMaxId()+1);
+            moradia.setId(moradiaDao.getMaxId() + 1);
             moradiaDao.insert(moradia);
             beneficiario = new Pessoa();
-            beneficiario.setId(pessoaDao.getMaxId()+1);
+            beneficiario.setId(pessoaDao.getMaxId() + 1);
             pessoaDao.insert(beneficiario);
             conjuje = new Pessoa();
-            conjuje.setId(pessoaDao.getMaxId()+1);
-            conjuje.setTipo(-1);
+            conjuje.setId(pessoaDao.getMaxId() + 1);
+            conjuje.setParentesco(-1);
             pessoaDao.insert(conjuje);
             familiares = new ArrayList<>();
+        }
+        beneficiario.setId_usuario(Sessao.USUARIO.getId());
+        pessoaDao.update(beneficiario);
+        moradia.setId_pessoa(beneficiario.getId());
+        moradia.setId_usuario(Sessao.USUARIO.getId());
+        moradiaDao.update(moradia);
+        conjuje.setId_pessoa(beneficiario.getId());
+        conjuje.setId_usuario(Sessao.USUARIO.getId());
+        pessoaDao.update(conjuje);
+        for (Pessoa familiar : familiares) {
+            familiar.setId_pessoa(beneficiario.getId());
+            familiar.setId_usuario(Sessao.USUARIO.getId());
+            pessoaDao.update(familiar);
         }
     }
 
@@ -999,6 +1518,11 @@ public class FormularioActivity extends AppCompatActivity {
         DatabaseHelper databaseHelper = new DatabaseHelper(this.getApplicationContext());
         MoradiaDao moradiaDao = new MoradiaDao(databaseHelper);
         PessoaDao pessoaDao = new PessoaDao(databaseHelper);
+
+        preencherEntidadeMoradia(moradia);
+        preencherEntidadeBeneficiario(beneficiario);
+        preencherEntidadeConjuje(conjuje);
+
         moradiaDao.update(moradia);
         pessoaDao.update(beneficiario);
         pessoaDao.update(conjuje);

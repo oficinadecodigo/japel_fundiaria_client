@@ -63,7 +63,7 @@ public class PessoaDao {
     public Pessoa getConjuje(int id) {
         Pessoa registry = null;
         SQLiteDatabase writableDatabase = this.databaseHelper.getWritableDatabase();
-        Cursor cursor = writableDatabase.rawQuery("select * from pessoa where parentesco = -1 and id_pessoa = " + id, new String[]{});
+        Cursor cursor = writableDatabase.rawQuery("select * from pessoa where parentesco = -1 and id_pessoa = " + id , new String[]{});
         if (cursor.moveToNext()) {
             registry = fill(cursor);
         }
