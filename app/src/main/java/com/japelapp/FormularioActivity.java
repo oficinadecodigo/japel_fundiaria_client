@@ -17,11 +17,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
+import android.widget.Toast;
 
 import com.japelapp.bd.DatabaseHelper;
 import com.japelapp.bd.MoradiaDao;
@@ -157,6 +159,11 @@ public class FormularioActivity extends AppCompatActivity {
 
     //Campos fragment comp fam
 
+    Spinner comp_fam_itens;
+    Button btn_editar_comp;
+    Button btn_criar_comp;
+    Button btn_salvar_comp;
+
     EditText comp_fam_nome;
     Spinner comp_fam_parentesco;
     Spinner comp_fam_sexo;
@@ -231,14 +238,63 @@ public class FormularioActivity extends AppCompatActivity {
     EditText moradia_foto_comprovante_iptu;
     EditText moradia_foto_documento_cartografico;
 
+    Moradia moradia;
+    Pessoa beneficiario;
+    Pessoa conjuje;
+    Pessoa compFamiliar;
+    ArrayList<Pessoa> familiares = new ArrayList<>();
+
 
     private void preencherTela() {
         preencherTelaBeneficiario(beneficiario);
         preencherTelaConjuje(conjuje);
         preencherTelaMoradia(moradia);
+        preencherSpinnerFamiliares();
     }
 
-    //Campos fragment fotos
+    private void preencherSpinnerFamiliares() {
+        ArrayAdapter<Pessoa> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_dropdown_item, familiares);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        comp_fam_itens.setAdapter(adapter);
+    }
+
+    private void editarCompFam() {
+        compFamiliar = null;
+        try {
+            compFamiliar = (Pessoa) comp_fam_itens.getSelectedItem();
+        } catch (Throwable ex) {
+        }
+        if (compFamiliar == null) {
+            Toast.makeText(this, "Não foi possível selecionar o item para editar", Toast.LENGTH_SHORT);
+        } else {
+            preencherTelaCompFam(compFamiliar);
+        }
+    }
+
+    private void criarCompFam() {
+        PessoaDao pessoaDao = new PessoaDao(new DatabaseHelper(this));
+        Pessoa compFamPessoa = new Pessoa();
+        compFamPessoa.setId(pessoaDao.getMaxId() + 1);
+        compFamPessoa.setId_usuario(Sessao.USUARIO.getId());
+        compFamPessoa.setId_pessoa(beneficiario.getId());
+        pessoaDao.insert(compFamPessoa);
+        familiares.add(compFamPessoa);
+        compFamiliar = compFamPessoa;
+        preencherSpinnerFamiliares();
+    }
+
+    private void salvarCompFam() {
+        if (compFamiliar == null) {
+            criarCompFam();
+        }
+        preencherEntidadeCompFam(compFamiliar);
+        PessoaDao pessoaDao = new PessoaDao(new DatabaseHelper(this));
+        pessoaDao.update(compFamiliar);
+        compFamiliar = null;
+        limparTelaCompFam();
+        preencherSpinnerFamiliares();
+    }
 
     private void inicializarComponentes() {
         //Inicializando componentes do fragment beneficiário
@@ -367,6 +423,31 @@ public class FormularioActivity extends AppCompatActivity {
         conjuje_foto_comprovante_estado_civil = fragmentConjuje.getView().findViewById(R.id.form_conjuje_foto_comprovante_estado_civil);
 
         //Inicializando componentes dos componentes familiares
+
+
+        comp_fam_itens = fragmentCompFam.getView().findViewById(R.id.form_comp_fam_spinner_itens);
+        btn_editar_comp = fragmentCompFam.getView().findViewById(R.id.form_comp_fam_btn_edt);
+        btn_criar_comp = fragmentCompFam.getView().findViewById(R.id.form_comp_fam_btn_criar);
+        btn_salvar_comp = fragmentCompFam.getView().findViewById(R.id.form_comp_fam_btn_slv);
+
+        btn_editar_comp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editarCompFam();
+            }
+        });
+        btn_criar_comp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                criarCompFam();
+            }
+        });
+        btn_salvar_comp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                salvarCompFam();
+            }
+        });
 
         comp_fam_nome = fragmentCompFam.getView().findViewById(R.id.form_comp_fam_nome);
         comp_fam_parentesco = fragmentCompFam.getView().findViewById(R.id.form_comp_fam_parentesco);
@@ -933,6 +1014,78 @@ public class FormularioActivity extends AppCompatActivity {
         */
     }
 
+    private void limparTelaCompFam() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            comp_fam_nome.setText("");
+        } catch (Throwable ex) {
+        }
+        try {
+            comp_fam_parentesco.setSelection(0);
+        } catch (Throwable ex) {
+        }
+        try {
+            comp_fam_sexo.setSelection(0);
+        } catch (Throwable ex) {
+        }
+        try {
+            comp_fam_data_nascimento.setText("");
+        } catch (Throwable ex) {
+        }
+        try {
+            comp_fam_escolaridade.setSelection(0);
+        } catch (Throwable ex) {
+        }
+        try {
+            comp_fam_profissao.setText("");
+        } catch (Throwable ex) {
+        }
+        try {
+            comp_fam_renda_formal.setText("");
+        } catch (Throwable ex) {
+        }
+        try {
+            comp_fam_situacao_renda_formal.setSelection(0);
+        } catch (Throwable ex) {
+        }
+        try {
+            comp_fam_renda_informal.setText("");
+        } catch (Throwable ex) {
+        }
+        try {
+            comp_fam_situacao_renda_informal.setSelection(0);
+        } catch (Throwable ex) {
+        }
+        try {
+            comp_fam_deficiencia_auditiva_mudez.setChecked(false);
+        } catch (Throwable ex) {
+        }
+        try {
+            comp_fam_deficiencia_auditiva_surdez.setChecked(false);
+        } catch (Throwable ex) {
+        }
+        try {
+            comp_fam_deficiencia_cadeirante.setChecked(false);
+        } catch (Throwable ex) {
+        }
+        try {
+            comp_fam_deficiencia_fisica.setChecked(false);
+        } catch (Throwable ex) {
+        }
+        try {
+            comp_fam_deficiencia_intelectual.setChecked(false);
+        } catch (Throwable ex) {
+        }
+        try {
+            comp_fam_deficiencia_nanismo.setChecked(false);
+        } catch (Throwable ex) {
+        }
+        try {
+            comp_fam_deficiencia_visual.setChecked(false);
+        } catch (Throwable ex) {
+        }
+    }
+
     private void preencherTelaCompFam(Pessoa registro) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         try {
@@ -1425,11 +1578,6 @@ public class FormularioActivity extends AppCompatActivity {
         moradia_foto_documento_cartografico.setText(registro.getfoto_documento_cartografico());
         */
     }
-
-    Moradia moradia;
-    Pessoa beneficiario;
-    Pessoa conjuje;
-    ArrayList<Pessoa> familiares = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

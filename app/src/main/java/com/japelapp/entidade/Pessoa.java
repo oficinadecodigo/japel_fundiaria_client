@@ -481,4 +481,17 @@ public class Pessoa {
     public void setId_usuario(int id_usuario) {
         this.id_usuario = id_usuario;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Pessoa)) {
+            return false;
+        }
+        return ((Pessoa) obj).getId() == getId();
+    }
+
+    @Override
+    public String toString() {
+        return nome;
+    }
 }
