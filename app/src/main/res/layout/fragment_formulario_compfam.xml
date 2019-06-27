@@ -90,6 +90,11 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nome" />
+
                 <EditText
                     android:id="@+id/form_comp_fam_nome"
                     android:layout_width="match_parent"
@@ -146,13 +151,22 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Data de nascimento" />
+
                 <EditText
                     android:id="@+id/form_comp_fam_data_nascimento"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Data de Nascimento"
-                    android:inputType="textPersonName" />
+                    android:focusable="false"
+
+                    android:hint="Data de nascimento"
+                    android:inputType="none"
+
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -181,6 +195,11 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Profissão" />
+
                 <EditText
                     android:id="@+id/form_comp_fam_profissao"
                     android:layout_width="match_parent"
@@ -195,13 +214,18 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Renda formal" />
+
                 <EditText
                     android:id="@+id/form_comp_fam_renda_formal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Renda Formal"
-                    android:inputType="textPersonName" />
+                    android:inputType="numberDecimal" />
             </LinearLayout>
 
             <LinearLayout
@@ -230,13 +254,18 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Renda informal" />
+
                 <EditText
                     android:id="@+id/form_comp_fam_renda_informal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Renda Informal"
-                    android:inputType="textPersonName" />
+                    android:hint="Renda informal"
+                    android:inputType="numberDecimal" />
             </LinearLayout>
 
             <LinearLayout
@@ -247,7 +276,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Situação Renda Informal" />
+                    android:text="Situação Renda informal" />
 
                 <Spinner
                     android:id="@+id/form_comp_fam_situacao_renda_informal"

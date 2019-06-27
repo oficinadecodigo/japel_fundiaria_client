@@ -41,6 +41,11 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Quadra" />
+
                 <EditText
                     android:id="@+id/form_moradia_quadra"
                     android:layout_width="match_parent"
@@ -54,6 +59,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Lote" />
 
                 <EditText
                     android:id="@+id/form_moradia_lote"
@@ -90,6 +100,11 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Endereço" />
+
                 <EditText
                     android:id="@+id/form_moradia_endereco"
                     android:layout_width="match_parent"
@@ -103,6 +118,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Número" />
 
                 <EditText
                     android:id="@+id/form_moradia_numero"
@@ -118,6 +138,11 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Complemento" />
+
                 <EditText
                     android:id="@+id/form_moradia_complemento"
                     android:layout_width="match_parent"
@@ -132,12 +157,17 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="CEP" />
+
                 <EditText
                     android:id="@+id/form_moradia_cep"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Cep"
+                    android:hint="CEP"
                     android:inputType="textPersonName" />
             </LinearLayout>
 
@@ -145,6 +175,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Bairro" />
 
                 <EditText
                     android:id="@+id/form_moradia_bairro"
@@ -160,6 +195,11 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cidade" />
+
                 <EditText
                     android:id="@+id/form_moradia_cidade"
                     android:layout_width="match_parent"
@@ -174,12 +214,17 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="UF" />
+
                 <EditText
                     android:id="@+id/form_moradia_uf"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Uf"
+                    android:hint="UF"
                     android:inputType="textPersonName" />
             </LinearLayout>
 
@@ -187,13 +232,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Área construída" />
 
                 <EditText
                     android:id="@+id/form_moradia_area_construida"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Área Construida"
+                    android:hint="Área construída"
                     android:inputType="textPersonName" />
             </LinearLayout>
 
@@ -201,13 +251,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Matrícula do imóvel" />
 
                 <EditText
                     android:id="@+id/form_moradia_matricula_imovel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Matricula do Imóvel"
+                    android:hint="Matrícula do imóvel"
                     android:inputType="textPersonName" />
             </LinearLayout>
 
@@ -215,69 +270,94 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Medida da frente" />
 
                 <EditText
                     android:id="@+id/form_moradia_medida_frente"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Medida da Frente"
-                    android:inputType="textPersonName" />
+                    android:hint="Medida da frente"
+                    android:inputType="numberDecimal" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Medida da direita" />
 
                 <EditText
                     android:id="@+id/form_moradia_medida_direita"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Medida da Direita"
-                    android:inputType="textPersonName" />
+                    android:hint="Medida da direita"
+                    android:inputType="numberDecimal" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Medida da esquerda" />
 
                 <EditText
                     android:id="@+id/form_moradia_medida_esquerda"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Medida da Esquerda"
-                    android:inputType="textPersonName" />
+                    android:hint="Medida da esquerda"
+                    android:inputType="numberDecimal" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Medida do fundo" />
 
                 <EditText
                     android:id="@+id/form_moradia_medida_fundo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Medida do Fundo"
-                    android:inputType="textPersonName" />
+                    android:hint="Medida do fundo"
+                    android:inputType="numberDecimal" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Número do lote da direita" />
 
                 <EditText
                     android:id="@+id/form_moradia_numero_lote_direita"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Numero Lote da Direita"
+                    android:hint="Número lote da direita"
                     android:inputType="textPersonName" />
             </LinearLayout>
 
@@ -285,13 +365,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Número do lote da esquerda" />
 
                 <EditText
                     android:id="@+id/form_moradia_numero_lote_esquerda"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Numero Lote do Esquerda"
+                    android:hint="Número lote do esquerda"
                     android:inputType="textPersonName" />
             </LinearLayout>
 
@@ -299,13 +384,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Número do lote do fundo" />
 
                 <EditText
                     android:id="@+id/form_moradia_numero_lote_fundo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Numero Lote do Fundo"
+                    android:hint="Número lote do fundo"
                     android:inputType="textPersonName" />
             </LinearLayout>
 
@@ -313,13 +403,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Rua da frente" />
 
                 <EditText
                     android:id="@+id/form_moradia_rua_frente"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Rua da Frente"
+                    android:hint="Rua da frente"
                     android:inputType="textPersonName" />
             </LinearLayout>
 
@@ -327,13 +422,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Rua da direita" />
 
                 <EditText
                     android:id="@+id/form_moradia_rua_direita"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Rua da Direita"
+                    android:hint="Rua da direita"
                     android:inputType="textPersonName" />
             </LinearLayout>
 
@@ -341,13 +441,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Rua da esquerda" />
 
                 <EditText
                     android:id="@+id/form_moradia_rua_esquerda"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Rua da Esquerda"
+                    android:hint="Rua da esquerda"
                     android:inputType="textPersonName" />
             </LinearLayout>
 
@@ -355,13 +460,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Rua do fundo" />
 
                 <EditText
                     android:id="@+id/form_moradia_rua_fundo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Rua do Fundo"
+                    android:hint="Rua do fundo"
                     android:inputType="textPersonName" />
             </LinearLayout>
 
@@ -369,13 +479,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Código da selagem" />
 
                 <EditText
                     android:id="@+id/form_moradia_selagem"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Código da Selagem"
+                    android:hint="Código da selagem"
                     android:inputType="textPersonName" />
             </LinearLayout>
 
@@ -383,6 +498,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Latitude" />
 
                 <EditText
                     android:id="@+id/form_moradia_latitude"
@@ -398,6 +518,11 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Longitude" />
+
                 <EditText
                     android:id="@+id/form_moradia_longitude"
                     android:layout_width="match_parent"
@@ -411,6 +536,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Altitude" />
 
                 <EditText
                     android:id="@+id/form_moradia_altitude"
@@ -469,41 +599,18 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Valor do aluguel" />
+
                 <EditText
                     android:id="@+id/form_moradia_valor_aluguel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Valor do Aluguel"
-                    android:inputType="textPersonName" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <EditText
-                    android:id="@+id/form_moradia_numero_quartos"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Número de Quartos"
-                    android:inputType="textPersonName" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <EditText
-                    android:id="@+id/form_moradia_numero_comodos"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Número de Cômodos"
-                    android:inputType="textPersonName" />
+                    android:hint="Valor do aluguel"
+                    android:inputType="numberDecimal" />
             </LinearLayout>
 
             <LinearLayout
@@ -514,7 +621,45 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Tipo de Construção" />
+                    android:text="Número de quartos" />
+
+                <EditText
+                    android:id="@+id/form_moradia_numero_quartos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Número de quartos"
+                    android:inputType="number" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Número de cômodos" />
+
+                <EditText
+                    android:id="@+id/form_moradia_numero_comodos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Número de cômodos"
+                    android:inputType="number" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tipo de construção" />
 
                 <Spinner
                     android:id="@+id/form_moradia_tipo_construcao"
@@ -532,12 +677,17 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Outro tipo de construção" />
+
                 <EditText
                     android:id="@+id/form_moradia_outro_tipo_construcao"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Outro Tipo de Construção"
+                    android:hint="Outro Tipo de construção"
                     android:inputType="textPersonName" />
             </LinearLayout>
 
@@ -551,7 +701,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Fonte de Energia"
+                    android:hint="Fonte de energia"
                     android:inputType="textPersonName" />
             </LinearLayout>
 
@@ -616,27 +766,37 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Valor do benefício prestação continuado" />
+
                 <EditText
                     android:id="@+id/form_moradia_valor_beneficio_prestacao_continuada"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Valor do Benefício Prestação Continuado"
-                    android:inputType="textPersonName" />
+                    android:hint="Valor do benefício prestação continuado"
+                    android:inputType="numberDecimal" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Valor bolsa família" />
 
                 <EditText
                     android:id="@+id/form_moradia_valor_bolsa_familia"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Valor Bolsa Família"
-                    android:inputType="textPersonName" />
+                    android:hint="Valor volsa família"
+                    android:inputType="numberDecimal" />
             </LinearLayout>
 
             <LinearLayout
@@ -644,13 +804,18 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Outro benefício" />
+
                 <EditText
                     android:id="@+id/form_moradia_outro_beneficio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Outro Benefício"
-                    android:inputType="textPersonName" />
+                    android:hint="Outro benefício"
+                    android:inputType="numberDecimal" />
             </LinearLayout>
 
             <LinearLayout
@@ -700,6 +865,11 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Observação" />
+
                 <EditText
                     android:id="@+id/form_moradia_observacao"
                     android:layout_width="match_parent"
@@ -714,12 +884,17 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Foto do comprovante de visita" />
+
                 <EditText
                     android:id="@+id/form_moradia_foto_comprovante_visita"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Foto do Comprovante de Visita"
+                    android:hint="Foto do comprovante de visita"
                     android:inputType="textPersonName" />
             </LinearLayout>
 
@@ -727,13 +902,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Foto da fachada" />
 
                 <EditText
                     android:id="@+id/form_moradia_foto_fachada"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Fota da Fachada"
+                    android:hint="Fota da fachada"
                     android:inputType="textPersonName" />
             </LinearLayout>
 
@@ -741,13 +921,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Foto do comprovante de água" />
 
                 <EditText
                     android:id="@+id/form_moradia_foto_comprovante_agua"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Foto do Comprovante de Água"
+                    android:hint="Foto do comprovante de água"
                     android:inputType="textPersonName" />
             </LinearLayout>
 
@@ -755,13 +940,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Foto do comprovante de luz" />
 
                 <EditText
                     android:id="@+id/form_moradia_foto_comprovante_luz"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Foto do Comprovante de Luz"
+                    android:hint="Foto do comprovante de Luz"
                     android:inputType="textPersonName" />
             </LinearLayout>
 
@@ -769,13 +959,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Foto do comprovante de IPTU" />
 
                 <EditText
                     android:id="@+id/form_moradia_foto_comprovante_iptu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Foto do Comprovante de IPTU"
+                    android:hint="Foto do comprovante de IPTU"
                     android:inputType="textPersonName" />
             </LinearLayout>
 
@@ -784,12 +979,17 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Foto do documento cartográfico" />
+
                 <EditText
                     android:id="@+id/form_moradia_foto_documento_cartografico"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Foto do Documento Cartográfico"
+                    android:hint="Foto do documento cartográfico"
                     android:inputType="textPersonName" />
             </LinearLayout>
 

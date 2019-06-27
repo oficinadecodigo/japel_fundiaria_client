@@ -391,6 +391,32 @@ public class FormularioActivity extends AppCompatActivity {
         conjuje_sexo = fragmentConjuje.getView().findViewById(R.id.form_conjuje_sexo);
         conjuje_raca = fragmentConjuje.getView().findViewById(R.id.form_conjuje_raca);
         conjuje_data_nascimento = fragmentConjuje.getView().findViewById(R.id.form_conjuje_data_nascimento);
+        final Calendar myCalendar2 = Calendar.getInstance();
+        final DatePickerDialog.OnDateSetListener date2 = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                myCalendar2.set(Calendar.YEAR, year);
+                myCalendar2.set(Calendar.MONTH, monthOfYear);
+                myCalendar2.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                String data = dayOfMonth + "/" + monthOfYear + "/" + year;
+                conjuje_data_nascimento.setText(data);
+            }
+
+        };
+        conjuje_data_nascimento.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                try {
+                    new DatePickerDialog(getWindow().getContext(), date2, myCalendar2
+                            .get(Calendar.YEAR), myCalendar2.get(Calendar.MONTH),
+                            myCalendar2.get(Calendar.DAY_OF_MONTH)).show();
+                } catch (Throwable ex) {
+                }
+            }
+        });
         conjuje_nacionalidade = fragmentConjuje.getView().findViewById(R.id.form_conjuje_nacionalidade);
         conjuje_numero_cadunico = fragmentConjuje.getView().findViewById(R.id.form_conjuje_numero_cadunico);
         conjuje_nis = fragmentConjuje.getView().findViewById(R.id.form_conjuje_nis);
@@ -453,6 +479,33 @@ public class FormularioActivity extends AppCompatActivity {
         comp_fam_parentesco = fragmentCompFam.getView().findViewById(R.id.form_comp_fam_parentesco);
         comp_fam_sexo = fragmentCompFam.getView().findViewById(R.id.form_comp_fam_sexo);
         comp_fam_data_nascimento = fragmentCompFam.getView().findViewById(R.id.form_comp_fam_data_nascimento);
+        final Calendar myCalendar3 = Calendar.getInstance();
+        final DatePickerDialog.OnDateSetListener date3 = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                myCalendar3.set(Calendar.YEAR, year);
+                myCalendar3.set(Calendar.MONTH, monthOfYear);
+                myCalendar3.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                String data = dayOfMonth + "/" + monthOfYear + "/" + year;
+                comp_fam_data_nascimento.setText(data);
+            }
+
+        };
+        comp_fam_data_nascimento.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                try {
+                    new DatePickerDialog(getWindow().getContext(), date3, myCalendar3
+                            .get(Calendar.YEAR), myCalendar3.get(Calendar.MONTH),
+                            myCalendar3.get(Calendar.DAY_OF_MONTH)).show();
+                } catch (Throwable ex) {
+                }
+            }
+        });
+
         comp_fam_escolaridade = fragmentCompFam.getView().findViewById(R.id.form_comp_fam_escolaridade);
         comp_fam_profissao = fragmentCompFam.getView().findViewById(R.id.form_comp_fam_profissao);
         comp_fam_renda_formal = fragmentCompFam.getView().findViewById(R.id.form_comp_fam_renda_formal);

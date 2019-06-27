@@ -41,6 +41,11 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nome" />
+
                 <EditText
                     android:id="@+id/form_conjuje_nome"
                     android:layout_width="match_parent"
@@ -54,6 +59,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="CPF" />
 
                 <EditText
                     android:id="@+id/form_conjuje_cpf"
@@ -69,6 +79,11 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="RG" />
+
                 <EditText
                     android:id="@+id/form_conjuje_rg"
                     android:layout_width="match_parent"
@@ -83,12 +98,17 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nome da mãe" />
+
                 <EditText
                     android:id="@+id/form_conjuje_nome_mae"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Nome da Mãe"
+                    android:hint="Nome da mãe"
                     android:inputType="textPersonName" />
             </LinearLayout>
 
@@ -97,12 +117,17 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nome do pai" />
+
                 <EditText
                     android:id="@+id/form_conjuje_nome_pai"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Nome do Pai"
+                    android:hint="Nome do pai"
                     android:inputType="textPersonName" />
             </LinearLayout>
 
@@ -153,13 +178,19 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Data de nascimento" />
+
                 <EditText
                     android:id="@+id/form_conjuje_data_nascimento"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Data de Nascimento"
-                    android:inputType="textPersonName" />
+                    android:focusable="false"
+                    android:hint="Data de nascimento"
+                    android:inputType="none" />
             </LinearLayout>
 
             <LinearLayout
@@ -189,6 +220,11 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="N. Cad. Único" />
+
                 <EditText
                     android:id="@+id/form_conjuje_numero_cadunico"
                     android:layout_width="match_parent"
@@ -202,6 +238,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="NIS" />
 
                 <EditText
                     android:id="@+id/form_conjuje_nis"
@@ -241,7 +282,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Estado Civil" />
+                    android:text="Estado civil" />
 
                 <Spinner
                     android:id="@+id/form_conjuje_estado_civil"
@@ -280,6 +321,11 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Profissão" />
+
                 <EditText
                     android:id="@+id/form_conjuje_profissao"
                     android:layout_width="match_parent"
@@ -294,13 +340,18 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Renda formal" />
+
                 <EditText
                     android:id="@+id/form_conjuje_renda_formal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Renda Formal"
-                    android:inputType="textPersonName" />
+                    android:hint="Renda formal"
+                    android:inputType="numberDecimal" />
             </LinearLayout>
 
             <LinearLayout
@@ -311,7 +362,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Situação Renda Formal" />
+                    android:text="Situação renda formal" />
 
                 <Spinner
                     android:id="@+id/form_conjuje_situacao_renda_formal"
@@ -329,12 +380,17 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Renda informal" />
+
                 <EditText
                     android:id="@+id/form_conjuje_renda_informal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Renda Informal"
+                    android:hint="Renda informal"
                     android:inputType="textPersonName" />
             </LinearLayout>
 
@@ -346,7 +402,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Situação Renda Informal" />
+                    android:text="Situação renda informal" />
 
                 <Spinner
                     android:id="@+id/form_conjuje_situacao_renda_informal"
@@ -367,7 +423,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Ramo de Atividade" />
+                    android:text="Ramo de atividade" />
 
                 <Spinner
                     android:id="@+id/form_conjuje_ramo_atividade"
@@ -385,6 +441,11 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Empregador" />
+
                 <EditText
                     android:id="@+id/form_conjuje_empregador"
                     android:layout_width="match_parent"
@@ -399,13 +460,18 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tempo no emprego atual (meses)" />
+
                 <EditText
                     android:id="@+id/form_conjuje_tempo_servico_emprego_atual"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Tempo no Emprego Atual (meses)"
-                    android:inputType="textPersonName" />
+                    android:hint="Tempo no emprego atual (meses)"
+                    android:inputType="number" />
             </LinearLayout>
 
             <LinearLayout
@@ -413,13 +479,18 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Valor do FGTS" />
+
                 <EditText
                     android:id="@+id/form_conjuje_valor_fgts"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Valor do FGTS"
-                    android:inputType="textPersonName" />
+                    android:inputType="numberDecimal" />
             </LinearLayout>
 
             <LinearLayout
@@ -525,6 +596,11 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Foto pessoa" />
+
                 <EditText
                     android:id="@+id/form_conjuje_foto_pessoa"
                     android:layout_width="match_parent"
@@ -538,6 +614,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Foto do CPF" />
 
                 <EditText
                     android:id="@+id/form_conjuje_foto_cpf"
@@ -553,6 +634,11 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Foto do RG" />
+
                 <EditText
                     android:id="@+id/form_conjuje_foto_rg"
                     android:layout_width="match_parent"
@@ -566,6 +652,30 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Foto do verso RG" />
+
+                <EditText
+                    android:id="@+id/form_conjuje_foto_rg_verso"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="RG"
+                    android:inputType="textPersonName" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Foto da CNH" />
 
                 <EditText
                     android:id="@+id/form_conjuje_foto_cnh"
@@ -581,12 +691,17 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Foto da carteira de trabalho" />
+
                 <EditText
                     android:id="@+id/form_conjuje_foto_carteira_trabalho"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Carteira de Trabalho"
+                    android:hint="Carteira de trabalho"
                     android:inputType="textPersonName" />
             </LinearLayout>
 
@@ -594,13 +709,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Foto do documento de posse" />
 
                 <EditText
                     android:id="@+id/form_conjuje_foto_documento_casa"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Documento Posse"
+                    android:hint="Documento posse"
                     android:inputType="textPersonName" />
             </LinearLayout>
 
@@ -608,6 +728,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Foto do comprovante de renda" />
 
                 <EditText
                     android:id="@+id/form_conjuje_foto_comprovante_renda"
@@ -622,6 +747,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Foto do comprovante de estado civil" />
 
                 <EditText
                     android:id="@+id/form_conjuje_foto_comprovante_estado_civil"
