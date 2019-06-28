@@ -94,6 +94,15 @@ public class DatabaseHelper<E> extends SQLiteOpenHelper {
                         "  proprietario_imovel_precario BOOLEAN, \n" +
                         "  convenio INTEGER, \n" +
                         "  tipo INTEGER, \n" +
+                        "  foto_pessoa VARCHAR(200), \n" +
+                        "  foto_cpf VARCHAR(200), \n" +
+                        "  foto_rg VARCHAR(200), \n" +
+                        "  foto_rg_verso VARCHAR(200), \n" +
+                        "  foto_cnh VARCHAR(200), \n" +
+                        "  foto_carteira_trabalho VARCHAR(200), \n" +
+                        "  foto_documento_casa VARCHAR(200), \n" +
+                        "  foto_comprovante_renda VARCHAR(200), \n" +
+                        "  foto_comprovante_estado_civil VARCHAR(200), \n" +
                         "  id_pessoa INTEGER REFERENCES pessoa(id), \n" +
                         "  id_usuario INTEGER REFERENCES usuario(id));"
         );

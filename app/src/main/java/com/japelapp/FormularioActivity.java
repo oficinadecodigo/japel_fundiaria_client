@@ -3,6 +3,7 @@ package com.japelapp;
 import android.Manifest;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -109,6 +110,7 @@ public class FormularioActivity extends AppCompatActivity {
     EditText beneficiario_foto_pessoa;
     EditText beneficiario_foto_cpf;
     EditText beneficiario_foto_rg;
+    EditText beneficiario_foto_rg_verso;
     EditText beneficiario_foto_cnh;
     EditText beneficiario_foto_carteira_trabalho;
     EditText beneficiario_foto_documento_casa;
@@ -150,6 +152,7 @@ public class FormularioActivity extends AppCompatActivity {
     EditText conjuje_foto_pessoa;
     EditText conjuje_foto_cpf;
     EditText conjuje_foto_rg;
+    EditText conjuje_foto_rg_verso;
     EditText conjuje_foto_cnh;
     EditText conjuje_foto_carteira_trabalho;
     EditText conjuje_foto_documento_casa;
@@ -244,6 +247,24 @@ public class FormularioActivity extends AppCompatActivity {
     Pessoa compFamiliar;
     ArrayList<Pessoa> familiares = new ArrayList<>();
 
+    EditText editTextRetornoImagem;
+
+    private void abrirImagemRetornarCampo(EditText editText) {
+        editTextRetornoImagem = editText;
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Selecione a imagem"), 1);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK) {
+            if (requestCode == 1) {
+                editTextRetornoImagem.setText(data.getData().getPath());
+            }
+        }
+    }
 
     private void preencherTela() {
         preencherTelaBeneficiario(beneficiario);
@@ -375,6 +396,7 @@ public class FormularioActivity extends AppCompatActivity {
         beneficiario_foto_pessoa = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_foto_pessoa);
         beneficiario_foto_cpf = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_foto_cpf);
         beneficiario_foto_rg = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_foto_rg);
+        beneficiario_foto_rg_verso = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_foto_rg_verso);
         beneficiario_foto_cnh = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_foto_cnh);
         beneficiario_foto_carteira_trabalho = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_foto_carteira_trabalho);
         beneficiario_foto_documento_casa = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_foto_documento_casa);
@@ -442,6 +464,7 @@ public class FormularioActivity extends AppCompatActivity {
         conjuje_foto_pessoa = fragmentConjuje.getView().findViewById(R.id.form_conjuje_foto_pessoa);
         conjuje_foto_cpf = fragmentConjuje.getView().findViewById(R.id.form_conjuje_foto_cpf);
         conjuje_foto_rg = fragmentConjuje.getView().findViewById(R.id.form_conjuje_foto_rg);
+        conjuje_foto_rg_verso = fragmentConjuje.getView().findViewById(R.id.form_conjuje_foto_rg_verso);
         conjuje_foto_cnh = fragmentConjuje.getView().findViewById(R.id.form_conjuje_foto_cnh);
         conjuje_foto_carteira_trabalho = fragmentConjuje.getView().findViewById(R.id.form_conjuje_foto_carteira_trabalho);
         conjuje_foto_documento_casa = fragmentConjuje.getView().findViewById(R.id.form_conjuje_foto_documento_casa);
@@ -772,16 +795,46 @@ public class FormularioActivity extends AppCompatActivity {
             beneficiario_convenio.setChecked(registro.isConvenio());
         } catch (Throwable ex) {
         }
-        /*
-        beneficiario_foto_pessoa.setText(registro.getfoto_pessoa());
-        beneficiario_foto_cpf.setText(registro.getfoto_cpf());
-        beneficiario_foto_rg.setText(registro.getfoto_rg());
-        beneficiario_foto_cnh.setText(registro.getfoto_cnh());
-        beneficiario_foto_carteira_trabalho.setText(registro.getfoto_carteira_trabalho());
-        beneficiario_foto_documento_casa.setText(registro.getfoto_documento_casa());
-        beneficiario_foto_comprovante_renda.setText(registro.getfoto_comprovante_renda());
-        beneficiario_foto_comprovante_estado_civil.setText(registro.getfoto_comprovante_estado_civil());
-        */
+        try {
+            beneficiario_foto_pessoa.setText(registro.getFoto_pessoa());
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_foto_cpf.setText(registro.getFoto_cpf());
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_foto_rg.setText(registro.getFoto_rg());
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_foto_rg_verso.setText(registro.getFoto_rg_verso());
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_foto_cnh.setText(registro.getFoto_cnh());
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_foto_carteira_trabalho.setText(registro.getFoto_carteira_trabalho());
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_foto_documento_casa.setText(registro.getFoto_documento_casa());
+        } catch (
+                Throwable ex) {
+        }
+        try {
+            beneficiario_foto_comprovante_renda.setText(registro.getFoto_comprovante_renda());
+        } catch (
+                Throwable ex) {
+        }
+        try {
+            beneficiario_foto_comprovante_estado_civil.setText(registro.getFoto_comprovante_estado_civil());
+        } catch (
+                Throwable ex) {
+        }
+
     }
 
     private void preencherEntidadeBeneficiario(Pessoa registro) {
@@ -862,15 +915,15 @@ public class FormularioActivity extends AppCompatActivity {
         registro.setProprietario_imovel_precario(beneficiario_proprietario_imovel_precario.isChecked());
         registro.setConvenio(beneficiario_convenio.isChecked());
 
-        //registro.setId_usuario(beneficiario_id_usuario.getText().toString());
-        //registro.setFoto_pessoa(beneficiario_foto_pessoa.getText().toString());
-        //registro.setFoto_cpf(beneficiario_foto_cpf.getText().toString());
-        //registro.setFoto_rg(beneficiario_foto_rg.getText().toString());
-        //registro.setFoto_cnh(beneficiario_foto_cnh.getText().toString());
-        //registro.setFoto_carteira_trabalho(beneficiario_foto_carteira_trabalho.getText().toString());
-        //registro.setFoto_documento_casa(beneficiario_foto_documento_casa.getText().toString());
-        //registro.setFoto_comprovante_renda(beneficiario_foto_comprovante_renda.getText().toString());
-        //registro.setFoto_comprovante_estado_civil(beneficiario_foto_comprovante_estado_civil.getText().toString());
+        registro.setFoto_pessoa(beneficiario_foto_pessoa.getText().toString());
+        registro.setFoto_cpf(beneficiario_foto_cpf.getText().toString());
+        registro.setFoto_rg(beneficiario_foto_rg.getText().toString());
+        registro.setFoto_rg_verso(beneficiario_foto_rg_verso.getText().toString());
+        registro.setFoto_cnh(beneficiario_foto_cnh.getText().toString());
+        registro.setFoto_carteira_trabalho(beneficiario_foto_carteira_trabalho.getText().toString());
+        registro.setFoto_documento_casa(beneficiario_foto_documento_casa.getText().toString());
+        registro.setFoto_comprovante_renda(beneficiario_foto_comprovante_renda.getText().toString());
+        registro.setFoto_comprovante_estado_civil(beneficiario_foto_comprovante_estado_civil.getText().toString());
 
     }
 
@@ -996,16 +1049,43 @@ public class FormularioActivity extends AppCompatActivity {
             conjuje_deficiencia_visual.setChecked(registro.isDeficiencia_visual());
         } catch (Throwable ex) {
         }
-        /*
-        conjuje_foto_pessoa.setText(registro.getfoto_pessoa());
-        conjuje_foto_cpf.setText(registro.getfoto_cpf());
-        conjuje_foto_rg.setText(registro.getfoto_rg());
-        conjuje_foto_cnh.setText(registro.getfoto_cnh());
-        conjuje_foto_carteira_trabalho.setText(registro.getfoto_carteira_trabalho());
-        conjuje_foto_documento_casa.setText(registro.getfoto_documento_casa());
-        conjuje_foto_comprovante_renda.setText(registro.getfoto_comprovante_renda());
-        conjuje_foto_comprovante_estado_civil.setText(registro.getfoto_comprovante_estado_civil());
-*/
+        try {
+            conjuje_foto_pessoa.setText(registro.getFoto_pessoa());
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_foto_cpf.setText(registro.getFoto_cpf());
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_foto_rg.setText(registro.getFoto_rg());
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_foto_rg_verso.setText(registro.getFoto_rg_verso());
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_foto_cnh.setText(registro.getFoto_cnh());
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_foto_carteira_trabalho.setText(registro.getFoto_carteira_trabalho());
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_foto_documento_casa.setText(registro.getFoto_documento_casa());
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_foto_comprovante_renda.setText(registro.getFoto_comprovante_renda());
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_foto_comprovante_estado_civil.setText(registro.getFoto_comprovante_estado_civil());
+        } catch (Throwable ex) {
+        }
+
     }
 
     private void preencherEntidadeConjuje(Pessoa registro) {
@@ -1055,16 +1135,15 @@ public class FormularioActivity extends AppCompatActivity {
         registro.setDeficiencia_intelectual(conjuje_deficiencia_intelectual.isSelected());
         registro.setDeficiencia_nanismo(conjuje_deficiencia_nanismo.isSelected());
         registro.setDeficiencia_visual(conjuje_deficiencia_visual.isSelected());
-        /*
-        registro.setfoto_pessoa(conjuje_foto_pessoa.getText().toString());
-        registro.setfoto_cpf(conjuje_foto_cpf.getText().toString());
-        registro.setfoto_rg(conjuje_foto_rg.getText().toString());
-        registro.setfoto_cnh(conjuje_foto_cnh.getText().toString());
-        registro.setfoto_carteira_trabalho(conjuje_foto_carteira_trabalho.getText().toString());
-        registro.setfoto_documento_casa(conjuje_foto_documento_casa.getText().toString());
-        registro.setfoto_comprovante_renda(conjuje_foto_comprovante_renda.getText().toString());
-        registro.setfoto_comprovante_estado_civil(conjuje_foto_comprovante_estado_civil.getText().toString());
-        */
+        registro.setFoto_pessoa(conjuje_foto_pessoa.getText().toString());
+        registro.setFoto_cpf(conjuje_foto_cpf.getText().toString());
+        registro.setFoto_rg(conjuje_foto_rg.getText().toString());
+        registro.setFoto_rg_verso(conjuje_foto_rg_verso.getText().toString());
+        registro.setFoto_cnh(conjuje_foto_cnh.getText().toString());
+        registro.setFoto_carteira_trabalho(conjuje_foto_carteira_trabalho.getText().toString());
+        registro.setFoto_documento_casa(conjuje_foto_documento_casa.getText().toString());
+        registro.setFoto_comprovante_renda(conjuje_foto_comprovante_renda.getText().toString());
+        registro.setFoto_comprovante_estado_civil(conjuje_foto_comprovante_estado_civil.getText().toString());
     }
 
     private void limparTelaCompFam() {
@@ -1772,5 +1851,6 @@ public class FormularioActivity extends AppCompatActivity {
 
         }
     }
+
 
 }

@@ -58,6 +58,16 @@ public class Pessoa {
     private int id_pessoa;
     private int id_usuario;
 
+    private String foto_pessoa;
+    private String foto_cpf;
+    private String foto_rg;
+    private String foto_rg_verso;
+    private String foto_cnh;
+    private String foto_carteira_trabalho;
+    private String foto_documento_casa;
+    private String foto_comprovante_renda;
+    private String foto_comprovante_estado_civil;
+
     public int getId() {
         return id;
     }
@@ -493,5 +503,77 @@ public class Pessoa {
     @Override
     public String toString() {
         return nome;
+    }
+
+    public String getFoto_pessoa() {
+        return foto_pessoa;
+    }
+
+    public void setFoto_pessoa(String foto_pessoa) {
+        this.foto_pessoa = foto_pessoa;
+    }
+
+    public String getFoto_cpf() {
+        return foto_cpf;
+    }
+
+    public void setFoto_cpf(String foto_cpf) {
+        this.foto_cpf = foto_cpf;
+    }
+
+    public String getFoto_rg() {
+        return foto_rg;
+    }
+
+    public void setFoto_rg(String foto_rg) {
+        this.foto_rg = foto_rg;
+    }
+
+    public String getFoto_rg_verso() {
+        return foto_rg_verso;
+    }
+
+    public void setFoto_rg_verso(String foto_rg_verso) {
+        this.foto_rg_verso = foto_rg_verso;
+    }
+
+    public String getFoto_cnh() {
+        return foto_cnh;
+    }
+
+    public void setFoto_cnh(String foto_cnh) {
+        this.foto_cnh = foto_cnh;
+    }
+
+    public String getFoto_carteira_trabalho() {
+        return foto_carteira_trabalho;
+    }
+
+    public void setFoto_carteira_trabalho(String foto_carteira_trabalho) {
+        this.foto_carteira_trabalho = foto_carteira_trabalho;
+    }
+
+    public String getFoto_documento_casa() {
+        return foto_documento_casa;
+    }
+
+    public void setFoto_documento_casa(String foto_documento_casa) {
+        this.foto_documento_casa = foto_documento_casa;
+    }
+
+    public String getFoto_comprovante_renda() {
+        return foto_comprovante_renda;
+    }
+
+    public void setFoto_comprovante_renda(String foto_comprovante_renda) {
+        this.foto_comprovante_renda = foto_comprovante_renda;
+    }
+
+    public String getFoto_comprovante_estado_civil() {
+        return foto_comprovante_estado_civil;
+    }
+
+    public void setFoto_comprovante_estado_civil(String foto_comprovante_estado_civil) {
+        this.foto_comprovante_estado_civil = foto_comprovante_estado_civil;
     }
 }

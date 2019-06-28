@@ -63,7 +63,7 @@ public class PessoaDao {
     public Pessoa getConjuje(int id) {
         Pessoa registry = null;
         SQLiteDatabase writableDatabase = this.databaseHelper.getWritableDatabase();
-        Cursor cursor = writableDatabase.rawQuery("select * from pessoa where parentesco = -1 and id_pessoa = " + id , new String[]{});
+        Cursor cursor = writableDatabase.rawQuery("select * from pessoa where parentesco = -1 and id_pessoa = " + id, new String[]{});
         if (cursor.moveToNext()) {
             registry = fill(cursor);
         }
@@ -149,6 +149,17 @@ public class PessoaDao {
         contentValues.put("proprietario_imovel_precario", registry.isProprietario_imovel_precario() ? 1 : 0);
         contentValues.put("convenio", registry.isConvenio() ? 1 : 0);
         contentValues.put("tipo", registry.getTipo());
+
+        contentValues.put("foto_pessoa", registry.getFoto_pessoa());
+        contentValues.put("foto_cpf", registry.getFoto_cpf());
+        contentValues.put("foto_rg", registry.getFoto_rg());
+        contentValues.put("foto_rg_verso", registry.getFoto_rg_verso());
+        contentValues.put("foto_cnh", registry.getFoto_cnh());
+        contentValues.put("foto_carteira_trabalho", registry.getFoto_carteira_trabalho());
+        contentValues.put("foto_documento_casa", registry.getFoto_documento_casa());
+        contentValues.put("foto_comprovante_renda", registry.getFoto_comprovante_renda());
+        contentValues.put("foto_comprovante_estado_civil", registry.getFoto_comprovante_estado_civil());
+
         contentValues.put("id_pessoa", registry.getId_pessoa());
         contentValues.put("id_usuario", registry.getId_usuario());
         return contentValues;
@@ -212,6 +223,17 @@ public class PessoaDao {
         registry.setProprietario_imovel_precario(cursor.getInt(cursor.getColumnIndex("proprietario_imovel_precario")) == 1);
         registry.setConvenio(cursor.getInt(cursor.getColumnIndex("convenio")) == 1);
         registry.setTipo(cursor.getInt(cursor.getColumnIndex("tipo")));
+
+        registry.setFoto_pessoa(cursor.getString(cursor.getColumnIndex("foto_pessoa")));
+        registry.setFoto_cpf(cursor.getString(cursor.getColumnIndex("foto_cpf")));
+        registry.setFoto_rg(cursor.getString(cursor.getColumnIndex("foto_rg")));
+        registry.setFoto_rg_verso(cursor.getString(cursor.getColumnIndex("foto_rg_verso")));
+        registry.setFoto_cnh(cursor.getString(cursor.getColumnIndex("foto_cnh")));
+        registry.setFoto_carteira_trabalho(cursor.getString(cursor.getColumnIndex("foto_carteira_trabalho")));
+        registry.setFoto_documento_casa(cursor.getString(cursor.getColumnIndex("foto_documento_casa")));
+        registry.setFoto_comprovante_renda(cursor.getString(cursor.getColumnIndex("foto_comprovante_renda")));
+        registry.setFoto_comprovante_estado_civil(cursor.getString(cursor.getColumnIndex("foto_comprovante_estado_civil")));
+
         registry.setId_pessoa(cursor.getInt(cursor.getColumnIndex("id_pessoa")));
         registry.setId_usuario(cursor.getInt(cursor.getColumnIndex("id_usuario")));
         return registry;
