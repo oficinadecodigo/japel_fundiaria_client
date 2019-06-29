@@ -51,6 +51,12 @@ public class Moradia {
     private String observacao;
     private int id_pessoa;
     private int id_usuario;
+    private String foto_comprovante_visita;
+    private String foto_fachada;
+    private String foto_comprovante_agua;
+    private String foto_comprovante_luz;
+    private String foto_comprovante_iptu;
+    private String foto_documento_cartografico;
 
     public int getId() {
         return id;
@@ -442,5 +448,53 @@ public class Moradia {
 
     public void setId_usuario(int id_usuario) {
         this.id_usuario = id_usuario;
+    }
+
+    public String getFoto_comprovante_visita() {
+        return foto_comprovante_visita;
+    }
+
+    public void setFoto_comprovante_visita(String foto_comprovante_visita) {
+        this.foto_comprovante_visita = foto_comprovante_visita;
+    }
+
+    public String getFoto_fachada() {
+        return foto_fachada;
+    }
+
+    public void setFoto_fachada(String foto_fachada) {
+        this.foto_fachada = foto_fachada;
+    }
+
+    public String getFoto_comprovante_agua() {
+        return foto_comprovante_agua;
+    }
+
+    public void setFoto_comprovante_agua(String foto_comprovante_agua) {
+        this.foto_comprovante_agua = foto_comprovante_agua;
+    }
+
+    public String getFoto_comprovante_luz() {
+        return foto_comprovante_luz;
+    }
+
+    public void setFoto_comprovante_luz(String foto_comprovante_luz) {
+        this.foto_comprovante_luz = foto_comprovante_luz;
+    }
+
+    public String getFoto_documento_cartografico() {
+        return foto_documento_cartografico;
+    }
+
+    public void setFoto_documento_cartografico(String foto_documento_cartografico) {
+        this.foto_documento_cartografico = foto_documento_cartografico;
+    }
+
+    public String getFoto_comprovante_iptu() {
+        return foto_comprovante_iptu;
+    }
+
+    public void setFoto_comprovante_iptu(String foto_comprovante_iptu) {
+        this.foto_comprovante_iptu = foto_comprovante_iptu;
     }
 }

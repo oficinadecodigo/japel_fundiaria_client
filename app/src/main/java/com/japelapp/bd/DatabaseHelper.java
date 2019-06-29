@@ -156,6 +156,12 @@ public class DatabaseHelper<E> extends SQLiteOpenHelper {
                         "  desabrigado BOOLEAN, \n" +
                         "  enviado BOOLEAN, \n" +
                         "  observacao VARCHAR(500), \n" +
+                        "  foto_comprovante_visita VARCHAR(191), \n" +
+                        "  foto_fachada VARCHAR(191), \n" +
+                        "  foto_comprovante_agua VARCHAR(191), \n" +
+                        "  foto_comprovante_luz VARCHAR(191), \n" +
+                        "  foto_comprovante_iptu VARCHAR(191), \n" +
+                        "  foto_documento_cartografico VARCHAR(191), \n" +
                         "  id_pessoa INTEGER REFERENCES pessoa(id), \n" +
                         "  id_usuario INTEGER REFERENCES usuario(id));"
         );
