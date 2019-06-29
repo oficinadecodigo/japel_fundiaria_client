@@ -6,10 +6,12 @@
     <string name="formulario_tab_text_4">Moradia</string>
     <string name="formulario_tab_text_5">Fotos</string>
     <string-array name="sexo_array">
+        <item></item>
         <item>1-Masculino</item>
         <item>2-Feminino</item>
     </string-array>
     <string-array name="racas_array">
+        <item></item>
         <item>1-Branca</item>
         <item>2-Preta</item>
         <item>3-Amarela</item>
@@ -17,10 +19,12 @@
         <item>5-Indígena</item>
     </string-array>
     <string-array name="nacionalidade_array">
+        <item></item>
         <item>1-Brasileira</item>
         <item>2-Outra</item>
     </string-array>
     <string-array name="escolaridade_array">
+        <item></item>
         <item>1-SEM ESCOLARIDADE</item>
         <item>2-ENSINO FUNDAMENTAL (1º GRAU) INTERROMPIDO</item>
         <item>3-ENSINO FUNDAMENTAL (1º GRAU) CURSANDO</item>
@@ -39,20 +43,24 @@
         <item>16-EDUCAÇÃO INFANTIL</item>
     </string-array>
     <string-array name="estado_civil_array">
+        <item></item>
         <item>1-CASADO</item>
         <item>2-DIVORCIADO</item>
         <item>3-SOLTEIRO</item>
         <item>4-VIÚVO</item>
     </string-array>
     <string-array name="situacao_conjugal_array">
+        <item></item>
         <item>1-SEPARADO</item>
         <item>2-UNIÃO ESTÁVEL OU AMASIADO</item>
     </string-array>
     <string-array name="situacao_renda_array">
+        <item></item>
         <item>1-FIXA</item>
         <item>2-VARIÁVEL</item>
     </string-array>
     <string-array name="ramo_atividade_array">
+        <item></item>
         <item>1-INDÚSTRIA</item>
         <item>2-COMÉRCIO</item>
         <item>3-SERVIÇOS</item>
@@ -62,6 +70,7 @@
         <item>7-PENSIONISTA</item>
     </string-array>
     <string-array name="parentesco_array">
+        <item></item>
         <item>1-BISAVÓ(Ô)</item>
         <item>3-AVÓ(Ô)</item>
         <item>5-MÃE/PAI</item>
@@ -77,13 +86,16 @@
         <item>25-OUTROS</item>
     </string-array>
     <string-array name="poligonal_array">
+        <item></item>
         <item>1-UNICO</item>
     </string-array>
     <string-array name="procedencia_array">
+        <item></item>
         <item>1-RURAL</item>
         <item>2-URBANA</item>
     </string-array>
     <string-array name="situacao_propriedade_array">
+        <item></item>
         <item>1-PRÓPRIA COM TITULARIDADE</item>
         <item>2-PRÓPRIA SEM TITULARIDADE</item>
         <item>3-ALUGADA</item>
@@ -95,6 +107,7 @@
         <item>12-ABRIGADA</item>
     </string-array>
     <string-array name="tipo_construcao_array">
+        <item></item>
         <item>1-ALVENARIA</item>
         <item>2-MADEIRA</item>
         <item>3-MISTA</item>

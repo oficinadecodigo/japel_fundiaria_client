@@ -57,6 +57,7 @@ public class Moradia {
     private String foto_comprovante_luz;
     private String foto_comprovante_iptu;
     private String foto_documento_cartografico;
+    private String id_site;
 
     public int getId() {
         return id;
@@ -496,5 +497,13 @@ public class Moradia {
 
     public void setFoto_comprovante_iptu(String foto_comprovante_iptu) {
         this.foto_comprovante_iptu = foto_comprovante_iptu;
+    }
+
+    public String getId_site() {
+        return id_site;
+    }
+
+    public void setId_site(String id_site) {
+        this.id_site = id_site;
     }
 }

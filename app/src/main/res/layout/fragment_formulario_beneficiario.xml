@@ -908,8 +908,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:focusable="false"
                     android:hint="Pessoa"
-                    android:inputType="textPersonName" />
+                    android:inputType="none" />
             </LinearLayout>
 
             <LinearLayout
@@ -927,8 +928,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:focusable="false"
                     android:hint="CPF"
-                    android:inputType="textPersonName" />
+                    android:inputType="none" />
             </LinearLayout>
 
             <LinearLayout
@@ -946,8 +948,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:focusable="false"
                     android:hint="RG"
-                    android:inputType="textPersonName" />
+                    android:inputType="none" />
             </LinearLayout>
 
             <LinearLayout
@@ -965,8 +968,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:focusable="false"
                     android:hint="RG"
-                    android:inputType="textPersonName" />
+                    android:inputType="none" />
             </LinearLayout>
 
             <LinearLayout
@@ -984,8 +988,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:focusable="false"
                     android:hint="CNH"
-                    android:inputType="textPersonName" />
+                    android:inputType="none" />
             </LinearLayout>
 
             <LinearLayout
@@ -1003,8 +1008,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:focusable="false"
                     android:hint="Carteira de Trabalho"
-                    android:inputType="textPersonName" />
+                    android:inputType="none" />
             </LinearLayout>
 
             <LinearLayout
@@ -1022,8 +1028,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:focusable="false"
                     android:hint="Documento Posse"
-                    android:inputType="textPersonName" />
+                    android:inputType="none" />
             </LinearLayout>
 
             <LinearLayout
@@ -1041,8 +1048,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:focusable="false"
                     android:hint="Comprovante de Renda"
-                    android:inputType="textPersonName" />
+                    android:inputType="none" />
             </LinearLayout>
 
             <LinearLayout
@@ -1060,8 +1068,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:focusable="false"
                     android:hint="Comprovante do Estado Civil"
-                    android:inputType="textPersonName" />
+                    android:inputType="none" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

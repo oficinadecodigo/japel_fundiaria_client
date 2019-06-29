@@ -894,8 +894,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:focusable="false"
                     android:hint="Foto do comprovante de visita"
-                    android:inputType="textPersonName" />
+                    android:inputType="none" />
             </LinearLayout>
 
             <LinearLayout
@@ -913,8 +914,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:focusable="false"
                     android:hint="Fota da fachada"
-                    android:inputType="textPersonName" />
+                    android:inputType="none" />
             </LinearLayout>
 
             <LinearLayout
@@ -932,8 +934,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:focusable="false"
                     android:hint="Foto do comprovante de água"
-                    android:inputType="textPersonName" />
+                    android:inputType="none" />
             </LinearLayout>
 
             <LinearLayout
@@ -951,8 +954,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:focusable="false"
                     android:hint="Foto do comprovante de Luz"
-                    android:inputType="textPersonName" />
+                    android:inputType="none" />
             </LinearLayout>
 
             <LinearLayout
@@ -970,8 +974,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:focusable="false"
                     android:hint="Foto do comprovante de IPTU"
-                    android:inputType="textPersonName" />
+                    android:inputType="none" />
             </LinearLayout>
 
             <LinearLayout
@@ -989,8 +994,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:focusable="false"
                     android:hint="Foto do documento cartográfico"
-                    android:inputType="textPersonName" />
+                    android:inputType="none" />
             </LinearLayout>
 
         </LinearLayout>

@@ -394,14 +394,68 @@ public class FormularioActivity extends AppCompatActivity {
         beneficiario_proprietario_imovel_precario = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_proprietario_imovel_precario);
         beneficiario_convenio = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_convenio);
         beneficiario_foto_pessoa = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_foto_pessoa);
+        beneficiario_foto_pessoa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirImagemRetornarCampo(beneficiario_foto_pessoa);
+            }
+        });
         beneficiario_foto_cpf = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_foto_cpf);
+        beneficiario_foto_cpf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirImagemRetornarCampo(beneficiario_foto_cpf);
+            }
+        });
         beneficiario_foto_rg = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_foto_rg);
+        beneficiario_foto_rg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirImagemRetornarCampo(beneficiario_foto_rg);
+            }
+        });
         beneficiario_foto_rg_verso = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_foto_rg_verso);
+        beneficiario_foto_rg_verso.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirImagemRetornarCampo(beneficiario_foto_rg_verso);
+            }
+        });
         beneficiario_foto_cnh = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_foto_cnh);
+        beneficiario_foto_cnh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirImagemRetornarCampo(beneficiario_foto_cnh);
+            }
+        });
         beneficiario_foto_carteira_trabalho = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_foto_carteira_trabalho);
+        beneficiario_foto_carteira_trabalho.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirImagemRetornarCampo(beneficiario_foto_carteira_trabalho);
+            }
+        });
         beneficiario_foto_documento_casa = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_foto_documento_casa);
+        beneficiario_foto_documento_casa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirImagemRetornarCampo(beneficiario_foto_documento_casa);
+            }
+        });
         beneficiario_foto_comprovante_renda = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_foto_comprovante_renda);
+        beneficiario_foto_comprovante_renda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirImagemRetornarCampo(beneficiario_foto_comprovante_renda);
+            }
+        });
         beneficiario_foto_comprovante_estado_civil = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_foto_comprovante_estado_civil);
+        beneficiario_foto_comprovante_estado_civil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirImagemRetornarCampo(beneficiario_foto_comprovante_estado_civil);
+            }
+        });
 
         //Iniciaizando os componentes do fragment conjuje
 
@@ -462,14 +516,68 @@ public class FormularioActivity extends AppCompatActivity {
         conjuje_deficiencia_nanismo = fragmentConjuje.getView().findViewById(R.id.form_conjuje_deficiencia_nanismo);
         conjuje_deficiencia_visual = fragmentConjuje.getView().findViewById(R.id.form_conjuje_deficiencia_visual);
         conjuje_foto_pessoa = fragmentConjuje.getView().findViewById(R.id.form_conjuje_foto_pessoa);
+        conjuje_foto_pessoa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirImagemRetornarCampo(conjuje_foto_pessoa);
+            }
+        });
         conjuje_foto_cpf = fragmentConjuje.getView().findViewById(R.id.form_conjuje_foto_cpf);
+        conjuje_foto_cpf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirImagemRetornarCampo(conjuje_foto_cpf);
+            }
+        });
         conjuje_foto_rg = fragmentConjuje.getView().findViewById(R.id.form_conjuje_foto_rg);
+        conjuje_foto_rg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirImagemRetornarCampo(conjuje_foto_rg);
+            }
+        });
         conjuje_foto_rg_verso = fragmentConjuje.getView().findViewById(R.id.form_conjuje_foto_rg_verso);
+        conjuje_foto_rg_verso.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirImagemRetornarCampo(conjuje_foto_rg_verso);
+            }
+        });
         conjuje_foto_cnh = fragmentConjuje.getView().findViewById(R.id.form_conjuje_foto_cnh);
+        conjuje_foto_cnh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirImagemRetornarCampo(conjuje_foto_cnh);
+            }
+        });
         conjuje_foto_carteira_trabalho = fragmentConjuje.getView().findViewById(R.id.form_conjuje_foto_carteira_trabalho);
+        conjuje_foto_carteira_trabalho.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirImagemRetornarCampo(conjuje_foto_carteira_trabalho);
+            }
+        });
         conjuje_foto_documento_casa = fragmentConjuje.getView().findViewById(R.id.form_conjuje_foto_documento_casa);
+        conjuje_foto_documento_casa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirImagemRetornarCampo(conjuje_foto_documento_casa);
+            }
+        });
         conjuje_foto_comprovante_renda = fragmentConjuje.getView().findViewById(R.id.form_conjuje_foto_comprovante_renda);
+        conjuje_foto_comprovante_renda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirImagemRetornarCampo(conjuje_foto_comprovante_renda);
+            }
+        });
         conjuje_foto_comprovante_estado_civil = fragmentConjuje.getView().findViewById(R.id.form_conjuje_foto_comprovante_estado_civil);
+        conjuje_foto_comprovante_estado_civil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirImagemRetornarCampo(conjuje_foto_comprovante_estado_civil);
+            }
+        });
 
         //Inicializando componentes dos componentes familiares
 
@@ -592,12 +700,47 @@ public class FormularioActivity extends AppCompatActivity {
         moradia_desabrigado = fragmentMoradia.getView().findViewById(R.id.form_moradia_desabrigado);
         moradia_observacao = fragmentMoradia.getView().findViewById(R.id.form_moradia_observacao);
         moradia_foto_comprovante_visita = fragmentMoradia.getView().findViewById(R.id.form_moradia_foto_comprovante_visita);
+        moradia_foto_comprovante_visita.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirImagemRetornarCampo(moradia_foto_comprovante_visita);
+            }
+        });
         moradia_foto_fachada = fragmentMoradia.getView().findViewById(R.id.form_moradia_foto_fachada);
+        moradia_foto_fachada.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirImagemRetornarCampo(moradia_foto_fachada);
+            }
+        });
         moradia_foto_comprovante_agua = fragmentMoradia.getView().findViewById(R.id.form_moradia_foto_comprovante_agua);
+        moradia_foto_comprovante_agua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirImagemRetornarCampo(moradia_foto_comprovante_agua);
+            }
+        });
         moradia_foto_comprovante_luz = fragmentMoradia.getView().findViewById(R.id.form_moradia_foto_comprovante_luz);
+        moradia_foto_comprovante_luz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirImagemRetornarCampo(moradia_foto_comprovante_luz);
+            }
+        });
         moradia_foto_comprovante_iptu = fragmentMoradia.getView().findViewById(R.id.form_moradia_foto_comprovante_iptu);
+        moradia_foto_comprovante_iptu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirImagemRetornarCampo(moradia_foto_comprovante_iptu);
+            }
+        });
         moradia_foto_documento_cartografico = fragmentMoradia.getView().findViewById(R.id.form_moradia_foto_documento_cartografico);
-
+        moradia_foto_documento_cartografico.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirImagemRetornarCampo(moradia_foto_documento_cartografico);
+            }
+        });
 
     }
 
@@ -1505,14 +1648,12 @@ public class FormularioActivity extends AppCompatActivity {
             registro.setObservacao(moradia_observacao.getText().toString());
         } catch (Throwable ex) {
         }
-        /*
         registro.setFoto_comprovante_visita(moradia_foto_comprovante_visita.getText().toString());
         registro.setFoto_fachada(moradia_foto_fachada.getText().toString());
         registro.setFoto_comprovante_agua(moradia_foto_comprovante_agua.getText().toString());
         registro.setFoto_comprovante_luz(moradia_foto_comprovante_luz.getText().toString());
         registro.setFoto_comprovante_iptu(moradia_foto_comprovante_iptu.getText().toString());
         registro.setFoto_documento_cartografico(moradia_foto_documento_cartografico.getText().toString());
-        */
     }
 
     private void preencherTelaMoradia(Moradia registro) {
@@ -1701,14 +1842,31 @@ public class FormularioActivity extends AppCompatActivity {
             moradia_observacao.setText(registro.getObservacao());
         } catch (Throwable ex) {
         }
-        /*
-        moradia_foto_comprovante_visita.setText(registro.getfoto_comprovante_visita());
-        moradia_foto_fachada.setText(registro.getfoto_fachada());
-        moradia_foto_comprovante_agua.setText(registro.getfoto_comprovante_agua());
-        moradia_foto_comprovante_luz.setText(registro.getfoto_comprovante_luz());
-        moradia_foto_comprovante_iptu.setText(registro.getfoto_comprovante_iptu());
-        moradia_foto_documento_cartografico.setText(registro.getfoto_documento_cartografico());
-        */
+
+        try {
+            moradia_foto_comprovante_visita.setText(registro.getFoto_comprovante_visita());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_foto_fachada.setText(registro.getFoto_fachada());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_foto_comprovante_agua.setText(registro.getFoto_comprovante_agua());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_foto_comprovante_luz.setText(registro.getFoto_comprovante_luz());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_foto_comprovante_iptu.setText(registro.getFoto_comprovante_iptu());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_foto_documento_cartografico.setText(registro.getFoto_documento_cartografico());
+        } catch (Throwable ex) {
+        }
     }
 
     @Override
@@ -1809,6 +1967,7 @@ public class FormularioActivity extends AppCompatActivity {
         for (Pessoa familiar : familiares) {
             pessoaDao.update(familiar);
         }
+        Toast.makeText(this, "Dados salvos", Toast.LENGTH_SHORT).show();
     }
 
     private static final int MY_PERMISSIONS_REQUEST_STORAGE = 1;

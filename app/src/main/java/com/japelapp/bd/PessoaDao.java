@@ -162,6 +162,9 @@ public class PessoaDao {
 
         contentValues.put("id_pessoa", registry.getId_pessoa());
         contentValues.put("id_usuario", registry.getId_usuario());
+
+        contentValues.put("id_site", registry.getId_site());
+
         return contentValues;
     }
 
@@ -236,6 +239,9 @@ public class PessoaDao {
 
         registry.setId_pessoa(cursor.getInt(cursor.getColumnIndex("id_pessoa")));
         registry.setId_usuario(cursor.getInt(cursor.getColumnIndex("id_usuario")));
+
+        registry.setId_site(cursor.getString(cursor.getColumnIndex("id_site")));
+
         return registry;
     }
 

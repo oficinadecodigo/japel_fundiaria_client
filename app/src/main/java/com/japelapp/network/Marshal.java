@@ -26,7 +26,9 @@ public class Marshal {
         try {
             registro.put("data_nascimento", sdf.format(pessoa.getData_nascimento()));
         } catch (Throwable ex) {
+            registro.put("data_nascimento", "0001-01-01");
         }
+        registro.put("extra1", "");
         registro.put("email", pessoa.getEmail());
         registro.put("nacionalidade", pessoa.getNacionalidade());
         registro.put("numero_ctps", pessoa.getNumero_cpts());
@@ -98,7 +100,11 @@ public class Marshal {
         registro.put("bairro", moradia.getBairro());
         registro.put("cidade", moradia.getCidade());
         registro.put("uf", moradia.getUf());
-        registro.put("area_construida", moradia.getArea_construida());
+        try {
+            registro.put("area_construida", Float.parseFloat(moradia.getArea_construida()) + "");
+        } catch (Throwable ex) {
+            registro.put("area_construida", "0");
+        }
         registro.put("matricula_imovel", moradia.getMatricula_imovel());
         registro.put("medida_frente", moradia.getMedida_frente());
         registro.put("medida_direita", moradia.getMedida_direita());

@@ -131,6 +131,14 @@ public class MoradiaDao {
         contentValues.put("observacao", registry.getObservacao());
         contentValues.put("id_pessoa", registry.getId_pessoa());
         contentValues.put("id_usuario", registry.getId_usuario());
+        contentValues.put("foto_comprovante_visita", registry.getFoto_comprovante_visita());
+        contentValues.put("foto_fachada", registry.getFoto_fachada());
+        contentValues.put("foto_comprovante_agua", registry.getFoto_comprovante_agua());
+        contentValues.put("foto_comprovante_luz", registry.getFoto_comprovante_luz());
+        contentValues.put("foto_comprovante_iptu", registry.getFoto_comprovante_iptu());
+        contentValues.put("foto_documento_cartografico", registry.getFoto_documento_cartografico());
+        contentValues.put("id_site", registry.getId_site());
+
         return contentValues;
     }
 
@@ -187,6 +195,15 @@ public class MoradiaDao {
         registry.setObservacao(cursor.getString(cursor.getColumnIndex("observacao")));
         registry.setId_pessoa(cursor.getInt(cursor.getColumnIndex("id_pessoa")));
         registry.setId_usuario(cursor.getInt(cursor.getColumnIndex("id_usuario")));
+
+        registry.setFoto_comprovante_visita(cursor.getString(cursor.getColumnIndex("foto_comprovante_visita")));
+        registry.setFoto_fachada(cursor.getString(cursor.getColumnIndex("foto_fachada")));
+        registry.setFoto_comprovante_agua(cursor.getString(cursor.getColumnIndex("foto_comprovante_agua")));
+        registry.setFoto_comprovante_luz(cursor.getString(cursor.getColumnIndex("foto_comprovante_luz")));
+        registry.setFoto_comprovante_iptu(cursor.getString(cursor.getColumnIndex("foto_comprovante_iptu")));
+        registry.setFoto_documento_cartografico(cursor.getString(cursor.getColumnIndex("foto_documento_cartografico")));
+        registry.setId_site(cursor.getString(cursor.getColumnIndex("id_site")));
+
         return registry;
     }
 

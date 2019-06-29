@@ -68,6 +68,8 @@ public class Pessoa {
     private String foto_comprovante_renda;
     private String foto_comprovante_estado_civil;
 
+    private String id_site;
+
     public int getId() {
         return id;
     }
@@ -575,5 +577,13 @@ public class Pessoa {
 
     public void setFoto_comprovante_estado_civil(String foto_comprovante_estado_civil) {
         this.foto_comprovante_estado_civil = foto_comprovante_estado_civil;
+    }
+
+    public String getId_site() {
+        return id_site;
+    }
+
+    public void setId_site(String id_site) {
+        this.id_site = id_site;
     }
 }
