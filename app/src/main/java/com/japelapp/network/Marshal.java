@@ -69,7 +69,7 @@ public class Marshal {
         registro.put("proprietario_imovel", pessoa.isProprietario_imovel() ? 1 : 0);
         registro.put("proprietario_lote", pessoa.isProprietario_lote() ? 1 : 0);
         registro.put("proprietario_imovel_precario", pessoa.isProprietario_imovel_precario() ? 1 : 0);
-        registro.put("convenio", pessoa.isConvenio() ? 1 : 0);
+        registro.put("convenio", pessoa.getConvenio());
         registro.put("tipo", pessoa.getTipo());
         registro.put("foto_pessoa", pessoa.getFoto_pessoa());
         registro.put("foto_cpf", pessoa.getFoto_cpf());
@@ -128,8 +128,8 @@ public class Marshal {
         registro.put("numero_comodos", moradia.getNumero_comodos());
         registro.put("tipo_construcao", moradia.getTipo_construcao());
         registro.put("outro_tipo_construcao", moradia.getOutro_tipo_construcao());
-        registro.put("fonte_energia", moradia.isFonte_energia() ? 1 : 0);
-        registro.put("abastecimento_agua", moradia.isAbastecimento_agua() ? 1 : 0);
+        registro.put("fonte_energia", moradia.getFonte_energia());
+        registro.put("abastecimento_agua", moradia.getAbastecimento_agua());
         registro.put("rede_esgoto", moradia.isRede_esgoto() ? 1 : 0);
         registro.put("coleta_lixo", moradia.isColeta_lixo() ? 1 : 0);
         registro.put("separacao_reciclaveis", moradia.isSeparacao_reciclaveis() ? 1 : 0);

@@ -87,12 +87,79 @@
     </string-array>
     <string-array name="poligonal_array">
         <item></item>
-        <item>1-UNICO</item>
+        <item>1-Areia Branca dos Assis</item>
+        <item>2-Campestre dos Paulas</item>
+        <item>3-Campestrinho</item>
+        <item>4-Chimboveiro</item>
+        <item>5-Colônia Lima</item>
+        <item>6-Espigão das Antas</item>
+        <item>7-Jardim Mata Verde</item>
+        <item>8-Lagoinha</item>
+        <item>9-Pé de Erva</item>
+        <item>10-Quatro Pinheiros</item>
+        <item>11-Queimados I</item>
+        <item>12-Queimados II</item>
+        <item>13-Vila Brasília</item>
+        <item>14-Vila do Capão</item>
+        <item>15-Vila dos Pereiras</item>
+        <item>16-Vila Mandirituba</item>
+        <item>17-Vila Operário</item>
+        <item>18-Vila Portes</item>
+        <item>19-Vila São João</item>
+        <item>20-Daniel Lerias</item>
+        <item>21-Das Nações</item>
+        <item>22-Foz do Jordão</item>
+        <item>23-Planalto</item>
+        <item>24-Progresso</item>
+        <item>25-São Francisco</item>
+        <item>26-Segredo</item>
+        <item>27-Sierra Náutico</item>
+        <item>28-Vila Nova</item>
+    </string-array>
+    <string-array name="uf_array">
+        <item></item>
+        <item>1-AC</item>
+        <item>2-AL</item>
+        <item>3-AM</item>
+        <item>4-AP</item>
+        <item>5-BA</item>
+        <item>6-CE</item>
+        <item>7-ES</item>
+        <item>8-GO</item>
+        <item>9-MA</item>
+        <item>10-MG</item>
+        <item>11-MS</item>
+        <item>12-MT</item>
+        <item>13-PA</item>
+        <item>14-PB</item>
+        <item>15-PE</item>
+        <item>16-PI</item>
+        <item>17-PR</item>
+        <item>18-RJ</item>
+        <item>19-RN</item>
+        <item>20-RO</item>
+        <item>21-RR</item>
+        <item>22-RS</item>
+        <item>23-SC</item>
+        <item>24-SE</item>
+        <item>26-SP</item>
+        <item>27-TO</item>
+        <item>28-DF</item>
     </string-array>
     <string-array name="procedencia_array">
         <item></item>
         <item>1-RURAL</item>
         <item>2-URBANA</item>
+    </string-array>
+    <string-array name="agua_array">
+        <item></item>
+        <item>1-REDE PÚBLICA</item>
+        <item>2-LIGAÇÃO CLANDESTINA</item>
+    </string-array>
+    <string-array name="energia_array">
+        <item></item>
+        <item>1-REDE PÚBLICA/POÇO/NASCENTE</item>
+        <item>2-LIGAÇÃO CLANDESTINA</item>
     </string-array>
     <string-array name="situacao_propriedade_array">
         <item></item>
@@ -112,5 +179,10 @@
         <item>2-MADEIRA</item>
         <item>3-MISTA</item>
         <item>4-OUTRO</item>
+    </string-array>
+    <string-array name="convenio_array">
+        <item></item>
+        <item>1-COHAPAR</item>
+        <item>2-PARTICULAR</item>
     </string-array>
 </resources>

@@ -97,6 +97,10 @@ public class PessoaDao {
         ContentValues contentValues = new ContentValues();
         contentValues.put("id", registry.getId());
         contentValues.put("nome", registry.getNome());
+        try {
+            contentValues.put("existe", registry.isExiste() ? 1 : 0);
+        } catch (Throwable ex) {
+        }
         contentValues.put("cpf", registry.getCpf());
         contentValues.put("rg", registry.getRg());
         contentValues.put("nome_mae", registry.getNome_mae());
@@ -147,7 +151,7 @@ public class PessoaDao {
         contentValues.put("proprietario_imovel", registry.isProprietario_imovel() ? 1 : 0);
         contentValues.put("proprietario_lote", registry.isProprietario_lote() ? 1 : 0);
         contentValues.put("proprietario_imovel_precario", registry.isProprietario_imovel_precario() ? 1 : 0);
-        contentValues.put("convenio", registry.isConvenio() ? 1 : 0);
+        contentValues.put("convenio", registry.getConvenio());
         contentValues.put("tipo", registry.getTipo());
 
         contentValues.put("foto_pessoa", registry.getFoto_pessoa());
@@ -173,6 +177,10 @@ public class PessoaDao {
         Pessoa registry = new Pessoa();
         registry = new Pessoa();
         registry.setId(cursor.getInt(cursor.getColumnIndex("id")));
+        try {
+            registry.setExiste(cursor.getInt(cursor.getColumnIndex("existe")) == 1);
+        } catch (Throwable ex) {
+        }
         registry.setNome(cursor.getString(cursor.getColumnIndex("nome")));
         registry.setCpf(cursor.getString(cursor.getColumnIndex("cpf")));
         registry.setRg(cursor.getString(cursor.getColumnIndex("rg")));
@@ -224,7 +232,7 @@ public class PessoaDao {
         registry.setProprietario_imovel(cursor.getInt(cursor.getColumnIndex("proprietario_imovel")) == 1);
         registry.setProprietario_lote(cursor.getInt(cursor.getColumnIndex("proprietario_lote")) == 1);
         registry.setProprietario_imovel_precario(cursor.getInt(cursor.getColumnIndex("proprietario_imovel_precario")) == 1);
-        registry.setConvenio(cursor.getInt(cursor.getColumnIndex("convenio")) == 1);
+        registry.setConvenio(cursor.getInt(cursor.getColumnIndex("convenio")));
         registry.setTipo(cursor.getInt(cursor.getColumnIndex("tipo")));
 
         registry.setFoto_pessoa(cursor.getString(cursor.getColumnIndex("foto_pessoa")));

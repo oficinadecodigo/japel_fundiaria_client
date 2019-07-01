@@ -101,7 +101,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Bome da mãe" />
+                    android:text="Nome da mãe" />
 
                 <EditText
                     android:id="@+id/form_beneficiario_nome_mae"
@@ -833,7 +833,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Declaro que o titular ou cônjuge é mulher atendida pela Lei Federal Nº 11.340 de 7 de agosto de 2006 (Lei Maria da Penha)"
+                    android:hint="Declaro que o titular ou cônjuge é mulher \natendida pela Lei Federal Nº 11.340 de 7 \nde agosto de 2006 (Lei Maria da Penha)"
                     android:inputType="textPersonName" />
             </LinearLayout>
 
@@ -847,7 +847,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="O inscrito declara não ser proprietário, cessionário ou promitente comprador de imóvel residencial"
+                    android:hint="O inscrito declara não ser proprietário, cessionário \nou promitente comprador de imóvel residencial"
                     android:inputType="textPersonName" />
             </LinearLayout>
 
@@ -861,7 +861,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="O inscrito declara ser proprietário, cessionário ou promitente comprador de imóvel residencial."
+                    android:hint="O inscrito declara ser proprietário, cessionário \nou promitente comprador de imóvel residencial."
                     android:inputType="textPersonName" />
             </LinearLayout>
 
@@ -875,7 +875,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="O inscrito declara ser proprietário, cessionário ou promitente comprador de apenas um lote/terreno destinado a construção de moradia."
+                    android:hint="O inscrito declara ser proprietário, cessionário \nou promitente comprador de apenas um \nlote/terreno destinado a construção de moradia."
                     android:inputType="textPersonName" />
             </LinearLayout>
 
@@ -884,13 +884,20 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <CheckBox
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Convênio" />
+
+                <Spinner
                     android:id="@+id/form_beneficiario_convenio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Convênio"
-                    android:inputType="textPersonName" />
+                    android:entries="@array/convenio_array"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp" />
+
             </LinearLayout>
 
             <LinearLayout

@@ -5,6 +5,7 @@ import java.util.Date;
 public class Pessoa {
 
     private int id;
+    private boolean existe;
     private String nome;
     private String cpf;
     private String rg;
@@ -53,7 +54,7 @@ public class Pessoa {
     private boolean proprietario_imovel;
     private boolean proprietario_lote;
     private boolean proprietario_imovel_precario;
-    private boolean convenio;
+    private int convenio;
     private int tipo;
     private int id_pessoa;
     private int id_usuario;
@@ -462,14 +463,6 @@ public class Pessoa {
         this.proprietario_imovel_precario = proprietario_imovel_precario;
     }
 
-    public boolean isConvenio() {
-        return convenio;
-    }
-
-    public void setConvenio(boolean convenio) {
-        this.convenio = convenio;
-    }
-
     public int getTipo() {
         return tipo;
     }
@@ -585,5 +578,21 @@ public class Pessoa {
 
     public void setId_site(String id_site) {
         this.id_site = id_site;
+    }
+
+    public boolean isExiste() {
+        return existe;
+    }
+
+    public void setExiste(boolean existe) {
+        this.existe = existe;
+    }
+
+    public int getConvenio() {
+        return convenio;
+    }
+
+    public void setConvenio(int convenio) {
+        this.convenio = convenio;
     }
 }

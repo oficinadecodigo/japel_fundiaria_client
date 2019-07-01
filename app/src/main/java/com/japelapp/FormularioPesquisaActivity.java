@@ -1,14 +1,17 @@
 package com.japelapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.DocumentsProvider;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -21,6 +24,8 @@ import com.japelapp.entidade.Moradia;
 import com.japelapp.entidade.Pessoa;
 import com.japelapp.network.Network;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 
 public class FormularioPesquisaActivity extends AppCompatActivity {
@@ -66,12 +71,13 @@ public class FormularioPesquisaActivity extends AppCompatActivity {
 
     private void pesquisar() {
         MoradiaDao moradiaDao = new MoradiaDao(new DatabaseHelper(this.getApplicationContext()));
-        MoradiaAdapter adapter = new MoradiaAdapter(moradiaDao.get());
+        MoradiaAdapter adapter = new MoradiaAdapter(moradiaDao.getNaoEnviados());
         recyclerView.setAdapter(adapter);
     }
 
     private void btnCadastrarClick() {
         Intent intent = new Intent(this, FormularioActivity.class);
+        intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         //intent.putExtra("registry", 1925);
         startActivity(intent);
     }
@@ -108,7 +114,7 @@ public class FormularioPesquisaActivity extends AppCompatActivity {
                 moradia.setId_site(idMoradia);
                 moradiaDao.update(moradia);
             }
-            if (nuloOuVazio(conjuje.getId_site())) {
+            if (nuloOuVazio(conjuje.getId_site()) && conjuje.isExiste()) {
                 mostarMensagemUi("Enviando conjuje");
                 String idCOnjuje = Network.enviarPessoa(conjuje, idUsuario, idPessoa);
                 conjuje.setId_site(idCOnjuje);
@@ -122,6 +128,7 @@ public class FormularioPesquisaActivity extends AppCompatActivity {
                     pessoaDao.update(familiar);
                 }
             }
+            String document = "content://com.android.providers.media.documents";
             //Fotos beneficiario
             if (!nuloOuVazio(beneficiario.getFoto_pessoa())) {
                 mostarMensagemUi("Enviando foto pessoa beneficiário");

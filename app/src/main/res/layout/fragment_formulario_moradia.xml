@@ -219,13 +219,15 @@
                     android:layout_height="wrap_content"
                     android:text="UF" />
 
-                <EditText
+                <Spinner
                     android:id="@+id/form_moradia_uf"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="UF"
-                    android:inputType="textPersonName" />
+                    android:entries="@array/uf_array"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -696,13 +698,20 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <CheckBox
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Fonte de energia" />
+
+                <Spinner
                     android:id="@+id/form_moradia_fonte_energia"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Fonte de energia"
-                    android:inputType="textPersonName" />
+                    android:entries="@array/energia_array"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -710,13 +719,20 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <CheckBox
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Abastecimento de água" />
+
+                <Spinner
                     android:id="@+id/form_moradia_abastecimento_agua"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Abastecimento de Água"
-                    android:inputType="textPersonName" />
+                    android:entries="@array/agua_array"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp" />
+
             </LinearLayout>
 
             <LinearLayout

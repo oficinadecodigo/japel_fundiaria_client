@@ -4,6 +4,8 @@ import android.Manifest;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -15,6 +17,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Environment;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ArrayAdapter;
@@ -39,6 +42,18 @@ import com.japelapp.ui.formulario.FormularioMoradiaFragment;
 import com.japelapp.ui.formulario.SectionsPagerAdapter;
 import com.japelapp.util.Sessao;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.nio.file.CopyOption;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -106,7 +121,7 @@ public class FormularioActivity extends AppCompatActivity {
     CheckBox beneficiario_proprietario_imovel;
     CheckBox beneficiario_proprietario_lote;
     CheckBox beneficiario_proprietario_imovel_precario;
-    CheckBox beneficiario_convenio;
+    Spinner beneficiario_convenio;
     EditText beneficiario_foto_pessoa;
     EditText beneficiario_foto_cpf;
     EditText beneficiario_foto_rg;
@@ -119,6 +134,7 @@ public class FormularioActivity extends AppCompatActivity {
 
     //Campos fragment conjuje
 
+    CheckBox conjuje_existe;
     EditText conjuje_nome;
     EditText conjuje_cpf;
     EditText conjuje_rg;
@@ -197,7 +213,7 @@ public class FormularioActivity extends AppCompatActivity {
     EditText moradia_cep;
     EditText moradia_bairro;
     EditText moradia_cidade;
-    EditText moradia_uf;
+    Spinner moradia_uf;
     EditText moradia_area_construida;
     EditText moradia_matricula_imovel;
     EditText moradia_medida_frente;
@@ -222,8 +238,8 @@ public class FormularioActivity extends AppCompatActivity {
     EditText moradia_numero_comodos;
     Spinner moradia_tipo_construcao;
     EditText moradia_outro_tipo_construcao;
-    CheckBox moradia_fonte_energia;
-    CheckBox moradia_abastecimento_agua;
+    Spinner moradia_fonte_energia;
+    Spinner moradia_abastecimento_agua;
     CheckBox moradia_rede_esgoto;
     CheckBox moradia_coleta_lixo;
     CheckBox moradia_separacao_reciclaveis;
@@ -253,7 +269,7 @@ public class FormularioActivity extends AppCompatActivity {
         editTextRetornoImagem = editText;
         Intent intent = new Intent();
         intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
+        intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
         startActivityForResult(Intent.createChooser(intent, "Selecione a imagem"), 1);
     }
 
@@ -261,8 +277,34 @@ public class FormularioActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
             if (requestCode == 1) {
-                editTextRetornoImagem.setText(data.getData().getPath());
+                preecherCampoImagem(data);
             }
+        }
+    }
+
+    public static void copy(InputStream in, OutputStream out) throws IOException {
+
+        byte[] buffer = new byte[1024];
+        while (true) {
+            int bytesRead = in.read(buffer);
+            if (bytesRead == -1)
+                break;
+            out.write(buffer, 0, bytesRead);
+        }
+    }
+
+    private void preecherCampoImagem(Intent data) {
+        try {
+            String nomeArquivo = System.currentTimeMillis() + ".jpg";
+            InputStream inputStream = getContentResolver().openInputStream(data.getData());
+            String arquivo = (Environment.getExternalStorageDirectory() + "/" + nomeArquivo);
+            FileOutputStream fileOutputStream = new FileOutputStream(arquivo);
+            copy(inputStream, fileOutputStream);
+            fileOutputStream.close();
+            inputStream.close();
+            editTextRetornoImagem.setText(nomeArquivo);
+        } catch (Throwable ex) {
+            ex.printStackTrace();
         }
     }
 
@@ -336,7 +378,7 @@ public class FormularioActivity extends AppCompatActivity {
                 myCalendar.set(Calendar.YEAR, year);
                 myCalendar.set(Calendar.MONTH, monthOfYear);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                String data = dayOfMonth + "/" + monthOfYear + "/" + year;
+                String data = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
                 beneficiario_data_nascimento.setText(data);
             }
 
@@ -459,6 +501,7 @@ public class FormularioActivity extends AppCompatActivity {
 
         //Iniciaizando os componentes do fragment conjuje
 
+        conjuje_existe = fragmentConjuje.getView().findViewById(R.id.form_conjuje_existe);
         conjuje_nome = fragmentConjuje.getView().findViewById(R.id.form_conjuje_nome);
         conjuje_cpf = fragmentConjuje.getView().findViewById(R.id.form_conjuje_cpf);
         conjuje_rg = fragmentConjuje.getView().findViewById(R.id.form_conjuje_rg);
@@ -476,7 +519,7 @@ public class FormularioActivity extends AppCompatActivity {
                 myCalendar2.set(Calendar.YEAR, year);
                 myCalendar2.set(Calendar.MONTH, monthOfYear);
                 myCalendar2.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                String data = dayOfMonth + "/" + monthOfYear + "/" + year;
+                String data = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
                 conjuje_data_nascimento.setText(data);
             }
 
@@ -619,7 +662,7 @@ public class FormularioActivity extends AppCompatActivity {
                 myCalendar3.set(Calendar.YEAR, year);
                 myCalendar3.set(Calendar.MONTH, monthOfYear);
                 myCalendar3.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                String data = dayOfMonth + "/" + monthOfYear + "/" + year;
+                String data = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
                 comp_fam_data_nascimento.setText(data);
             }
 
@@ -767,11 +810,11 @@ public class FormularioActivity extends AppCompatActivity {
         } catch (Throwable ex) {
         }
         try {
-            beneficiario_sexo.setSelection(registro.getSexo() - 1);
+            beneficiario_sexo.setSelection(registro.getSexo());
         } catch (Throwable ex) {
         }
         try {
-            beneficiario_raca.setSelection(registro.getRaca() - 1);
+            beneficiario_raca.setSelection(registro.getRaca());
         } catch (Throwable ex) {
         }
         try {
@@ -783,7 +826,7 @@ public class FormularioActivity extends AppCompatActivity {
         } catch (Throwable ex) {
         }
         try {
-            beneficiario_nacionalidade.setSelection(registro.getNacionalidade() - 1);
+            beneficiario_nacionalidade.setSelection(registro.getNacionalidade());
         } catch (Throwable ex) {
         }
         try {
@@ -803,15 +846,15 @@ public class FormularioActivity extends AppCompatActivity {
         } catch (Throwable ex) {
         }
         try {
-            beneficiario_escolaridade.setSelection(registro.getEscolaridade() - 1);
+            beneficiario_escolaridade.setSelection(registro.getEscolaridade());
         } catch (Throwable ex) {
         }
         try {
-            beneficiario_estado_civil.setSelection(registro.getEstado_civil() - 1);
+            beneficiario_estado_civil.setSelection(registro.getEstado_civil());
         } catch (Throwable ex) {
         }
         try {
-            beneficiario_situacao_conjugal.setSelection(registro.getSituacao_conjugal() - 1);
+            beneficiario_situacao_conjugal.setSelection(registro.getSituacao_conjugal());
         } catch (Throwable ex) {
         }
         try {
@@ -823,7 +866,7 @@ public class FormularioActivity extends AppCompatActivity {
         } catch (Throwable ex) {
         }
         try {
-            beneficiario_situacao_renda_formal.setSelection(registro.getSituacao_renda_formal() - 1);
+            beneficiario_situacao_renda_formal.setSelection(registro.getSituacao_renda_formal());
         } catch (Throwable ex) {
         }
         try {
@@ -831,11 +874,11 @@ public class FormularioActivity extends AppCompatActivity {
         } catch (Throwable ex) {
         }
         try {
-            beneficiario_situacao_renda_informal.setSelection(registro.getSituacao_renda_informal() - 1);
+            beneficiario_situacao_renda_informal.setSelection(registro.getSituacao_renda_informal());
         } catch (Throwable ex) {
         }
         try {
-            beneficiario_ramo_atividade.setSelection(registro.getRamo_atividade() - 1);
+            beneficiario_ramo_atividade.setSelection(registro.getRamo_atividade());
         } catch (Throwable ex) {
         }
         try {
@@ -935,7 +978,7 @@ public class FormularioActivity extends AppCompatActivity {
         } catch (Throwable ex) {
         }
         try {
-            beneficiario_convenio.setChecked(registro.isConvenio());
+            beneficiario_convenio.setSelection(registro.getConvenio());
         } catch (Throwable ex) {
         }
         try {
@@ -987,36 +1030,36 @@ public class FormularioActivity extends AppCompatActivity {
         registro.setRg(beneficiario_rg.getText().toString());
         registro.setNome_mae(beneficiario_nome_mae.getText().toString());
         registro.setNome_pai(beneficiario_nome_pai.getText().toString());
-        registro.setSexo(beneficiario_sexo.getSelectedItemPosition() + 1);
-        registro.setRaca(beneficiario_raca.getSelectedItemPosition() + 1);
+        registro.setSexo(beneficiario_sexo.getSelectedItemPosition());
+        registro.setRaca(beneficiario_raca.getSelectedItemPosition());
         try {
             registro.setData_nascimento(sdf.parse(beneficiario_data_nascimento.getText().toString()));
         } catch (Throwable ex) {
             registro.setData_nascimento(null);
         }
         registro.setEmail(beneficiario_email.getText().toString());
-        registro.setNacionalidade(beneficiario_nacionalidade.getSelectedItemPosition() + 1);
+        registro.setNacionalidade(beneficiario_nacionalidade.getSelectedItemPosition());
         registro.setNumero_cpts(beneficiario_numero_cpts.getText().toString());
         registro.setPis_pasep(beneficiario_pis_pasep.getText().toString());
         registro.setNumero_cadunico(beneficiario_numero_cadunico.getText().toString());
         registro.setNis(beneficiario_nis.getText().toString());
-        registro.setEscolaridade(beneficiario_escolaridade.getSelectedItemPosition() + 1);
-        registro.setEstado_civil(beneficiario_estado_civil.getSelectedItemPosition() + 1);
-        registro.setSituacao_conjugal(beneficiario_situacao_conjugal.getSelectedItemPosition() + 1);
+        registro.setEscolaridade(beneficiario_escolaridade.getSelectedItemPosition());
+        registro.setEstado_civil(beneficiario_estado_civil.getSelectedItemPosition());
+        registro.setSituacao_conjugal(beneficiario_situacao_conjugal.getSelectedItemPosition());
         registro.setProfissao(beneficiario_profissao.getText().toString());
         try {
             registro.setRenda_formal(Double.parseDouble(beneficiario_renda_formal.getText().toString()));
         } catch (Throwable ex) {
             registro.setRenda_formal(0);
         }
-        registro.setSituacao_renda_formal(beneficiario_situacao_renda_formal.getSelectedItemPosition() + 1);
+        registro.setSituacao_renda_formal(beneficiario_situacao_renda_formal.getSelectedItemPosition());
         try {
             registro.setRenda_informal(Double.parseDouble(beneficiario_renda_informal.getText().toString()));
         } catch (Throwable ex) {
             registro.setRenda_informal(0);
         }
-        registro.setSituacao_renda_informal(beneficiario_situacao_renda_informal.getSelectedItemPosition() + 1);
-        registro.setRamo_atividade(beneficiario_ramo_atividade.getSelectedItemPosition() + 1);
+        registro.setSituacao_renda_informal(beneficiario_situacao_renda_informal.getSelectedItemPosition());
+        registro.setRamo_atividade(beneficiario_ramo_atividade.getSelectedItemPosition());
         registro.setEmpregador(beneficiario_empregador.getText().toString());
         try {
             registro.setTempo_servico_emprego_atual(Integer.parseInt(beneficiario_tempo_servico_emprego_atual.getText().toString()));
@@ -1056,7 +1099,7 @@ public class FormularioActivity extends AppCompatActivity {
         registro.setProprietario_imovel(beneficiario_proprietario_imovel.isChecked());
         registro.setProprietario_lote(beneficiario_proprietario_lote.isChecked());
         registro.setProprietario_imovel_precario(beneficiario_proprietario_imovel_precario.isChecked());
-        registro.setConvenio(beneficiario_convenio.isChecked());
+        registro.setConvenio(beneficiario_convenio.getSelectedItemPosition());
 
         registro.setFoto_pessoa(beneficiario_foto_pessoa.getText().toString());
         registro.setFoto_cpf(beneficiario_foto_cpf.getText().toString());
@@ -1072,6 +1115,10 @@ public class FormularioActivity extends AppCompatActivity {
 
     private void preencherTelaConjuje(Pessoa registro) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        try {
+            conjuje_existe.setChecked(registro.isExiste());
+        } catch (Throwable ex) {
+        }
         try {
             conjuje_nome.setText(registro.getNome());
         } catch (Throwable ex) {
@@ -1093,11 +1140,11 @@ public class FormularioActivity extends AppCompatActivity {
         } catch (Throwable ex) {
         }
         try {
-            conjuje_sexo.setSelection(registro.getSexo() - 1);
+            conjuje_sexo.setSelection(registro.getSexo());
         } catch (Throwable ex) {
         }
         try {
-            conjuje_raca.setSelection(registro.getRaca() - 1);
+            conjuje_raca.setSelection(registro.getRaca());
         } catch (Throwable ex) {
         }
         try {
@@ -1105,7 +1152,7 @@ public class FormularioActivity extends AppCompatActivity {
         } catch (Throwable ex) {
         }
         try {
-            conjuje_nacionalidade.setSelection(registro.getNacionalidade() - 1);
+            conjuje_nacionalidade.setSelection(registro.getNacionalidade());
         } catch (Throwable ex) {
         }
         try {
@@ -1117,15 +1164,15 @@ public class FormularioActivity extends AppCompatActivity {
         } catch (Throwable ex) {
         }
         try {
-            conjuje_escolaridade.setSelection(registro.getEscolaridade() - 1);
+            conjuje_escolaridade.setSelection(registro.getEscolaridade());
         } catch (Throwable ex) {
         }
         try {
-            conjuje_estado_civil.setSelection(registro.getEstado_civil() - 1);
+            conjuje_estado_civil.setSelection(registro.getEstado_civil());
         } catch (Throwable ex) {
         }
         try {
-            conjuje_situacao_conjugal.setSelection(registro.getSituacao_conjugal() - 1);
+            conjuje_situacao_conjugal.setSelection(registro.getSituacao_conjugal());
         } catch (Throwable ex) {
         }
         try {
@@ -1137,7 +1184,7 @@ public class FormularioActivity extends AppCompatActivity {
         } catch (Throwable ex) {
         }
         try {
-            conjuje_situacao_renda_formal.setSelection(registro.getSituacao_renda_formal() - 1);
+            conjuje_situacao_renda_formal.setSelection(registro.getSituacao_renda_formal());
         } catch (Throwable ex) {
         }
         try {
@@ -1145,11 +1192,11 @@ public class FormularioActivity extends AppCompatActivity {
         } catch (Throwable ex) {
         }
         try {
-            conjuje_situacao_renda_informal.setSelection(registro.getSituacao_renda_informal() - 1);
+            conjuje_situacao_renda_informal.setSelection(registro.getSituacao_renda_informal());
         } catch (Throwable ex) {
         }
         try {
-            conjuje_ramo_atividade.setSelection(registro.getRamo_atividade() - 1);
+            conjuje_ramo_atividade.setSelection(registro.getRamo_atividade());
         } catch (Throwable ex) {
         }
         try {
@@ -1233,35 +1280,36 @@ public class FormularioActivity extends AppCompatActivity {
 
     private void preencherEntidadeConjuje(Pessoa registro) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        registro.setExiste(conjuje_existe.isChecked());
         registro.setNome(conjuje_nome.getText().toString());
         registro.setCpf(conjuje_cpf.getText().toString());
         registro.setRg(conjuje_rg.getText().toString());
         registro.setNome_mae(conjuje_nome_mae.getText().toString());
         registro.setNome_pai(conjuje_nome_pai.getText().toString());
-        registro.setSexo(conjuje_sexo.getSelectedItemPosition() + 1);
-        registro.setRaca(conjuje_raca.getSelectedItemPosition() + 1);
+        registro.setSexo(conjuje_sexo.getSelectedItemPosition());
+        registro.setRaca(conjuje_raca.getSelectedItemPosition());
         try {
             registro.setData_nascimento(sdf.parse(conjuje_data_nascimento.getText().toString()));
         } catch (Throwable ex) {
         }
-        registro.setNacionalidade(conjuje_nacionalidade.getSelectedItemPosition() + 1);
+        registro.setNacionalidade(conjuje_nacionalidade.getSelectedItemPosition());
         registro.setNumero_cadunico(conjuje_numero_cadunico.getText().toString());
         registro.setNis(conjuje_nis.getText().toString());
-        registro.setEscolaridade(conjuje_escolaridade.getSelectedItemPosition() + 1);
-        registro.setEstado_civil(conjuje_estado_civil.getSelectedItemPosition() + 1);
-        registro.setSituacao_conjugal(conjuje_situacao_conjugal.getSelectedItemPosition() + 1);
+        registro.setEscolaridade(conjuje_escolaridade.getSelectedItemPosition());
+        registro.setEstado_civil(conjuje_estado_civil.getSelectedItemPosition());
+        registro.setSituacao_conjugal(conjuje_situacao_conjugal.getSelectedItemPosition());
         registro.setProfissao(conjuje_profissao.getText().toString());
         try {
             registro.setRenda_formal(Double.parseDouble(conjuje_renda_formal.getText().toString()));
         } catch (Throwable ex) {
         }
-        registro.setSituacao_renda_formal(conjuje_situacao_renda_formal.getSelectedItemPosition() + 1);
+        registro.setSituacao_renda_formal(conjuje_situacao_renda_formal.getSelectedItemPosition());
         try {
             registro.setRenda_informal(Double.parseDouble(conjuje_renda_informal.getText().toString()));
         } catch (Throwable ex) {
         }
-        registro.setSituacao_renda_informal(conjuje_situacao_renda_informal.getSelectedItemPosition() + 1);
-        registro.setRamo_atividade(conjuje_ramo_atividade.getSelectedItemPosition() + 1);
+        registro.setSituacao_renda_informal(conjuje_situacao_renda_informal.getSelectedItemPosition());
+        registro.setRamo_atividade(conjuje_ramo_atividade.getSelectedItemPosition());
         registro.setEmpregador(conjuje_empregador.getText().toString());
         try {
             registro.setTempo_servico_emprego_atual(Integer.parseInt(conjuje_tempo_servico_emprego_atual.getText().toString()));
@@ -1368,11 +1416,11 @@ public class FormularioActivity extends AppCompatActivity {
         } catch (Throwable ex) {
         }
         try {
-            comp_fam_parentesco.setSelection(registro.getParentesco() - 1);
+            comp_fam_parentesco.setSelection(registro.getParentesco());
         } catch (Throwable ex) {
         }
         try {
-            comp_fam_sexo.setSelection(registro.getSexo() - 1);
+            comp_fam_sexo.setSelection(registro.getSexo());
         } catch (Throwable ex) {
         }
         try {
@@ -1380,7 +1428,7 @@ public class FormularioActivity extends AppCompatActivity {
         } catch (Throwable ex) {
         }
         try {
-            comp_fam_escolaridade.setSelection(registro.getEscolaridade() - 1);
+            comp_fam_escolaridade.setSelection(registro.getEscolaridade());
         } catch (Throwable ex) {
         }
         try {
@@ -1392,7 +1440,7 @@ public class FormularioActivity extends AppCompatActivity {
         } catch (Throwable ex) {
         }
         try {
-            comp_fam_situacao_renda_formal.setSelection(registro.getSituacao_renda_formal() - 1);
+            comp_fam_situacao_renda_formal.setSelection(registro.getSituacao_renda_formal());
         } catch (Throwable ex) {
         }
         try {
@@ -1400,7 +1448,7 @@ public class FormularioActivity extends AppCompatActivity {
         } catch (Throwable ex) {
         }
         try {
-            comp_fam_situacao_renda_informal.setSelection(registro.getSituacao_renda_informal() - 1);
+            comp_fam_situacao_renda_informal.setSelection(registro.getSituacao_renda_informal());
         } catch (Throwable ex) {
         }
         try {
@@ -1436,24 +1484,24 @@ public class FormularioActivity extends AppCompatActivity {
     private void preencherEntidadeCompFam(Pessoa registro) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         registro.setNome(comp_fam_nome.getText().toString());
-        registro.setParentesco(comp_fam_parentesco.getSelectedItemPosition() + 1);
-        registro.setSexo(comp_fam_sexo.getSelectedItemPosition() + 1);
+        registro.setParentesco(comp_fam_parentesco.getSelectedItemPosition());
+        registro.setSexo(comp_fam_sexo.getSelectedItemPosition());
         try {
             registro.setData_nascimento(sdf.parse(comp_fam_data_nascimento.getText().toString()));
         } catch (Throwable ex) {
         }
-        registro.setEscolaridade(comp_fam_escolaridade.getSelectedItemPosition() + 1);
+        registro.setEscolaridade(comp_fam_escolaridade.getSelectedItemPosition());
         registro.setProfissao(comp_fam_profissao.getText().toString());
         try {
             registro.setRenda_formal(Double.parseDouble(comp_fam_renda_formal.getText().toString()));
         } catch (Throwable ex) {
         }
-        registro.setSituacao_renda_formal(comp_fam_situacao_renda_formal.getSelectedItemPosition() + 1);
+        registro.setSituacao_renda_formal(comp_fam_situacao_renda_formal.getSelectedItemPosition());
         try {
             registro.setRenda_informal(Double.parseDouble(comp_fam_renda_informal.getText().toString()));
         } catch (Throwable ex) {
         }
-        registro.setSituacao_renda_informal(comp_fam_situacao_renda_informal.getSelectedItemPosition() + 1);
+        registro.setSituacao_renda_informal(comp_fam_situacao_renda_informal.getSelectedItemPosition());
         registro.setDeficiencia_auditiva_mudez(comp_fam_deficiencia_auditiva_mudez.isChecked());
         registro.setDeficiencia_auditiva_surdez(comp_fam_deficiencia_auditiva_surdez.isChecked());
         registro.setDeficiencia_cadeirante(comp_fam_deficiencia_cadeirante.isChecked());
@@ -1473,7 +1521,7 @@ public class FormularioActivity extends AppCompatActivity {
         } catch (Throwable ex) {
         }
         try {
-            registro.setPoligonal(moradia_poligonal.getSelectedItemPosition() + 1);
+            registro.setPoligonal(moradia_poligonal.getSelectedItemPosition());
         } catch (Throwable ex) {
         }
         try {
@@ -1501,7 +1549,7 @@ public class FormularioActivity extends AppCompatActivity {
         } catch (Throwable ex) {
         }
         try {
-            registro.setUf(moradia_uf.getText().toString());
+            registro.setUf(moradia_uf.getSelectedItemPosition());
         } catch (Throwable ex) {
         }
         try {
@@ -1573,11 +1621,11 @@ public class FormularioActivity extends AppCompatActivity {
         } catch (Throwable ex) {
         }
         try {
-            registro.setZona(moradia_zona.getSelectedItemPosition() + 1);
+            registro.setZona(moradia_zona.getSelectedItemPosition());
         } catch (Throwable ex) {
         }
         try {
-            registro.setSituacao_propriedade(moradia_situacao_propriedade.getSelectedItemPosition() + 1);
+            registro.setSituacao_propriedade(moradia_situacao_propriedade.getSelectedItemPosition());
         } catch (Throwable ex) {
         }
         try {
@@ -1593,7 +1641,7 @@ public class FormularioActivity extends AppCompatActivity {
         } catch (Throwable ex) {
         }
         try {
-            registro.setTipo_construcao(moradia_tipo_construcao.getSelectedItemPosition() + 1);
+            registro.setTipo_construcao(moradia_tipo_construcao.getSelectedItemPosition());
         } catch (Throwable ex) {
         }
         try {
@@ -1601,11 +1649,11 @@ public class FormularioActivity extends AppCompatActivity {
         } catch (Throwable ex) {
         }
         try {
-            registro.setFonte_energia(moradia_fonte_energia.isChecked());
+            registro.setFonte_energia(moradia_fonte_energia.getSelectedItemPosition());
         } catch (Throwable ex) {
         }
         try {
-            registro.setAbastecimento_agua(moradia_abastecimento_agua.isChecked());
+            registro.setAbastecimento_agua(moradia_abastecimento_agua.getSelectedItemPosition());
         } catch (Throwable ex) {
         }
         try {
@@ -1667,7 +1715,7 @@ public class FormularioActivity extends AppCompatActivity {
         } catch (Throwable ex) {
         }
         try {
-            moradia_poligonal.setSelection(registro.getPoligonal() - 1);
+            moradia_poligonal.setSelection(registro.getPoligonal());
         } catch (Throwable ex) {
         }
         try {
@@ -1695,7 +1743,7 @@ public class FormularioActivity extends AppCompatActivity {
         } catch (Throwable ex) {
         }
         try {
-            moradia_uf.setText(registro.getUf());
+            moradia_uf.setSelection(registro.getUf());
         } catch (Throwable ex) {
         }
         try {
@@ -1767,11 +1815,11 @@ public class FormularioActivity extends AppCompatActivity {
         } catch (Throwable ex) {
         }
         try {
-            moradia_zona.setSelection(registro.getZona() - 1);
+            moradia_zona.setSelection(registro.getZona());
         } catch (Throwable ex) {
         }
         try {
-            moradia_situacao_propriedade.setSelection(registro.getSituacao_propriedade() - 1);
+            moradia_situacao_propriedade.setSelection(registro.getSituacao_propriedade());
         } catch (Throwable ex) {
         }
         try {
@@ -1787,7 +1835,7 @@ public class FormularioActivity extends AppCompatActivity {
         } catch (Throwable ex) {
         }
         try {
-            moradia_tipo_construcao.setSelection(registro.getTipo_construcao() - 1);
+            moradia_tipo_construcao.setSelection(registro.getTipo_construcao());
         } catch (Throwable ex) {
         }
         try {
@@ -1795,11 +1843,11 @@ public class FormularioActivity extends AppCompatActivity {
         } catch (Throwable ex) {
         }
         try {
-            moradia_fonte_energia.setChecked(registro.isFonte_energia());
+            moradia_fonte_energia.setSelection(registro.getFonte_energia());
         } catch (Throwable ex) {
         }
         try {
-            moradia_abastecimento_agua.setChecked(registro.isAbastecimento_agua());
+            moradia_abastecimento_agua.setSelection(registro.getAbastecimento_agua());
         } catch (Throwable ex) {
         }
         try {

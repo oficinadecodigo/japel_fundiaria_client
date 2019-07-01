@@ -12,7 +12,7 @@ public class Moradia {
     private String cep;
     private String bairro;
     private String cidade;
-    private String uf;
+    private int uf;
     private String area_construida;
     private String matricula_imovel;
     private double medida_frente;
@@ -37,8 +37,8 @@ public class Moradia {
     private int numero_comodos;
     private int tipo_construcao;
     private String outro_tipo_construcao;
-    private boolean fonte_energia;
-    private boolean abastecimento_agua;
+    private int fonte_energia;
+    private int abastecimento_agua;
     private boolean rede_esgoto;
     private boolean coleta_lixo;
     private boolean separacao_reciclaveis;
@@ -139,13 +139,6 @@ public class Moradia {
         this.cidade = cidade;
     }
 
-    public String getUf() {
-        return uf;
-    }
-
-    public void setUf(String uf) {
-        this.uf = uf;
-    }
 
     public String getArea_construida() {
         return area_construida;
@@ -339,22 +332,6 @@ public class Moradia {
         this.outro_tipo_construcao = outro_tipo_construcao;
     }
 
-    public boolean isFonte_energia() {
-        return fonte_energia;
-    }
-
-    public void setFonte_energia(boolean fonte_energia) {
-        this.fonte_energia = fonte_energia;
-    }
-
-    public boolean isAbastecimento_agua() {
-        return abastecimento_agua;
-    }
-
-    public void setAbastecimento_agua(boolean abastecimento_agua) {
-        this.abastecimento_agua = abastecimento_agua;
-    }
-
     public boolean isRede_esgoto() {
         return rede_esgoto;
     }
@@ -505,5 +482,37 @@ public class Moradia {
 
     public void setId_site(String id_site) {
         this.id_site = id_site;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Moradia)) {
+            return false;
+        }
+        return ((Moradia) obj).getId() == getId();
+    }
+
+    public int getFonte_energia() {
+        return fonte_energia;
+    }
+
+    public void setFonte_energia(int fonte_energia) {
+        this.fonte_energia = fonte_energia;
+    }
+
+    public int getAbastecimento_agua() {
+        return abastecimento_agua;
+    }
+
+    public void setAbastecimento_agua(int abastecimento_agua) {
+        this.abastecimento_agua = abastecimento_agua;
+    }
+
+    public int getUf() {
+        return uf;
+    }
+
+    public void setUf(int uf) {
+        this.uf = uf;
     }
 }

@@ -45,6 +45,7 @@ public class DatabaseHelper<E> extends SQLiteOpenHelper {
                 "CREATE TABLE pessoa(\n" +
                         "  id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, \n" +
                         "  nome VARCHAR(100), \n" +
+                        "  existe INTEGER, \n" +
                         "  cpf VARCHAR(20), \n" +
                         "  rg VARCHAR(20), \n" +
                         "  nome_mae VARCHAR(100), \n" +
@@ -104,8 +105,8 @@ public class DatabaseHelper<E> extends SQLiteOpenHelper {
                         "  foto_comprovante_renda VARCHAR(200), \n" +
                         "  foto_comprovante_estado_civil VARCHAR(200), \n" +
                         "  id_site VARCHAR(191), \n" +
-                        "  id_pessoa INTEGER REFERENCES pessoa(id), \n" +
-                        "  id_usuario INTEGER REFERENCES usuario(id));"
+                        "  id_pessoa INTEGER, \n" +
+                        "  id_usuario INTEGER);"
         );
         writableDatabase.execSQL(
                 "CREATE TABLE moradia(\n" +
@@ -119,7 +120,7 @@ public class DatabaseHelper<E> extends SQLiteOpenHelper {
                         "  cep VARCHAR(20), \n" +
                         "  bairro VARCHAR(100), \n" +
                         "  cidade VARCHAR(100), \n" +
-                        "  uf CHAR(2), \n" +
+                        "  uf INTEGER, \n" +
                         "  area_construida DOUBLE(5, 2), \n" +
                         "  matricula_imovel VARCHAR(30), \n" +
                         "  medida_frente DOUBLE(4, 2), \n" +
@@ -164,8 +165,8 @@ public class DatabaseHelper<E> extends SQLiteOpenHelper {
                         "  foto_comprovante_iptu VARCHAR(191), \n" +
                         "  foto_documento_cartografico VARCHAR(191), \n" +
                         "  id_site VARCHAR(191), \n" +
-                        "  id_pessoa INTEGER REFERENCES pessoa(id), \n" +
-                        "  id_usuario INTEGER REFERENCES usuario(id));"
+                        "  id_pessoa INTEGER, \n" +
+                        "  id_usuario INTEGER);"
         );
         writableDatabase.execSQL(
                 "CREATE TABLE foto(\n" +
@@ -173,8 +174,8 @@ public class DatabaseHelper<E> extends SQLiteOpenHelper {
                         "  tipo INTEGER, \n" +
                         "  descricao VARCHAR(100), \n" +
                         "  caminho VARCHAR(200), \n" +
-                        "  id_pessoa INTEGER REFERENCES pessoa(id), \n" +
-                        "  id_moradia INTEGER REFERENCES moradia(id));"
+                        "  id_pessoa INTEGER, \n" +
+                        "  id_moradia INTEGER);"
         );
         //writableDatabase.endTransaction();
         System.out.println();

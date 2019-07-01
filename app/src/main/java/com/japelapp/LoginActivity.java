@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -13,8 +14,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.japelapp.bd.DatabaseHelper;
+import com.japelapp.bd.UsuarioDao;
 import com.japelapp.entidade.Usuario;
+import com.japelapp.network.Network;
 import com.japelapp.util.Sessao;
+
+import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -33,19 +39,51 @@ public class LoginActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String login = txt_login.getText().toString();
-                String senha = txt_senha.getText().toString();
-                if ("1".equals(login) && "1".equals(senha)) {
-                    Sessao.USUARIO = new Usuario();
-                    Sessao.USUARIO.setLogin(login);
-                    Sessao.USUARIO.setSenha(senha);
-                    Sessao.USUARIO.setId(1);
-                    abrirListagemFormularios();
-                } else {
-                    mostrarMensagemErroLogin();
-                }
+                login();
             }
         });
+
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                baixarUsuarios();
+            }
+        });
+
+    }
+
+    private void login() {
+        String login = txt_login.getText().toString();
+        String senha = txt_senha.getText().toString();
+
+        UsuarioDao usuarioDao = new UsuarioDao(new DatabaseHelper(this));
+        ArrayList<Usuario> usuarios = usuarioDao.get();
+
+        boolean sucesso = false;
+
+        for (Usuario usuario : usuarios) {
+            if (login.equals(usuario.getLogin()) && senha.equals(usuario.getSenha())) {
+                Sessao.USUARIO = usuario;
+                sucesso = true;
+                abrirListagemFormularios();
+                break;
+            }
+        }
+
+        if (!sucesso) {
+            mostrarMensagemErroLogin();
+        }
+    }
+
+    private void baixarUsuarios() {
+        ArrayList<Usuario> usuarios = Network.getUsuarios();
+        if (!usuarios.isEmpty()) {
+            UsuarioDao usuarioDao = new UsuarioDao(new DatabaseHelper(this));
+            usuarioDao.deleteAll();
+            for (Usuario usuario : usuarios) {
+                usuarioDao.insert(usuario);
+            }
+        }
     }
 
     private void mostrarMensagemErroLogin() {
@@ -54,6 +92,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void abrirListagemFormularios() {
         Intent intent = new Intent(this, FormularioPesquisaActivity.class);
+        intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         startActivity(intent);
     }
 

@@ -69,6 +69,30 @@ public class MoradiaDao {
         return registry;
     }
 
+    public ArrayList<Moradia> getNaoEnviados() {
+        ArrayList<Moradia> registros = get();
+        ArrayList<Moradia> registrosRemover = new ArrayList<>();
+        for (Moradia registro : registros) {
+            if (!nuloOuVazio(registro.getId_site())) {
+                registrosRemover.add(registro);
+            }
+        }
+        for (Moradia registro : registrosRemover) {
+            registros.remove(registro);
+        }
+        return registros;
+    }
+
+    private boolean nuloOuVazio(String string) {
+        if (string == null) {
+            return true;
+        }
+        if (string.trim().isEmpty()) {
+            return true;
+        }
+        return false;
+    }
+
     public ArrayList<Moradia> get() {
         ArrayList<Moradia> registros = new ArrayList<>();
         SQLiteDatabase writableDatabase = this.databaseHelper.getWritableDatabase();
@@ -117,8 +141,8 @@ public class MoradiaDao {
         contentValues.put("numero_comodos", registry.getNumero_comodos());
         contentValues.put("tipo_construcao", registry.getTipo_construcao());
         contentValues.put("outro_tipo_construcao", registry.getOutro_tipo_construcao());
-        contentValues.put("fonte_energia", registry.isFonte_energia());
-        contentValues.put("abastecimento_agua", registry.isAbastecimento_agua());
+        contentValues.put("fonte_energia", registry.getFonte_energia());
+        contentValues.put("abastecimento_agua", registry.getAbastecimento_agua());
         contentValues.put("rede_esgoto", registry.isRede_esgoto());
         contentValues.put("coleta_lixo", registry.isColeta_lixo());
         contentValues.put("separacao_reciclaveis", registry.isSeparacao_reciclaveis());
@@ -156,7 +180,7 @@ public class MoradiaDao {
         registry.setCep(cursor.getString(cursor.getColumnIndex("cep")));
         registry.setBairro(cursor.getString(cursor.getColumnIndex("bairro")));
         registry.setCidade(cursor.getString(cursor.getColumnIndex("cidade")));
-        registry.setUf(cursor.getString(cursor.getColumnIndex("uf")));
+        registry.setUf(cursor.getInt(cursor.getColumnIndex("uf")));
         registry.setArea_construida(cursor.getString(cursor.getColumnIndex("area_construida")));
         registry.setMatricula_imovel(cursor.getString(cursor.getColumnIndex("matricula_imovel")));
         registry.setMedida_frente(cursor.getDouble(cursor.getColumnIndex("medida_frente")));
@@ -181,8 +205,8 @@ public class MoradiaDao {
         registry.setNumero_comodos(cursor.getInt(cursor.getColumnIndex("numero_comodos")));
         registry.setTipo_construcao(cursor.getInt(cursor.getColumnIndex("tipo_construcao")));
         registry.setOutro_tipo_construcao(cursor.getString(cursor.getColumnIndex("outro_tipo_construcao")));
-        registry.setFonte_energia(cursor.getInt(cursor.getColumnIndex("fonte_energia")) == 1);
-        registry.setAbastecimento_agua(cursor.getInt(cursor.getColumnIndex("abastecimento_agua")) == 1);
+        registry.setFonte_energia(cursor.getInt(cursor.getColumnIndex("fonte_energia")));
+        registry.setAbastecimento_agua(cursor.getInt(cursor.getColumnIndex("abastecimento_agua")));
         registry.setRede_esgoto(cursor.getInt(cursor.getColumnIndex("rede_esgoto")) == 1);
         registry.setColeta_lixo(cursor.getInt(cursor.getColumnIndex("coleta_lixo")) == 1);
         registry.setSeparacao_reciclaveis(cursor.getInt(cursor.getColumnIndex("separacao_reciclaveis")) == 1);

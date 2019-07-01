@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.japelapp.entidade.Usuario;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 public class UsuarioDao {
 
@@ -18,7 +19,7 @@ public class UsuarioDao {
 
     public void deleteAll() {
         SQLiteDatabase writableDatabase = this.databaseHelper.getWritableDatabase();
-        writableDatabase.execSQL("delete from pessoa;");
+        writableDatabase.execSQL("delete from usuario;");
     }
 
     public void insert(Usuario registry) {
@@ -38,15 +39,15 @@ public class UsuarioDao {
         return registry;
     }
 
-    public Usuario get() {
-        Usuario registry = null;
+    public ArrayList<Usuario> get() {
+        ArrayList<Usuario> registros = new ArrayList<>();
         SQLiteDatabase writableDatabase = this.databaseHelper.getWritableDatabase();
         Cursor cursor = writableDatabase.rawQuery("select * from usuario;", new String[]{});
         while (cursor.moveToNext()) {
-            registry = fill(cursor);
+            registros.add(fill(cursor));
         }
         cursor.close();
-        return registry;
+        return registros;
     }
 
     private ContentValues marshal(Usuario registry) {
