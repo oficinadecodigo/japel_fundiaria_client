@@ -123,6 +123,7 @@ public class Network {
             ftpClient.connect(URL_FTP);
             ftpClient.login(USUARIO_FTP, SENHA_FTP);
             ftpClient.enterLocalPassiveMode();
+            ftpClient.setFileType(FTPClient.BINARY_FILE_TYPE);
             ftpClient.setFileTransferMode(FTPClient.BINARY_FILE_TYPE);
             FileInputStream fileInputStream = new FileInputStream(Environment.getExternalStorageDirectory() + "/" + caminhoLocal);
             ftpClient.storeFile(nomeRemoto + "." + getExtensaoArquivo(caminhoLocal), fileInputStream);

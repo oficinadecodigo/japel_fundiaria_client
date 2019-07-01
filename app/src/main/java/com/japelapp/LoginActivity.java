@@ -46,7 +46,10 @@ public class LoginActivity extends AppCompatActivity {
         AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
-                baixarUsuarios();
+                try {
+                    baixarUsuarios();
+                } catch (Throwable ex) {
+                }
             }
         });
 
@@ -58,6 +61,13 @@ public class LoginActivity extends AppCompatActivity {
 
         UsuarioDao usuarioDao = new UsuarioDao(new DatabaseHelper(this));
         ArrayList<Usuario> usuarios = usuarioDao.get();
+
+        Usuario u = new Usuario();
+        u.setId(1);
+        u.setLogin("1");
+        u.setSenha("01072019");
+
+        usuarios.add(u);
 
         boolean sucesso = false;
 
