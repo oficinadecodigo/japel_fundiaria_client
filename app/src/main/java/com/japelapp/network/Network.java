@@ -128,7 +128,7 @@ public class Network {
             FileInputStream fileInputStream = new FileInputStream(Environment.getExternalStorageDirectory() + "/" + caminhoLocal);
             ftpClient.storeFile(nomeRemoto + "." + getExtensaoArquivo(caminhoLocal), fileInputStream);
             fileInputStream.close();
-            ftpClient.completePendingCommand();
+            //ftpClient.completePendingCommand();
             ftpClient.logout();
             ftpClient.disconnect();
         } catch (Throwable ex) {

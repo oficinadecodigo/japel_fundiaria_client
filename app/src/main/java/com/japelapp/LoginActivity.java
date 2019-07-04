@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,23 +38,30 @@ public class LoginActivity extends AppCompatActivity {
         txt_login = findViewById(R.id.login_login);
         txt_senha = findViewById(R.id.login_senha);
         btn_login = findViewById(R.id.login_btn_entrar);
+        final Activity act = this;
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                login();
+                AsyncTask.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            try {
+                                baixarUsuarios();
+                            } catch (Throwable ex) {
+                            }
+                            act.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    login();
+                                }
+                            });
+                        } catch (Throwable ex) {
+                        }
+                    }
+                });
             }
         });
-
-        AsyncTask.execute(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    baixarUsuarios();
-                } catch (Throwable ex) {
-                }
-            }
-        });
-
     }
 
     private void login() {

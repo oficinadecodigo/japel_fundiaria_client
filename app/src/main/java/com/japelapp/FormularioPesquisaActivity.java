@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.DocumentsProvider;
 import android.view.View;
 import android.widget.Button;
@@ -128,107 +129,188 @@ public class FormularioPesquisaActivity extends AppCompatActivity {
                     pessoaDao.update(familiar);
                 }
             }
-            String document = "content://com.android.providers.media.documents";
-            //Fotos beneficiario
-            if (!nuloOuVazio(beneficiario.getFoto_pessoa())) {
-                mostarMensagemUi("Enviando foto pessoa beneficiário");
-                Network.enviarFotos(beneficiario.getId_site() + "pessoa", beneficiario.getFoto_pessoa());
-            }
-            if (!nuloOuVazio(beneficiario.getFoto_cpf())) {
-                mostarMensagemUi("Enviando foto CPF beneficiário");
-                Network.enviarFotos(beneficiario.getId_site() + "cpf", beneficiario.getFoto_cpf());
-            }
-            if (!nuloOuVazio(beneficiario.getFoto_rg())) {
-                mostarMensagemUi("Enviando foto RG beneficiário");
-                Network.enviarFotos(beneficiario.getId_site() + "rg", beneficiario.getFoto_rg());
-            }
-            if (!nuloOuVazio(beneficiario.getFoto_rg_verso())) {
-                mostarMensagemUi("Enviando foto verso RG beneficiário");
-                Network.enviarFotos(beneficiario.getId_site() + "rg_verso", beneficiario.getFoto_rg_verso());
-            }
-            if (!nuloOuVazio(beneficiario.getFoto_cnh())) {
-                mostarMensagemUi("Enviando foto CNH beneficiário");
-                Network.enviarFotos(beneficiario.getId_site() + "cnh", beneficiario.getFoto_cnh());
-            }
-            if (!nuloOuVazio(beneficiario.getFoto_carteira_trabalho())) {
-                mostarMensagemUi("Enviando foto carteira trab. beneficiário");
-                Network.enviarFotos(beneficiario.getId_site() + "carteira_trab", beneficiario.getFoto_carteira_trabalho());
-            }
-            if (!nuloOuVazio(beneficiario.getFoto_documento_casa())) {
-                mostarMensagemUi("Enviando foto documento casa beneficiário");
-                Network.enviarFotos(beneficiario.getId_site() + "documento_casa", beneficiario.getFoto_documento_casa());
-            }
-            if (!nuloOuVazio(beneficiario.getFoto_comprovante_renda())) {
-                mostarMensagemUi("Enviando foto comprovante renda beneficiário");
-                Network.enviarFotos(beneficiario.getId_site() + "comprovante_renda", beneficiario.getFoto_comprovante_renda());
-            }
-            if (!nuloOuVazio(beneficiario.getFoto_comprovante_estado_civil())) {
-                mostarMensagemUi("Enviando foto comprovante est. civil beneficiário");
-                Network.enviarFotos(beneficiario.getId_site() + "comprovante_est_civil", beneficiario.getFoto_comprovante_estado_civil());
-            }
-            //Fotos conjuje
-            if (!nuloOuVazio(conjuje.getFoto_pessoa())) {
-                mostarMensagemUi("Enviando foto pessoa conjuje");
-                Network.enviarFotos(conjuje.getId_site() + "pessoa", conjuje.getFoto_pessoa());
-            }
-            if (!nuloOuVazio(conjuje.getFoto_cpf())) {
-                mostarMensagemUi("Enviando foto CPF beneficiário");
-                Network.enviarFotos(conjuje.getId_site() + "cpf", conjuje.getFoto_cpf());
-            }
-            if (!nuloOuVazio(conjuje.getFoto_rg())) {
-                mostarMensagemUi("Enviando foto RG beneficiário");
-                Network.enviarFotos(conjuje.getId_site() + "rg", conjuje.getFoto_rg());
-            }
-            if (!nuloOuVazio(conjuje.getFoto_rg_verso())) {
-                mostarMensagemUi("Enviando foto verso RG beneficiário");
-                Network.enviarFotos(conjuje.getId_site() + "rg_verso", conjuje.getFoto_rg_verso());
-            }
-            if (!nuloOuVazio(conjuje.getFoto_cnh())) {
-                mostarMensagemUi("Enviando foto CNH beneficiário");
-                Network.enviarFotos(conjuje.getId_site() + "cnh", conjuje.getFoto_cnh());
-            }
-            if (!nuloOuVazio(conjuje.getFoto_carteira_trabalho())) {
-                mostarMensagemUi("Enviando foto carteira trab. beneficiário");
-                Network.enviarFotos(conjuje.getId_site() + "carteira_trab", conjuje.getFoto_carteira_trabalho());
-            }
-            if (!nuloOuVazio(conjuje.getFoto_documento_casa())) {
-                mostarMensagemUi("Enviando foto documento casa beneficiário");
-                Network.enviarFotos(conjuje.getId_site() + "documento_casa", conjuje.getFoto_documento_casa());
-            }
-            if (!nuloOuVazio(conjuje.getFoto_comprovante_renda())) {
-                mostarMensagemUi("Enviando foto comprovante renda beneficiário");
-                Network.enviarFotos(conjuje.getId_site() + "comprovante_renda", conjuje.getFoto_comprovante_renda());
-            }
-            if (!nuloOuVazio(conjuje.getFoto_comprovante_estado_civil())) {
-                mostarMensagemUi("Enviando foto comprovante est. civil beneficiário");
-                Network.enviarFotos(conjuje.getId_site() + "comprovante_est_civil", conjuje.getFoto_comprovante_estado_civil());
-            }
-            //Fotos moradia
-            if (!nuloOuVazio(moradia.getFoto_comprovante_visita())) {
-                mostarMensagemUi("Enviando foto comprovante visita moradia");
-                Network.enviarFotos(moradia.getId_site() + "comprovante_visita", moradia.getFoto_comprovante_visita());
-            }
-            if (!nuloOuVazio(moradia.getFoto_fachada())) {
-                mostarMensagemUi("Enviando foto fachada moradia");
-                Network.enviarFotos(moradia.getId_site() + "fachada", moradia.getFoto_fachada());
-            }
-            if (!nuloOuVazio(moradia.getFoto_comprovante_agua())) {
-                mostarMensagemUi("Enviando foto comprovante agua");
-                Network.enviarFotos(moradia.getId_site() + "comprovante_agua", moradia.getFoto_comprovante_agua());
-            }
-            if (!nuloOuVazio(moradia.getFoto_comprovante_luz())) {
-                mostarMensagemUi("Enviando foto comprovante luz moradia");
-                Network.enviarFotos(moradia.getId_site() + "comprovante_luz", moradia.getFoto_comprovante_luz());
-            }
-            if (!nuloOuVazio(moradia.getFoto_comprovante_iptu())) {
-                mostarMensagemUi("Enviando foto comprovante iptu moradia");
-                Network.enviarFotos(moradia.getId_site() + "comprovante_iptu", moradia.getFoto_comprovante_iptu());
-            }
-            if (!nuloOuVazio(moradia.getFoto_documento_cartografico())) {
-                mostarMensagemUi("Enviando foto documento cartográfico visita moradia");
-                Network.enviarFotos(moradia.getId_site() + "documento_cartografico", moradia.getFoto_documento_cartografico());
+            if (!moradia.isArquivos_enviados()) {
+                //Fotos beneficiario
+                try {
+                    if (!nuloOuVazio(beneficiario.getFoto_pessoa())) {
+                        mostarMensagemUi("Enviando foto pessoa beneficiário");
+                        Network.enviarFotos(beneficiario.getId_site() + "pessoa", beneficiario.getFoto_pessoa());
+                    }
+                } catch (Throwable ex) {
+                }
+                try {
+                    if (!nuloOuVazio(beneficiario.getFoto_cpf())) {
+                        mostarMensagemUi("Enviando foto CPF beneficiário");
+                        Network.enviarFotos(beneficiario.getId_site() + "cpf", beneficiario.getFoto_cpf());
+                    }
+                } catch (Throwable ex) {
+                }
+                try {
+                    if (!nuloOuVazio(beneficiario.getFoto_rg())) {
+                        mostarMensagemUi("Enviando foto RG beneficiário");
+                        Network.enviarFotos(beneficiario.getId_site() + "rg", beneficiario.getFoto_rg());
+                    }
+                } catch (Throwable ex) {
+                }
+                try {
+                    if (!nuloOuVazio(beneficiario.getFoto_rg_verso())) {
+                        mostarMensagemUi("Enviando foto verso RG beneficiário");
+                        Network.enviarFotos(beneficiario.getId_site() + "rg_verso", beneficiario.getFoto_rg_verso());
+                    }
+                } catch (Throwable ex) {
+                }
+                try {
+                    if (!nuloOuVazio(beneficiario.getFoto_cnh())) {
+                        mostarMensagemUi("Enviando foto CNH beneficiário");
+                        Network.enviarFotos(beneficiario.getId_site() + "cnh", beneficiario.getFoto_cnh());
+                    }
+                } catch (Throwable ex) {
+                }
+                try {
+                    if (!nuloOuVazio(beneficiario.getFoto_carteira_trabalho())) {
+                        mostarMensagemUi("Enviando foto carteira trab. beneficiário");
+                        Network.enviarFotos(beneficiario.getId_site() + "carteira_trab", beneficiario.getFoto_carteira_trabalho());
+                    }
+                } catch (Throwable ex) {
+                }
+                try {
+                    if (!nuloOuVazio(beneficiario.getFoto_documento_casa())) {
+                        mostarMensagemUi("Enviando foto documento casa beneficiário");
+                        Network.enviarFotos(beneficiario.getId_site() + "documento_casa", beneficiario.getFoto_documento_casa());
+                    }
+                } catch (Throwable ex) {
+                }
+                try {
+                    if (!nuloOuVazio(beneficiario.getFoto_comprovante_renda())) {
+                        mostarMensagemUi("Enviando foto comprovante renda beneficiário");
+                        Network.enviarFotos(beneficiario.getId_site() + "comprovante_renda", beneficiario.getFoto_comprovante_renda());
+                    }
+                } catch (Throwable ex) {
+                }
+                try {
+                    if (!nuloOuVazio(beneficiario.getFoto_comprovante_estado_civil())) {
+                        mostarMensagemUi("Enviando foto comprovante est. civil beneficiário");
+                        Network.enviarFotos(beneficiario.getId_site() + "comprovante_est_civil", beneficiario.getFoto_comprovante_estado_civil());
+                    }
+                } catch (Throwable ex) {
+                }
+                try {
+                    //Fotos conjuje
+                    if (!nuloOuVazio(conjuje.getFoto_pessoa())) {
+                        mostarMensagemUi("Enviando foto pessoa conjuje");
+                        Network.enviarFotos(conjuje.getId_site() + "pessoa", conjuje.getFoto_pessoa());
+                    }
+                } catch (Throwable ex) {
+                }
+                try {
+                    if (!nuloOuVazio(conjuje.getFoto_cpf())) {
+                        mostarMensagemUi("Enviando foto CPF beneficiário");
+                        Network.enviarFotos(conjuje.getId_site() + "cpf", conjuje.getFoto_cpf());
+                    }
+                } catch (Throwable ex) {
+                }
+                try {
+                    if (!nuloOuVazio(conjuje.getFoto_rg())) {
+                        mostarMensagemUi("Enviando foto RG beneficiário");
+                        Network.enviarFotos(conjuje.getId_site() + "rg", conjuje.getFoto_rg());
+                    }
+                } catch (Throwable ex) {
+                }
+                try {
+                    if (!nuloOuVazio(conjuje.getFoto_rg_verso())) {
+                        mostarMensagemUi("Enviando foto verso RG beneficiário");
+                        Network.enviarFotos(conjuje.getId_site() + "rg_verso", conjuje.getFoto_rg_verso());
+                    }
+                } catch (Throwable ex) {
+                }
+                try {
+                    if (!nuloOuVazio(conjuje.getFoto_cnh())) {
+                        mostarMensagemUi("Enviando foto CNH beneficiário");
+                        Network.enviarFotos(conjuje.getId_site() + "cnh", conjuje.getFoto_cnh());
+                    }
+                } catch (Throwable ex) {
+                }
+                try {
+                    if (!nuloOuVazio(conjuje.getFoto_carteira_trabalho())) {
+                        mostarMensagemUi("Enviando foto carteira trab. beneficiário");
+                        Network.enviarFotos(conjuje.getId_site() + "carteira_trab", conjuje.getFoto_carteira_trabalho());
+                    }
+                } catch (Throwable ex) {
+                }
+                try {
+                    if (!nuloOuVazio(conjuje.getFoto_documento_casa())) {
+                        mostarMensagemUi("Enviando foto documento casa beneficiário");
+                        Network.enviarFotos(conjuje.getId_site() + "documento_casa", conjuje.getFoto_documento_casa());
+                    }
+                } catch (Throwable ex) {
+                }
+                try {
+                    if (!nuloOuVazio(conjuje.getFoto_comprovante_renda())) {
+                        mostarMensagemUi("Enviando foto comprovante renda beneficiário");
+                        Network.enviarFotos(conjuje.getId_site() + "comprovante_renda", conjuje.getFoto_comprovante_renda());
+                    }
+                } catch (Throwable ex) {
+                }
+                try {
+                    if (!nuloOuVazio(conjuje.getFoto_comprovante_estado_civil())) {
+                        mostarMensagemUi("Enviando foto comprovante est. civil beneficiário");
+                        Network.enviarFotos(conjuje.getId_site() + "comprovante_est_civil", conjuje.getFoto_comprovante_estado_civil());
+                    }
+                } catch (Throwable ex) {
+                }
+                try {
+                    //Fotos moradia
+                    if (!nuloOuVazio(moradia.getFoto_comprovante_visita())) {
+                        mostarMensagemUi("Enviando foto comprovante visita moradia");
+                        Network.enviarFotos(moradia.getId_site() + "comprovante_visita", moradia.getFoto_comprovante_visita());
+                    }
+                } catch (Throwable ex) {
+                }
+                try {
+                    if (!nuloOuVazio(moradia.getFoto_fachada())) {
+                        mostarMensagemUi("Enviando foto fachada moradia");
+                        Network.enviarFotos(moradia.getId_site() + "fachada", moradia.getFoto_fachada());
+                    }
+                } catch (Throwable ex) {
+                }
+                try {
+                    if (!nuloOuVazio(moradia.getFoto_comprovante_agua())) {
+                        mostarMensagemUi("Enviando foto comprovante agua");
+                        Network.enviarFotos(moradia.getId_site() + "comprovante_agua", moradia.getFoto_comprovante_agua());
+                    }
+                } catch (Throwable ex) {
+                }
+                try {
+                    if (!nuloOuVazio(moradia.getFoto_comprovante_luz())) {
+                        mostarMensagemUi("Enviando foto comprovante luz moradia");
+                        Network.enviarFotos(moradia.getId_site() + "comprovante_luz", moradia.getFoto_comprovante_luz());
+                    }
+                } catch (Throwable ex) {
+                }
+                try {
+                    if (!nuloOuVazio(moradia.getFoto_comprovante_iptu())) {
+                        mostarMensagemUi("Enviando foto comprovante iptu moradia");
+                        Network.enviarFotos(moradia.getId_site() + "comprovante_iptu", moradia.getFoto_comprovante_iptu());
+                    }
+                } catch (Throwable ex) {
+                }
+                try {
+                    if (!nuloOuVazio(moradia.getFoto_documento_cartografico())) {
+                        mostarMensagemUi("Enviando foto documento cartográfico visita moradia");
+                        Network.enviarFotos(moradia.getId_site() + "documento_cartografico", moradia.getFoto_documento_cartografico());
+                    }
+                } catch (Throwable ex) {
+                }
+                moradia.setArquivos_enviados(true);
+                moradiaDao.update(moradia);
             }
         }
+        this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                pesquisar();
+            }
+        });
     }
 
     private boolean nuloOuVazio(String string) {

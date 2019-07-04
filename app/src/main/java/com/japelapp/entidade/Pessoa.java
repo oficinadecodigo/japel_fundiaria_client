@@ -4,6 +4,10 @@ import java.util.Date;
 
 public class Pessoa {
 
+    public Pessoa() {
+        fgts_receber = 0;
+    }
+
     private int id;
     private boolean existe;
     private String nome;
@@ -16,7 +20,7 @@ public class Pessoa {
     private int raca;
     private Date data_nascimento;
     private String email;
-    private int nacionalidade;
+    private String nacionalidade;
     private String numero_cpts;
     private String pis_pasep;
     private String numero_cadunico;
@@ -68,6 +72,8 @@ public class Pessoa {
     private String foto_documento_casa;
     private String foto_comprovante_renda;
     private String foto_comprovante_estado_civil;
+
+    private int fgts_receber;
 
     private String id_site;
 
@@ -157,14 +163,6 @@ public class Pessoa {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public int getNacionalidade() {
-        return nacionalidade;
-    }
-
-    public void setNacionalidade(int nacionalidade) {
-        this.nacionalidade = nacionalidade;
     }
 
     public String getNumero_cpts() {
@@ -594,5 +592,21 @@ public class Pessoa {
 
     public void setConvenio(int convenio) {
         this.convenio = convenio;
+    }
+
+    public String getNacionalidade() {
+        return nacionalidade;
+    }
+
+    public void setNacionalidade(String nacionalidade) {
+        this.nacionalidade = nacionalidade;
+    }
+
+    public int getFgts_receber() {
+        return fgts_receber;
+    }
+
+    public void setFgts_receber(int fgts_receber) {
+        this.fgts_receber = fgts_receber;
     }
 }

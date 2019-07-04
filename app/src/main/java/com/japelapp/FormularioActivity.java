@@ -2,6 +2,8 @@ package com.japelapp;
 
 import android.Manifest;
 import android.app.DatePickerDialog;
+import android.content.ContentResolver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -20,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Environment;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.webkit.MimeTypeMap;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -43,6 +46,7 @@ import com.japelapp.ui.formulario.SectionsPagerAdapter;
 import com.japelapp.util.Sessao;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -83,7 +87,7 @@ public class FormularioActivity extends AppCompatActivity {
     Spinner beneficiario_raca;
     EditText beneficiario_data_nascimento;
     EditText beneficiario_email;
-    Spinner beneficiario_nacionalidade;
+    EditText beneficiario_nacionalidade;
     EditText beneficiario_numero_cpts;
     EditText beneficiario_pis_pasep;
     EditText beneficiario_numero_cadunico;
@@ -100,6 +104,7 @@ public class FormularioActivity extends AppCompatActivity {
     EditText beneficiario_empregador;
     EditText beneficiario_tempo_servico_emprego_atual;
     EditText beneficiario_valor_fgts;
+    CheckBox beneficiario_fgts_receber;
     EditText beneficiario_telefone_fixo;
     EditText beneficiario_telefone_movel;
     EditText beneficiario_telefone_recado;
@@ -143,7 +148,7 @@ public class FormularioActivity extends AppCompatActivity {
     Spinner conjuje_sexo;
     Spinner conjuje_raca;
     EditText conjuje_data_nascimento;
-    Spinner conjuje_nacionalidade;
+    EditText conjuje_nacionalidade;
     EditText conjuje_numero_cadunico;
     EditText conjuje_nis;
     Spinner conjuje_escolaridade;
@@ -158,6 +163,7 @@ public class FormularioActivity extends AppCompatActivity {
     EditText conjuje_empregador;
     EditText conjuje_tempo_servico_emprego_atual;
     EditText conjuje_valor_fgts;
+    CheckBox conjuje_fgts_receber;
     CheckBox conjuje_deficiencia_auditiva_mudez;
     CheckBox conjuje_deficiencia_auditiva_surdez;
     CheckBox conjuje_deficiencia_cadeirante;
@@ -206,6 +212,8 @@ public class FormularioActivity extends AppCompatActivity {
 
     EditText moradia_quadra;
     EditText moradia_lote;
+    Spinner moradia_revestimento_externo;
+    Spinner moradia_cobertura;
     Spinner moradia_poligonal;
     EditText moradia_endereco;
     EditText moradia_numero;
@@ -268,7 +276,7 @@ public class FormularioActivity extends AppCompatActivity {
     private void abrirImagemRetornarCampo(EditText editText) {
         editTextRetornoImagem = editText;
         Intent intent = new Intent();
-        intent.setType("image/*");
+        intent.setType("*/*");
         intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
         startActivityForResult(Intent.createChooser(intent, "Selecione a imagem"), 1);
     }
@@ -295,7 +303,8 @@ public class FormularioActivity extends AppCompatActivity {
 
     private void preecherCampoImagem(Intent data) {
         try {
-            String nomeArquivo = System.currentTimeMillis() + ".jpg";
+            String mimeType = getMimeType(this, data.getData());
+            String nomeArquivo = System.currentTimeMillis() + "." + mimeType;
             InputStream inputStream = getContentResolver().openInputStream(data.getData());
             String arquivo = (Environment.getExternalStorageDirectory() + "/" + nomeArquivo);
             FileOutputStream fileOutputStream = new FileOutputStream(arquivo);
@@ -306,6 +315,24 @@ public class FormularioActivity extends AppCompatActivity {
         } catch (Throwable ex) {
             ex.printStackTrace();
         }
+    }
+
+    public static String getMimeType(Context context, Uri uri) {
+        String extension;
+
+        //Check uri format to avoid null
+        if (uri.getScheme().equals(ContentResolver.SCHEME_CONTENT)) {
+            //If scheme is a content
+            final MimeTypeMap mime = MimeTypeMap.getSingleton();
+            extension = mime.getExtensionFromMimeType(context.getContentResolver().getType(uri));
+        } else {
+            //If scheme is a File
+            //This will replace white spaces with %20 and also other special characters. This will avoid returning null values on file name with spaces and special characters.
+            extension = MimeTypeMap.getFileExtensionFromUrl(Uri.fromFile(new File(uri.getPath())).toString());
+
+        }
+
+        return extension;
     }
 
     private void preencherTela() {
@@ -341,6 +368,7 @@ public class FormularioActivity extends AppCompatActivity {
         compFamPessoa.setId(pessoaDao.getMaxId() + 1);
         compFamPessoa.setId_usuario(Sessao.USUARIO.getId());
         compFamPessoa.setId_pessoa(beneficiario.getId());
+        compFamPessoa.setTipo(3);
         pessoaDao.insert(compFamPessoa);
         familiares.add(compFamPessoa);
         compFamiliar = compFamPessoa;
@@ -413,6 +441,7 @@ public class FormularioActivity extends AppCompatActivity {
         beneficiario_empregador = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_empregador);
         beneficiario_tempo_servico_emprego_atual = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_tempo_servico_emprego_atual);
         beneficiario_valor_fgts = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_valor_fgts);
+        beneficiario_fgts_receber = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_fgts_receber);
         beneficiario_telefone_fixo = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_telefone_fixo);
         beneficiario_telefone_movel = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_telefone_movel);
         beneficiario_telefone_recado = fragmentBeneficiario.getView().findViewById(R.id.form_beneficiario_telefone_recado);
@@ -551,6 +580,7 @@ public class FormularioActivity extends AppCompatActivity {
         conjuje_empregador = fragmentConjuje.getView().findViewById(R.id.form_conjuje_empregador);
         conjuje_tempo_servico_emprego_atual = fragmentConjuje.getView().findViewById(R.id.form_conjuje_tempo_servico_emprego_atual);
         conjuje_valor_fgts = fragmentConjuje.getView().findViewById(R.id.form_conjuje_valor_fgts);
+        conjuje_fgts_receber = fragmentConjuje.getView().findViewById(R.id.form_conjuje_fgts_receber);
         conjuje_deficiencia_auditiva_mudez = fragmentConjuje.getView().findViewById(R.id.form_conjuje_deficiencia_auditiva_mudez);
         conjuje_deficiencia_auditiva_surdez = fragmentConjuje.getView().findViewById(R.id.form_conjuje_deficiencia_auditiva_surdez);
         conjuje_deficiencia_cadeirante = fragmentConjuje.getView().findViewById(R.id.form_conjuje_deficiencia_cadeirante);
@@ -699,6 +729,8 @@ public class FormularioActivity extends AppCompatActivity {
         moradia_quadra = fragmentMoradia.getView().findViewById(R.id.form_moradia_quadra);
         moradia_lote = fragmentMoradia.getView().findViewById(R.id.form_moradia_lote);
         moradia_poligonal = fragmentMoradia.getView().findViewById(R.id.form_moradia_poligonal);
+        moradia_revestimento_externo = fragmentMoradia.getView().findViewById(R.id.form_moradia_revestimento_externo);
+        moradia_cobertura = fragmentMoradia.getView().findViewById(R.id.form_moradia_cobertura);
         moradia_endereco = fragmentMoradia.getView().findViewById(R.id.form_moradia_endereco);
         moradia_numero = fragmentMoradia.getView().findViewById(R.id.form_moradia_numero);
         moradia_complemento = fragmentMoradia.getView().findViewById(R.id.form_moradia_complemento);
@@ -826,7 +858,7 @@ public class FormularioActivity extends AppCompatActivity {
         } catch (Throwable ex) {
         }
         try {
-            beneficiario_nacionalidade.setSelection(registro.getNacionalidade());
+            beneficiario_nacionalidade.setText(registro.getNacionalidade());
         } catch (Throwable ex) {
         }
         try {
@@ -891,6 +923,10 @@ public class FormularioActivity extends AppCompatActivity {
         }
         try {
             beneficiario_valor_fgts.setText(registro.getValor_fgts() + "");
+        } catch (Throwable ex) {
+        }
+        try {
+            beneficiario_fgts_receber.setChecked(registro.getFgts_receber() == 1);
         } catch (Throwable ex) {
         }
         try {
@@ -1038,7 +1074,7 @@ public class FormularioActivity extends AppCompatActivity {
             registro.setData_nascimento(null);
         }
         registro.setEmail(beneficiario_email.getText().toString());
-        registro.setNacionalidade(beneficiario_nacionalidade.getSelectedItemPosition());
+        registro.setNacionalidade(beneficiario_nacionalidade.getText().toString());
         registro.setNumero_cpts(beneficiario_numero_cpts.getText().toString());
         registro.setPis_pasep(beneficiario_pis_pasep.getText().toString());
         registro.setNumero_cadunico(beneficiario_numero_cadunico.getText().toString());
@@ -1068,6 +1104,10 @@ public class FormularioActivity extends AppCompatActivity {
         }
         try {
             registro.setValor_fgts(Double.parseDouble(beneficiario_valor_fgts.getText().toString()));
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setFgts_receber(beneficiario_fgts_receber.isChecked() ? 1 : 0);
         } catch (Throwable ex) {
         }
         registro.setTelefone_fixo(beneficiario_telefone_fixo.getText().toString());
@@ -1152,7 +1192,7 @@ public class FormularioActivity extends AppCompatActivity {
         } catch (Throwable ex) {
         }
         try {
-            conjuje_nacionalidade.setSelection(registro.getNacionalidade());
+            conjuje_nacionalidade.setText(registro.getNacionalidade());
         } catch (Throwable ex) {
         }
         try {
@@ -1209,6 +1249,10 @@ public class FormularioActivity extends AppCompatActivity {
         }
         try {
             conjuje_valor_fgts.setText(registro.getValor_fgts() + "");
+        } catch (Throwable ex) {
+        }
+        try {
+            conjuje_fgts_receber.setChecked(registro.getFgts_receber() == 1);
         } catch (Throwable ex) {
         }
         try {
@@ -1292,7 +1336,7 @@ public class FormularioActivity extends AppCompatActivity {
             registro.setData_nascimento(sdf.parse(conjuje_data_nascimento.getText().toString()));
         } catch (Throwable ex) {
         }
-        registro.setNacionalidade(conjuje_nacionalidade.getSelectedItemPosition());
+        registro.setNacionalidade(conjuje_nacionalidade.getText().toString());
         registro.setNumero_cadunico(conjuje_numero_cadunico.getText().toString());
         registro.setNis(conjuje_nis.getText().toString());
         registro.setEscolaridade(conjuje_escolaridade.getSelectedItemPosition());
@@ -1317,6 +1361,10 @@ public class FormularioActivity extends AppCompatActivity {
         }
         try {
             registro.setValor_fgts(Double.parseDouble(conjuje_valor_fgts.getText().toString()));
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setFgts_receber(conjuje_fgts_receber.isChecked() ? 1 : 0);
         } catch (Throwable ex) {
         }
         registro.setDeficiencia_auditiva_mudez(conjuje_deficiencia_auditiva_mudez.isSelected());
@@ -1525,6 +1573,14 @@ public class FormularioActivity extends AppCompatActivity {
         } catch (Throwable ex) {
         }
         try {
+            registro.setRevestimento_externo(moradia_revestimento_externo.getSelectedItemPosition());
+        } catch (Throwable ex) {
+        }
+        try {
+            registro.setCobertura(moradia_cobertura.getSelectedItemPosition());
+        } catch (Throwable ex) {
+        }
+        try {
             registro.setEndereco(moradia_endereco.getText().toString());
         } catch (Throwable ex) {
         }
@@ -1716,6 +1772,14 @@ public class FormularioActivity extends AppCompatActivity {
         }
         try {
             moradia_poligonal.setSelection(registro.getPoligonal());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_revestimento_externo.setSelection(registro.getRevestimento_externo());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_cobertura.setSelection(registro.getCobertura());
         } catch (Throwable ex) {
         }
         try {
@@ -1978,9 +2042,11 @@ public class FormularioActivity extends AppCompatActivity {
             moradiaDao.insert(moradia);
             beneficiario = new Pessoa();
             beneficiario.setId(pessoaDao.getMaxId() + 1);
+            beneficiario.setTipo(1);
             pessoaDao.insert(beneficiario);
             conjuje = new Pessoa();
             conjuje.setId(pessoaDao.getMaxId() + 1);
+            conjuje.setTipo(2);
             conjuje.setParentesco(-1);
             pessoaDao.insert(conjuje);
             familiares = new ArrayList<>();

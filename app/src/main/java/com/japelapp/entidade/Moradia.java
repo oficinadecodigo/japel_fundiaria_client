@@ -39,6 +39,7 @@ public class Moradia {
     private String outro_tipo_construcao;
     private int fonte_energia;
     private int abastecimento_agua;
+    private boolean arquivos_enviados;
     private boolean rede_esgoto;
     private boolean coleta_lixo;
     private boolean separacao_reciclaveis;
@@ -58,6 +59,9 @@ public class Moradia {
     private String foto_comprovante_iptu;
     private String foto_documento_cartografico;
     private String id_site;
+
+    private int revestimento_externo;
+    private int cobertura;
 
     public int getId() {
         return id;
@@ -514,5 +518,29 @@ public class Moradia {
 
     public void setUf(int uf) {
         this.uf = uf;
+    }
+
+    public boolean isArquivos_enviados() {
+        return arquivos_enviados;
+    }
+
+    public void setArquivos_enviados(boolean arquivos_enviados) {
+        this.arquivos_enviados = arquivos_enviados;
+    }
+
+    public int getRevestimento_externo() {
+        return revestimento_externo;
+    }
+
+    public void setRevestimento_externo(int revestimento_externo) {
+        this.revestimento_externo = revestimento_externo;
+    }
+
+    public int getCobertura() {
+        return cobertura;
+    }
+
+    public void setCobertura(int cobertura) {
+        this.cobertura = cobertura;
     }
 }

@@ -55,7 +55,7 @@ public class DatabaseHelper<E> extends SQLiteOpenHelper {
                         "  raca INTEGER, \n" +
                         "  data_nascimento DATE, \n" +
                         "  email VARCHAR(100), \n" +
-                        "  nacionalidade INTEGER, \n" +
+                        "  nacionalidade VARCHAR(191), \n" +
                         "  numero_cpts VARCHAR(30), \n" +
                         "  pis_pasep VARCHAR(30), \n" +
                         "  numero_cadunico VARCHAR(30), \n" +
@@ -105,6 +105,7 @@ public class DatabaseHelper<E> extends SQLiteOpenHelper {
                         "  foto_comprovante_renda VARCHAR(200), \n" +
                         "  foto_comprovante_estado_civil VARCHAR(200), \n" +
                         "  id_site VARCHAR(191), \n" +
+                        "  fgts_receber INTEGER, \n" +
                         "  id_pessoa INTEGER, \n" +
                         "  id_usuario INTEGER);"
         );
@@ -157,6 +158,7 @@ public class DatabaseHelper<E> extends SQLiteOpenHelper {
                         "  insalubre BOOLEAN, \n" +
                         "  desabrigado BOOLEAN, \n" +
                         "  enviado BOOLEAN, \n" +
+                        "  arquivos_enviados BOOLEAN, \n" +
                         "  observacao VARCHAR(500), \n" +
                         "  foto_comprovante_visita VARCHAR(191), \n" +
                         "  foto_fachada VARCHAR(191), \n" +
@@ -165,6 +167,8 @@ public class DatabaseHelper<E> extends SQLiteOpenHelper {
                         "  foto_comprovante_iptu VARCHAR(191), \n" +
                         "  foto_documento_cartografico VARCHAR(191), \n" +
                         "  id_site VARCHAR(191), \n" +
+                        "  revestimento_externo INTEGER, \n" +
+                        "  cobertura INTEGER, \n" +
                         "  id_pessoa INTEGER, \n" +
                         "  id_usuario INTEGER);"
         );

@@ -169,6 +169,8 @@ public class PessoaDao {
 
         contentValues.put("id_site", registry.getId_site());
 
+        contentValues.put("fgts_receber", registry.getFgts_receber());
+
         return contentValues;
     }
 
@@ -194,7 +196,7 @@ public class PessoaDao {
         } catch (Throwable ex) {
         }
         registry.setEmail(cursor.getString(cursor.getColumnIndex("email")));
-        registry.setNacionalidade(cursor.getInt(cursor.getColumnIndex("nacionalidade")));
+        registry.setNacionalidade(cursor.getString(cursor.getColumnIndex("nacionalidade")));
         registry.setNumero_cpts(cursor.getString(cursor.getColumnIndex("numero_cpts")));
         registry.setPis_pasep(cursor.getString(cursor.getColumnIndex("pis_pasep")));
         registry.setNumero_cadunico(cursor.getString(cursor.getColumnIndex("numero_cadunico")));
@@ -249,6 +251,8 @@ public class PessoaDao {
         registry.setId_usuario(cursor.getInt(cursor.getColumnIndex("id_usuario")));
 
         registry.setId_site(cursor.getString(cursor.getColumnIndex("id_site")));
+
+        registry.setFgts_receber(cursor.getInt(cursor.getColumnIndex("fgts_receber")));
 
         return registry;
     }

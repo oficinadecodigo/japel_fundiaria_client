@@ -82,6 +82,7 @@ public class Marshal {
         registro.put("foto_comprovante_estado_civil", pessoa.getFoto_comprovante_estado_civil());
         registro.put("usuario_id", idusuario);
         registro.put("pessoa_id", idpessoa);
+        registro.put("fgts_receber", pessoa.getFgts_receber());
         JSONObject jsonObject = new JSONObject(registro);
         dados = jsonObject.toString();
         return dados;
@@ -148,6 +149,8 @@ public class Marshal {
         registro.put("foto_documento_cartografico", moradia.getFoto_documento_cartografico());
         registro.put("pessoa_id", idpessoa);
         registro.put("usuario_id", idusuario);
+        registro.put("revestimento_externo", moradia.getRevestimento_externo());
+        registro.put("cobertura", moradia.getCobertura());
         JSONObject jsonObject = new JSONObject(registro);
         dados = jsonObject.toString();
         return dados;

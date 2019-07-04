@@ -155,6 +155,8 @@ public class MoradiaDao {
         contentValues.put("observacao", registry.getObservacao());
         contentValues.put("id_pessoa", registry.getId_pessoa());
         contentValues.put("id_usuario", registry.getId_usuario());
+        contentValues.put("arquivos_enviados", registry.isArquivos_enviados() ? 1 : 0);
+
         contentValues.put("foto_comprovante_visita", registry.getFoto_comprovante_visita());
         contentValues.put("foto_fachada", registry.getFoto_fachada());
         contentValues.put("foto_comprovante_agua", registry.getFoto_comprovante_agua());
@@ -162,6 +164,9 @@ public class MoradiaDao {
         contentValues.put("foto_comprovante_iptu", registry.getFoto_comprovante_iptu());
         contentValues.put("foto_documento_cartografico", registry.getFoto_documento_cartografico());
         contentValues.put("id_site", registry.getId_site());
+
+        contentValues.put("revestimento_externo", registry.getRevestimento_externo());
+        contentValues.put("cobertura", registry.getCobertura());
 
         return contentValues;
     }
@@ -219,6 +224,7 @@ public class MoradiaDao {
         registry.setObservacao(cursor.getString(cursor.getColumnIndex("observacao")));
         registry.setId_pessoa(cursor.getInt(cursor.getColumnIndex("id_pessoa")));
         registry.setId_usuario(cursor.getInt(cursor.getColumnIndex("id_usuario")));
+        registry.setArquivos_enviados(cursor.getInt(cursor.getColumnIndex("arquivos_enviados")) == 1);
 
         registry.setFoto_comprovante_visita(cursor.getString(cursor.getColumnIndex("foto_comprovante_visita")));
         registry.setFoto_fachada(cursor.getString(cursor.getColumnIndex("foto_fachada")));
@@ -227,6 +233,9 @@ public class MoradiaDao {
         registry.setFoto_comprovante_iptu(cursor.getString(cursor.getColumnIndex("foto_comprovante_iptu")));
         registry.setFoto_documento_cartografico(cursor.getString(cursor.getColumnIndex("foto_documento_cartografico")));
         registry.setId_site(cursor.getString(cursor.getColumnIndex("id_site")));
+
+        registry.setRevestimento_externo(cursor.getInt(cursor.getColumnIndex("revestimento_externo")));
+        registry.setCobertura(cursor.getInt(cursor.getColumnIndex("cobertura")));
 
         return registry;
     }
