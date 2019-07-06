@@ -230,6 +230,26 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Caracterização do uso" />
+
+                <Spinner
+                    android:id="@+id/form_moradia_caracterizacao_uso"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:entries="@array/caracterizacao_uso_array"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -989,7 +1009,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:focusable="false"
-                    android:hint="Fota da fachada"
+                    android:hint="Foto da fachada"
                     android:inputType="none" />
             </LinearLayout>
 

@@ -63,6 +63,8 @@ public class Moradia {
     private int revestimento_externo;
     private int cobertura;
 
+    private int caracterizacao_uso;
+
     public int getId() {
         return id;
     }
@@ -542,5 +544,13 @@ public class Moradia {
 
     public void setCobertura(int cobertura) {
         this.cobertura = cobertura;
+    }
+
+    public int getCaracterizacao_uso() {
+        return caracterizacao_uso;
+    }
+
+    public void setCaracterizacao_uso(int caracterizacao_uso) {
+        this.caracterizacao_uso = caracterizacao_uso;
     }
 }

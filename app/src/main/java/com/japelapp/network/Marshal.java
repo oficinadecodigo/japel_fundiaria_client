@@ -150,6 +150,8 @@ public class Marshal {
         registro.put("pessoa_id", idpessoa);
         registro.put("usuario_id", idusuario);
         registro.put("revestimento_externo", moradia.getRevestimento_externo());
+        registro.put("caracterizacao_uso", moradia.getCaracterizacao_uso());
+
         registro.put("cobertura", moradia.getCobertura());
         JSONObject jsonObject = new JSONObject(registro);
         dados = jsonObject.toString();

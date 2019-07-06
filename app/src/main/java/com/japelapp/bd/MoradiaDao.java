@@ -157,6 +157,8 @@ public class MoradiaDao {
         contentValues.put("id_usuario", registry.getId_usuario());
         contentValues.put("arquivos_enviados", registry.isArquivos_enviados() ? 1 : 0);
 
+        contentValues.put("caracterizacao_uso", registry.getCaracterizacao_uso());
+
         contentValues.put("foto_comprovante_visita", registry.getFoto_comprovante_visita());
         contentValues.put("foto_fachada", registry.getFoto_fachada());
         contentValues.put("foto_comprovante_agua", registry.getFoto_comprovante_agua());
@@ -225,6 +227,8 @@ public class MoradiaDao {
         registry.setId_pessoa(cursor.getInt(cursor.getColumnIndex("id_pessoa")));
         registry.setId_usuario(cursor.getInt(cursor.getColumnIndex("id_usuario")));
         registry.setArquivos_enviados(cursor.getInt(cursor.getColumnIndex("arquivos_enviados")) == 1);
+
+        registry.setCaracterizacao_uso(cursor.getInt(cursor.getColumnIndex("caracterizacao_uso")));
 
         registry.setFoto_comprovante_visita(cursor.getString(cursor.getColumnIndex("foto_comprovante_visita")));
         registry.setFoto_fachada(cursor.getString(cursor.getColumnIndex("foto_fachada")));

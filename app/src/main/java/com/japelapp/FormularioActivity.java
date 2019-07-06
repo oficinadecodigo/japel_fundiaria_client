@@ -222,6 +222,7 @@ public class FormularioActivity extends AppCompatActivity {
     EditText moradia_bairro;
     EditText moradia_cidade;
     Spinner moradia_uf;
+    Spinner moradia_caracterizacao_uso;
     EditText moradia_area_construida;
     EditText moradia_matricula_imovel;
     EditText moradia_medida_frente;
@@ -369,6 +370,7 @@ public class FormularioActivity extends AppCompatActivity {
         compFamPessoa.setId_usuario(Sessao.USUARIO.getId());
         compFamPessoa.setId_pessoa(beneficiario.getId());
         compFamPessoa.setTipo(3);
+        compFamPessoa.setNacionalidade("Brasileiro(a)");
         pessoaDao.insert(compFamPessoa);
         familiares.add(compFamPessoa);
         compFamiliar = compFamPessoa;
@@ -738,6 +740,7 @@ public class FormularioActivity extends AppCompatActivity {
         moradia_bairro = fragmentMoradia.getView().findViewById(R.id.form_moradia_bairro);
         moradia_cidade = fragmentMoradia.getView().findViewById(R.id.form_moradia_cidade);
         moradia_uf = fragmentMoradia.getView().findViewById(R.id.form_moradia_uf);
+        moradia_caracterizacao_uso = fragmentMoradia.getView().findViewById(R.id.form_moradia_caracterizacao_uso);
         moradia_area_construida = fragmentMoradia.getView().findViewById(R.id.form_moradia_area_construida);
         moradia_matricula_imovel = fragmentMoradia.getView().findViewById(R.id.form_moradia_matricula_imovel);
         moradia_medida_frente = fragmentMoradia.getView().findViewById(R.id.form_moradia_medida_frente);
@@ -1609,6 +1612,10 @@ public class FormularioActivity extends AppCompatActivity {
         } catch (Throwable ex) {
         }
         try {
+            registro.setCaracterizacao_uso(moradia_caracterizacao_uso.getSelectedItemPosition());
+        } catch (Throwable ex) {
+        }
+        try {
             registro.setArea_construida(moradia_area_construida.getText().toString());
         } catch (Throwable ex) {
         }
@@ -1808,6 +1815,10 @@ public class FormularioActivity extends AppCompatActivity {
         }
         try {
             moradia_uf.setSelection(registro.getUf());
+        } catch (Throwable ex) {
+        }
+        try {
+            moradia_caracterizacao_uso.setSelection(registro.getCaracterizacao_uso());
         } catch (Throwable ex) {
         }
         try {
@@ -2041,10 +2052,12 @@ public class FormularioActivity extends AppCompatActivity {
             moradia.setId(moradiaDao.getMaxId() + 1);
             moradiaDao.insert(moradia);
             beneficiario = new Pessoa();
+            beneficiario.setNacionalidade("Brasileiro(a)");
             beneficiario.setId(pessoaDao.getMaxId() + 1);
             beneficiario.setTipo(1);
             pessoaDao.insert(beneficiario);
             conjuje = new Pessoa();
+            conjuje.setNacionalidade("Brasileiro(a)");
             conjuje.setId(pessoaDao.getMaxId() + 1);
             conjuje.setTipo(2);
             conjuje.setParentesco(-1);

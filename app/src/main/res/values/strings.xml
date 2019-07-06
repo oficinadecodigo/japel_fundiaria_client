@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">JapelApp</string>
     <string name="formulario_tab_text_1">Beneficiário</string>
-    <string name="formulario_tab_text_2">Cônjuje</string>
+    <string name="formulario_tab_text_2">Cônjuge</string>
     <string name="formulario_tab_text_3">Comp. Familiar</string>
     <string name="formulario_tab_text_4">Moradia</string>
     <string name="formulario_tab_text_5">Fotos</string>
@@ -200,5 +200,13 @@
         <item>2-ZINCO</item>
         <item>3-LAJE</item>
         <item>4-TELHA CERÂMICA</item>
+    </string-array>
+    <string-array name="caracterizacao_uso_array">
+        <item></item>
+        <item>1-RESIDENCIAL</item>
+        <item>2-COMERCIAL</item>
+        <item>3-INSTITUCIONAL</item>
+        <item>4-PRESTAÇÃO DE SEVIÇO</item>
+        <item>5-MISTA</item>
     </string-array>
 </resources>

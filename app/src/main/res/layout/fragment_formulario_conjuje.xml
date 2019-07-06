@@ -522,7 +522,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="FGTS Receber"
+                    android:hint="FGTS"
                     android:inputType="textPersonName" />
             </LinearLayout>
 
@@ -632,15 +632,35 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Foto Documento Estado civil" />
+                    android:text="Foto Documento de Identidade Frente" />
 
                 <EditText
-                    android:id="@+id/form_conjuje_foto_pessoa"
+                    android:id="@+id/form_conjuje_foto_rg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:focusable="false"
-                    android:hint="Foto Documento Estado civil"
+                    android:hint="Foto Documento de Identidade Frente"
+                    android:inputType="none" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Foto Documento de Identidade Verso" />
+
+                <EditText
+                    android:id="@+id/form_conjuje_foto_rg_verso"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:hint="Foto Documento de Identidade Verso"
                     android:inputType="none" />
             </LinearLayout>
 
@@ -672,15 +692,15 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Foto Documento de Identidade Frente" />
+                    android:text="Foto Documento Estado civil" />
 
                 <EditText
-                    android:id="@+id/form_conjuje_foto_rg"
+                    android:id="@+id/form_conjuje_foto_pessoa"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:focusable="false"
-                    android:hint="Foto Documento de Identidade Frente"
+                    android:hint="Foto Documento Estado civil"
                     android:inputType="none" />
             </LinearLayout>
 
@@ -692,15 +712,15 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Foto Documento de Identidade Verso" />
+                    android:text="Foto Documento Estado Civil Complementar" />
 
                 <EditText
-                    android:id="@+id/form_conjuje_foto_rg_verso"
+                    android:id="@+id/form_conjuje_foto_comprovante_estado_civil"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:focusable="false"
-                    android:hint="Foto Documento de Identidade Verso"
+                    android:hint="Foto Documento Estado Civil Complementar"
                     android:inputType="none" />
             </LinearLayout>
 
@@ -781,26 +801,6 @@
                     android:ems="10"
                     android:focusable="false"
                     android:hint="Comprovante de Renda"
-                    android:inputType="none" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Foto Documento Estado Civil Complementar" />
-
-                <EditText
-                    android:id="@+id/form_conjuje_foto_comprovante_estado_civil"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:focusable="false"
-                    android:hint="Foto Documento Estado Civil Complementar"
                     android:inputType="none" />
             </LinearLayout>
 

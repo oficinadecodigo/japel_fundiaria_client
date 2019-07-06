@@ -168,6 +168,7 @@ public class DatabaseHelper<E> extends SQLiteOpenHelper {
                         "  foto_documento_cartografico VARCHAR(191), \n" +
                         "  id_site VARCHAR(191), \n" +
                         "  revestimento_externo INTEGER, \n" +
+                        "  caracterizacao_uso INTEGER, \n" +
                         "  cobertura INTEGER, \n" +
                         "  id_pessoa INTEGER, \n" +
                         "  id_usuario INTEGER);"
